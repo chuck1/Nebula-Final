@@ -63,7 +63,6 @@ namespace neb { namespace fin { namespace gfx_phx { namespace app {
 
 				void						loadXml(::std::string filename, neb::std::wrapper& w);
 
-				sp::shared_ptr<neb::gfx::window::base>						get_window(GLFWwindow*);
 
 			public:
 				void					init();
