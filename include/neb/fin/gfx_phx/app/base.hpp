@@ -8,10 +8,9 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include <Galaxy-Standard/shared.hpp>
-//#include <Galaxy-Standard/terminal/command_set.hpp>
+#include <gal/std/shared.hpp>
 
-#include <Galaxy-Network/decl.hpp>
+#include <gal/net/decl.hpp>
 
 #include <neb/core/free.hpp>
 #include <neb/util/decl.hpp>

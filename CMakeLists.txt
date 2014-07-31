@@ -43,12 +43,9 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thre
 
 SET(libs
 	${PROJECT_NAME}
-	Nebula
+	${Nebula_LIBRARIES}
+	${Galaxy_LIBRARIES}
 	maze
-	Galaxy-Standard
-	Galaxy-Network
-	Galaxy-Log
-	${PhysX_LIBRARIES}
 	${PhysX_LIBRARIES}
 	${Boost_LIBRARIES}
 	glfw3
@@ -64,8 +61,6 @@ SET(libs
 	Xi
 	Xcursor
 	Xxf86vm
-	${PhysX_LIBRARIES}
-	${PhysX_LIBRARIES}
 	)
 
 
