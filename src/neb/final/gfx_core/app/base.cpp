@@ -1,3 +1,7 @@
+
+
+#include <neb/gfx/GUI/Object/terminal.hh>
+
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,6 +14,7 @@
 #include <GLFW/glfw3.h>
 //#include <glfw3.h>
 
+#include <gal/console/base.hpp>
 #include <gal/console/backend/command.hpp>
 #include <gal/console/backend/command_set.hpp>
 
@@ -19,11 +24,12 @@
 //#include <neb/actor/event.hh>
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/window/Base.hh>
-#include <neb/gfx/GUI/Object/terminal.hh>
+
 
 //#include <neb/core/actor/RigidBody/Base.hh>
-#include <neb/app/base.hpp>
+//#include <neb/app/base.hpp>
 
+#include <neb/core/app/__base.hpp>
 #include <neb/core/scene/base.hpp>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
@@ -40,16 +46,16 @@ void				neb::fin::gfx_phx::app::base::init() {
 
 	// command set
 	
-	command_set_ = sp::make_shared<gal::std::command_set>();
+	command_set_ = sp::make_shared<gal::console::command_set>();
 
 	command_set_->init();	
 	
 	// exit command
 	
-	auto cmd_exit = sp::make_shared<gal::std::command>();
+	auto cmd_exit = sp::make_shared<gal::console::command>();
 
-	cmd_exit->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
-		sp::shared_ptr<neb::app::base> app = neb::app::base::global();
+	cmd_exit->func_ = [&] (sp::shared_ptr<gal::console::base> term, bpo::variables_map vm) {
+		auto app = neb::core::app::__base::global();
 		app->flag_.set(neb::app::util::flag::SHOULD_RELEASE);
 	};
 

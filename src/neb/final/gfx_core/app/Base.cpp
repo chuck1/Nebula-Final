@@ -1,3 +1,7 @@
+
+
+#include <neb/gfx/GUI/Object/terminal.hh>
+
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,10 +24,9 @@
 //#include <neb/actor/event.hh>
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/window/Base.hh>
-#include <neb/gfx/GUI/Object/terminal.hh>
 
 //#include <neb/core/actor/RigidBody/Base.hh>
-#include <neb/app/Base.hh>
+//#include <neb/app/Base.hh>
 
 #include <neb/core/scene/base.hpp>
 

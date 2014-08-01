@@ -10,13 +10,16 @@
 
 #include <gal/std/shared.hpp>
 
-#include <gal/net/decl.hpp>
+//#include <gal/net/decl.hpp>
 
 #include <neb/core/free.hpp>
 #include <neb/util/decl.hpp>
-#include <neb/app/__core.hpp>
+
+#include <neb/core/app/__core.hpp>
+
 #include <neb/app/__gfx.hpp>
 #include <neb/app/__gfx_glsl.hpp>
+
 //#include <neb/app/__net.hpp>
 
 #include <neb/core/scene/util/Parent.hh>
@@ -24,12 +27,12 @@
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
-#include <neb/gfx/GUI/Layout/util/Parent.hh>
+//#include <neb/gfx/GUI/Layout/util/Parent.hh>
 #include <neb/core/shape/util/Types.hh>
 #include <neb/util/wrapper.hpp>
-#include <neb/game/game/util/parent.hpp>
+#include <neb/phx/game/game/util/parent.hpp>
 
-namespace gal { namespace std {
+namespace gal { namespace console {
 	class command_set;
 }}
 
@@ -45,7 +48,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace app {
 			virtual public neb::app::__gfx_glsl,
 			virtual public neb::app::__core,
 			/*virtual public neb::app::__net,*/
-			virtual public neb::game::game::util::parent
+			virtual public neb::phx::game::game::util::parent
 		{
 			public:
 				friend void neb::init();
@@ -79,7 +82,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace app {
 			public:
 			
 
-				sp::shared_ptr<gal::std::command_set>				command_set_;
+				sp::shared_ptr<gal::console::command_set>				command_set_;
 		};
 
 
