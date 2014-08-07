@@ -12,7 +12,6 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-//#include <glfw3.h>
 
 #include <gal/console/base.hpp>
 #include <gal/console/backend/command.hpp>
@@ -20,27 +19,20 @@
 
 #include <gal/log/log.hpp>
 
-#include <neb/util/config.hh>
-//#include <neb/actor/event.hh>
-#include <neb/gfx/Context/Base.hh>
-#include <neb/gfx/window/Base.hh>
-
-
-//#include <neb/core/actor/RigidBody/Base.hh>
-//#include <neb/app/base.hpp>
-
+#include <neb/core/util/config.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/scene/base.hpp>
 
-#include <neb/fin/gfx_phx/app/base.hpp>
+#include <neb/gfx/Context/Base.hh>
+#include <neb/gfx/window/Base.hh>
 
+#include <neb/fin/gfx_phx/app/base.hpp>
 
 /** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
  * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
  * better documentation inside function bodies should be used to let me know what a shared_ptr is being used (how it 
  * should be treated.
  */
-
 
 void				neb::fin::gfx_phx::app::base::init() {
 
