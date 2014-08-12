@@ -19,6 +19,7 @@ FIND_PACKAGE(Nebula COMPONENTS
 	core
 	gfx
 	physx
+	ext
 	REQUIRED)
 
 

@@ -14,8 +14,6 @@
 #include <GLFW/glfw3.h>
 
 #include <gal/console/base.hpp>
-#include <gal/console/backend/command.hpp>
-#include <gal/console/backend/command_set.hpp>
 
 #include <gal/log/log.hpp>
 
@@ -35,34 +33,17 @@
  */
 
 void				neb::fin::gfx_phx::app::base::init() {
-
-	// command set
-	
-	command_set_ = sp::make_shared<gal::console::command_set>();
-
-	command_set_->init();	
-	
-	// exit command
-	
-	auto cmd_exit = sp::make_shared<gal::console::command>();
-
-	cmd_exit->func_ = [&] (sp::shared_ptr<gal::console::base> term, bpo::variables_map vm) {
-		auto app = neb::core::app::__base::global();
-		app->flag_.set(neb::app::util::flag::SHOULD_RELEASE);
-	};
-
-	command_set_->map_["exit"] = cmd_exit;
 	
 }
-void				neb::fin::gfx_phx::neb::app::base::loop() {
+void				neb::fin::gfx_phx::app::base::loop() {
 
-	auto self(sp::dynamic_pointer_cast<neb::app::base>(shared_from_this()));
+	auto self(sp::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
 	assert(self);
 	
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
 	
 	
-	while(!flag_.any(neb::app::util::flag::E::SHOULD_RELEASE)) {
+	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
 
 		::std::cout << "loop1" << ::std::endl;
 
@@ -81,7 +62,7 @@ void				neb::fin::gfx_phx::neb::app::base::loop() {
 }
 void				neb::fin::gfx_phx::app::base::step(gal::std::timestep const & ts) {
 
-	neb::core::scene::util::parent::step(ts);
+	neb::core::core::scene::util::parent::step(ts);
 
 	neb::gfx::window::util::parent::step(ts);
 

@@ -13,81 +13,56 @@
 //#include <gal/net/decl.hpp>
 
 #include <neb/core/free.hpp>
-#include <neb/util/decl.hpp>
-
 #include <neb/core/app/__core.hpp>
-
-#include <neb/app/__gfx.hpp>
-#include <neb/app/__gfx_glsl.hpp>
-
-//#include <neb/app/__net.hpp>
-
 #include <neb/core/scene/util/Parent.hh>
+#include <neb/core/shape/util/Types.hh>
+#include <neb/core/util/wrapper.hpp>
+#include <neb/core/util/decl.hpp>
 
+#include <neb/gfx/app/__gfx.hpp>
+#include <neb/gfx/app/__gfx_glsl.hpp>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
-//#include <neb/gfx/GUI/Layout/util/Parent.hh>
-#include <neb/core/shape/util/Types.hh>
-#include <neb/util/wrapper.hpp>
+
 #include <neb/phx/game/game/util/parent.hpp>
 
-namespace gal { namespace console {
-	class command_set;
-}}
-
-namespace neb { namespace fin { namespace gfx_phx { namespace app {
-
-
-		/** @brief Base
-		 *
-		 * final implementation
-		 */
-		class base:
-			virtual public neb::app::__gfx,
-			virtual public neb::app::__gfx_glsl,
-			virtual public neb::app::__core,
-			/*virtual public neb::app::__net,*/
-			virtual public neb::phx::game::game::util::parent
-		{
-			public:
-				friend void neb::init();
-			public:
-				base();
-				virtual ~base();
-			public:
-				//void						command(sp::shared_ptr<neb::gfx::gui::object::terminal> term, ::std::string);
-			public:
-				neb::core::pose						getPose();
-				neb::core::pose						getPoseGlobal();
-
-				static sp::shared_ptr<neb::app::base>		global();
-
-				void						loadXml(::std::string filename, neb::std::wrapper& w);
-
-
-			public:
-				void					init();
-				void					release() {}
-
-
-				virtual void				step(gal::std::timestep const & ts);
-	
-				void					loop();
-
-				void					set_should_release();
-
-
-
-			public:
-			
-
-				sp::shared_ptr<gal::console::command_set>				command_set_;
-		};
-
-
-
-}}}}
+namespace neb {
+	namespace fin {
+		namespace gfx_phx {
+			namespace app {
+				/** @brief Base
+				 *
+				 * final implementation
+				 */
+				class base:
+					virtual public neb::app::__gfx,
+					virtual public neb::app::__gfx_glsl,
+					virtual public neb::app::__core,
+					/*virtual public neb::app::__net,*/
+					virtual public neb::phx::game::game::util::parent
+				{
+					public:
+						friend void neb::init();
+					public:
+						base();
+						virtual ~base();
+					public:
+						neb::core::pose						getPose();
+						neb::core::pose						getPoseGlobal();
+						static shared_ptr<neb::fin::gfx_phx::app::base>		global();
+						void							loadXml(::std::string filename, neb::std::wrapper& w);
+					public:
+						void					init();
+						void					release() {}
+						virtual void				step(gal::std::timestep const & ts);
+						void					loop();
+						void					set_should_release();
+				};
+			}
+		}
+	}
+}
 
 #endif
 
