@@ -22,11 +22,8 @@
 
 #include <neb/ext/maze/game/map/maze2.hpp>
 
-#include <neb/phx/free.hpp>
 #include <neb/phx/app/base.hpp>
-#include <neb/phx/core/shape/box.hpp>
-#include <neb/phx/core/actor/rigiddynamic/base.hpp>
-#include <neb/phx/core/actor/rigidstatic/base.hpp>
+#include <neb/phx/core/scene/base.hpp>
 #include <neb/phx/game/weapon/SimpleProjectile.hpp>
 #include <neb/phx/game/game/base.hpp>
 #include <neb/phx/core/actor/control/rigidbody/base.hpp>
@@ -34,6 +31,10 @@
 #include <neb/ext/maze/game/map/maze2.hpp>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
+#include <neb/fin/gfx_phx/core/scene/base.hpp>
+#include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
+#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/gfx_phx/core/shape/box.hpp>
 
 sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
 
@@ -98,9 +99,9 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::phx::core::scene::base> scene) {
+shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 
-	auto actor = make_shared<neb::phx::core::actor::rigiddynamic::base>(scene);
+	auto actor = make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
 
 	scene->insert(actor);
 
@@ -122,7 +123,7 @@ shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shar
 	actor->init();
 
 	// shape	
-	auto shape = make_shared<neb::phx::core::shape::box>(actor);
+	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
 
 	actor->neb::core::shape::util::parent::insert(shape);
 
@@ -134,9 +135,9 @@ shared_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shar
 
 	return actor;	
 }
-weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_ptr<neb::phx::core::scene::base> scene) {
+weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 
-	auto actor = sp::make_shared<neb::phx::core::actor::rigiddynamic::base>(scene);
+	auto actor = sp::make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
 
 	scene->insert(actor);
 
@@ -154,7 +155,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_
 	actor->init();
 
 	// shape	
-	auto shape = sp::make_shared<neb::phx::core::shape::box>(actor);
+	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
 
 	actor->neb::core::shape::util::parent::insert(shape);
 
@@ -174,7 +175,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_
 
 	// control
 
-	auto control(sp::make_shared<neb::phx::core::actor::control::rigidbody::pd>());
+	auto control(make_shared<neb::phx::core::actor::control::rigidbody::pd>());
 
 	actor->control_ = control;
 
@@ -190,7 +191,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(sp::shared_
 
 
 }
-shared_ptr<neb::phx::core::scene::base>			create_scene(
+shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::gfx::window::base> window,
 		shared_ptr<neb::gfx::context::window> context,
 		shared_ptr<neb::phx::core::actor::base>& enemy)
@@ -198,12 +199,12 @@ shared_ptr<neb::phx::core::scene::base>			create_scene(
 
 	std::cout << "4\n";
 
-	auto app = neb::phx::app::base::global();
+	auto app = neb::fin::gfx_phx::app::base::global();
 	assert(app);
 
 	std::cout << "5\n";
 
-	auto scene = make_shared<neb::phx::core::scene::base>(app);
+	auto scene = make_shared<neb::fin::gfx_phx::core::scene::base>(app);
 	assert(scene);
 
 	std::cout << "6\n";
@@ -280,7 +281,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 		shared_ptr<neb::gfx::window::base> window,
 		shared_ptr<neb::gfx::context::window> context) {
 
-	auto app = neb::phx::app::base::global();
+	auto app = neb::fin::gfx_phx::app::base::global();
 
 	auto map = make_shared<neb::ext::maze::game::map::maze2>(app, ivec2(15,15));
 
@@ -354,9 +355,7 @@ void						setup_game(
 }
 int			main() {
 
-	phx::init();
-
-	auto app = phx::app::base::global();
+	auto app = neb::fin::gfx_phx::app::base::init();
 
 	// window	
 	auto window = sp::make_shared<neb::gfx::window::base>();
@@ -431,7 +430,7 @@ int			main() {
 
 	// loop
 
-	app->loop1();
+	app->loop();
 
 }
 

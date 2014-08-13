@@ -26,13 +26,20 @@
 
 #include <neb/fin/gfx_phx/app/base.hpp>
 
-/** @todo since std smart pointers dont have ref counted unique pointers, owned objects must be stored as shared pointers.
- * to avoid unwanted shared_ptrs to owned objects, care must be taken when passing these objects around.
- * better documentation inside function bodies should be used to let me know what a shared_ptr is being used (how it 
- * should be treated.
- */
 
-void				neb::fin::gfx_phx::app::base::init() {
+shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global() {
+	auto app(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(g_app_));
+	assert(app);
+	return app;
+}
+shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
+	neb::init_log();
+	auto app(make_shared<neb::fin::gfx_phx::app::base>());
+	app->neb::core::app::__base::__init();
+	g_app_ = app;
+	return app;
+}
+void				neb::fin::gfx_phx::app::base::__init() {
 	
 }
 void				neb::fin::gfx_phx::app::base::loop() {

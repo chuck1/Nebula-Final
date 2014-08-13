@@ -10,8 +10,6 @@
 
 #include <gal/std/shared.hpp>
 
-//#include <gal/net/decl.hpp>
-
 #include <neb/core/free.hpp>
 #include <neb/core/app/__core.hpp>
 #include <neb/core/scene/util/Parent.hh>
@@ -27,6 +25,8 @@
 
 #include <neb/phx/game/game/util/parent.hpp>
 
+#include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
+
 namespace neb {
 	namespace fin {
 		namespace gfx_phx {
@@ -39,25 +39,26 @@ namespace neb {
 					virtual public neb::app::__gfx,
 					virtual public neb::app::__gfx_glsl,
 					virtual public neb::app::__core,
-					/*virtual public neb::app::__net,*/
+					virtual public neb::fin::gfx_phx::core::scene::util::parent,
 					virtual public neb::phx::game::game::util::parent
 				{
 					public:
-						friend void neb::init();
+						static shared_ptr<neb::fin::gfx_phx::app::base>		global();
+						static shared_ptr<neb::fin::gfx_phx::app::base>		init();
 					public:
 						base();
 						virtual ~base();
+					protected:
+						void							__init();
 					public:
 						neb::core::pose						getPose();
 						neb::core::pose						getPoseGlobal();
-						static shared_ptr<neb::fin::gfx_phx::app::base>		global();
 						void							loadXml(::std::string filename, neb::std::wrapper& w);
 					public:
-						void					init();
-						void					release() {}
-						virtual void				step(gal::std::timestep const & ts);
-						void					loop();
-						void					set_should_release();
+						void							release() {}
+						virtual void						step(gal::std::timestep const & ts);
+						void							loop();
+						void							set_should_release();
 				};
 			}
 		}
@@ -65,8 +66,4 @@ namespace neb {
 }
 
 #endif
-
-
-
-
 

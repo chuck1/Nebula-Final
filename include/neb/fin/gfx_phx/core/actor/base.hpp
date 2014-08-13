@@ -15,6 +15,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 		virtual public neb::fin::gfx_phx::core::shape::util::parent
 	{
 		public:
+			base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
 			virtual void						init() = 0;
 			virtual void						release() = 0;
 			virtual void						step(gal::std::timestep const & ts) = 0;

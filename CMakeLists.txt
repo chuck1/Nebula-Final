@@ -15,11 +15,11 @@ FIND_PACKAGE(Galaxy COMPONENTS
 	log
 	console
 	REQUIRED)
+
 FIND_PACKAGE(Nebula COMPONENTS
 	core
 	gfx
 	physx
-	ext
 	REQUIRED)
 
 
@@ -34,11 +34,9 @@ link_directories("../maze/Debug")
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
-# custom include extensions
 set(include_extensions obj)
 
 SET(GRU_VERSION 0.1.1)
-
 
 FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
 
@@ -63,13 +61,6 @@ SET(libs
 	Xcursor
 	Xxf86vm
 	)
-
-
-
-# common methods for static library
-# =================================
-
-
 
 cmh_library()
 

@@ -3,7 +3,16 @@
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 
-::std::weak_ptr<neb::core::actor::base>			neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized() {
+typedef weak_ptr<neb::phx::core::actor::rigidstatic::base> wstatic;
+typedef weak_ptr<neb::phx::core::actor::rigiddynamic::base> wdynamic;
+
+void		neb::fin::gfx_phx::core::scene::base::init() {
+}
+void		neb::fin::gfx_phx::core::scene::base::release() {
+}
+void		neb::fin::gfx_phx::core::scene::base::step(gal::std::timestep const & ts) {
+}
+wstatic		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized() {
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
@@ -18,7 +27,7 @@
 
 	return actor;
 }
-::std::weak_ptr<neb::core::actor::base>			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialized() {
+wdynamic	neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialized() {
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
