@@ -54,7 +54,7 @@ namespace neb {
 						neb::core::pose						getPoseGlobal();
 						void							loadXml(::std::string filename, neb::std::wrapper& w);
 					public:
-						void							release() {}
+						void							release();
 						virtual void						step(gal::std::timestep const & ts);
 						void							loop();
 						void							set_should_release();

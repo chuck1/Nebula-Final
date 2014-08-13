@@ -40,8 +40,13 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 	g_app_ = app;
 	return app;
 }
+neb::fin::gfx_phx::app::base::base() {
+}
+neb::fin::gfx_phx::app::base::~base() {
+}
 void				neb::fin::gfx_phx::app::base::__init() {
-	
+}
+void				neb::fin::gfx_phx::app::base::release() {
 }
 void				neb::fin::gfx_phx::app::base::loop() {
 
@@ -75,6 +80,16 @@ void				neb::fin::gfx_phx::app::base::step(gal::std::timestep const & ts) {
 	neb::gfx::window::util::parent::step(ts);
 
 	glfwPollEvents();
+}
+neb::core::pose						neb::fin::gfx_phx::app::base::getPose() {
+	return neb::core::pose();
+}
+neb::core::pose						neb::fin::gfx_phx::app::base::getPoseGlobal() {
+	return neb::core::pose();
+}
+void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::std::wrapper& w) {
+}
+void							neb::fin::gfx_phx::app::base::set_should_release() {
 }
 
 

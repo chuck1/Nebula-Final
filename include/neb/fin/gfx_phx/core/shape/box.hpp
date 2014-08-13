@@ -9,10 +9,6 @@
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace shape {
 
-	namespace util {
-		class parent;
-	}
-
 	class box:
 		virtual public neb::gfx::core::shape::box,
 		virtual public phx::core::shape::box,
