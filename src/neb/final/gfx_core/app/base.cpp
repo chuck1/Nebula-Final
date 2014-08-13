@@ -33,9 +33,10 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global()
 	return app;
 }
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
-	neb::init_log();
 	auto app(make_shared<neb::fin::gfx_phx::app::base>());
+
 	app->neb::core::app::__base::__init();
+
 	g_app_ = app;
 	return app;
 }

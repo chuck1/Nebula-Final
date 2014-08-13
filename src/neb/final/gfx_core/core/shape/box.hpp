@@ -1,5 +1,5 @@
-#ifndef NEB_FIN_GFX_PHX_CORE_SHAPE_BASE_HPP
-#define NEB_FIN_GFX_PHX_CORE_SHAPE_BASE_HPP
+#ifndef NEB_FIN_GFX_PHX_CORE_SHAPE_BOX_HPP
+#define NEB_FIN_GFX_PHX_CORE_SHAPE_BOX_HPP
 
 #include <neb/phx/core/shape/base.hpp>
 
@@ -12,12 +12,12 @@ namespace neb {
 		namespace gfx_phx {
 			namespace core {
 				namespace shape {
-					class base:
-						virtual public neb::gfx::core::shape::base,
-						virtual public phx::core::shape::base
+					class box:
+						virtual public neb::gfx::core::shape::box,
+						virtual public neb::phx::core::shape::box
 					{
 						public:
-							base(shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
+							box(shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
 							virtual void				init();
 							virtual void				release();
 							virtual void				step(
@@ -30,4 +30,3 @@ namespace neb {
 }
 
 #endif
-

@@ -14,8 +14,8 @@
 	
 	return shape;
 }
-::std::weak_ptr<neb::core::shape::base>				neb::fin::gfx_phx::core::actor::rigidactor::base::createShapeBox(glm::vec3 size) {
-
+::std::weak_ptr<neb::core::shape::base>				neb::fin::gfx_phx::core::actor::rigidactor::base::createShapeBox(neb::core::pose pose, glm::vec3 size) {
+	
 	auto shape = createShapeBoxUninitialized(size).lock();
 	
 	shape->init();

@@ -10,7 +10,6 @@
 
 #include <gal/std/shared.hpp>
 
-#include <neb/core/free.hpp>
 #include <neb/core/app/__core.hpp>
 #include <neb/core/scene/util/Parent.hh>
 #include <neb/core/shape/util/Types.hh>

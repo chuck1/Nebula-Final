@@ -17,8 +17,9 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 			virtual void							release() = 0;
 			virtual void							step(gal::std::timestep const & ts) = 0;
 
-			::std::weak_ptr<neb::core::shape::base>				createShapeBoxUninitialized(glm::vec3 size);
-			::std::weak_ptr<neb::core::shape::base>				createShapeBox(glm::vec3 size);
+
+			weak_ptr<neb::core::shape::base>				createShapeBoxUninitialized(glm::vec3 size);
+			weak_ptr<neb::core::shape::base>				createShapeBox(neb::core::pose, glm::vec3 size);
 	};
 
 }}}}}}

@@ -8,8 +8,9 @@
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 #include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
 
-typedef weak_ptr<neb::phx::core::actor::rigidstatic::base> wstatic;
-typedef weak_ptr<neb::phx::core::actor::rigiddynamic::base> wdynamic;
+typedef weak_ptr<neb::core::actor::base>			wbase;
+typedef weak_ptr<neb::phx::core::actor::rigidstatic::base>	wstatic;
+typedef weak_ptr<neb::phx::core::actor::rigiddynamic::base>	wdynamic;
 
 namespace neb {
 	namespace fin {
@@ -26,9 +27,9 @@ namespace neb {
 							virtual void			init();
 							virtual void			release();
 							virtual void			step(gal::std::timestep const & ts);
+							virtual wbase			createActorBase(neb::core::pose);
 							virtual wstatic			createActorRigidStaticUninitialized();
 							virtual wdynamic		createActorRigidDynamicUninitialized();
-
 					};
 				}
 			}
@@ -37,5 +38,4 @@ namespace neb {
 }
 
 #endif
-
 
