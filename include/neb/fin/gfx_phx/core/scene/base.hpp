@@ -5,10 +5,11 @@
 
 #include <neb/phx/core/scene/base.hpp>
 
+#include <neb/fin/gfx_phx/core/actor/util/decl.hpp>
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 #include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
 
-typedef weak_ptr<neb::core::actor::base>			wbase;
+typedef weak_ptr<neb::core::actor::base>				wbase;
 typedef weak_ptr<neb::phx::core::actor::rigidstatic::base>	wstatic;
 typedef weak_ptr<neb::phx::core::actor::rigiddynamic::base>	wdynamic;
 

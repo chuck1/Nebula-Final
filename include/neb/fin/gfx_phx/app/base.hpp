@@ -25,6 +25,7 @@
 #include <neb/phx/app/base.hpp>
 #include <neb/phx/game/game/util/parent.hpp>
 
+#include <neb/fin/gfx_phx/core/scene/util/decl.hpp>
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 
 namespace neb {
@@ -60,6 +61,8 @@ namespace neb {
 						virtual void						step(gal::std::timestep const & ts);
 						void							loop();
 						void							set_should_release();
+						weak_ptr<neb::fin::gfx_phx::core::scene::base>		createScene();
+
 				};
 			}
 		}

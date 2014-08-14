@@ -25,6 +25,7 @@
 #include <neb/gfx/window/Base.hh>
 
 #include <neb/fin/gfx_phx/app/base.hpp>
+#include <neb/fin/gfx_phx/core/scene/base.hpp>
 
 
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global() {
@@ -96,6 +97,18 @@ void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::st
 }
 void							neb::fin::gfx_phx::app::base::set_should_release() {
 }
+weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene() {
+	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+
+	auto scene(make_shared<neb::fin::gfx_phx::core::scene::base>(self));
+
+	neb::core::core::scene::util::parent::insert(scene);
+
+	scene->init();
+
+	return scene;
+}
+
 
 
 
