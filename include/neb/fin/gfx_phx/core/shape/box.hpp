@@ -23,9 +23,6 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 
 
 	};
-
-
-
 }}}}}
 
 #endif

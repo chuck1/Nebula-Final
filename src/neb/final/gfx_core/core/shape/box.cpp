@@ -11,6 +11,15 @@ neb::fin::gfx_phx::core::shape::box::box(shared_ptr<neb::fin::gfx_phx::core::sha
 {
 }
 void		neb::fin::gfx_phx::core::shape::box::init() {
+	neb::core::shape::base::init();
+
+	neb::gfx::core::shape::base::init();
+	neb::gfx::core::shape::box::init();
+
+	neb::phx::core::shape::base::init();
+	//neb::phx::core::shape::box::init();
+
+	neb::fin::gfx_phx::core::shape::base::init();
 }
 void		neb::fin::gfx_phx::core::shape::box::release() {
 }

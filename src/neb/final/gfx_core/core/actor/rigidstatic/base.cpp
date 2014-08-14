@@ -12,6 +12,17 @@ neb::fin::gfx_phx::core::actor::rigidstatic::base::base(shared_ptr<neb::fin::gfx
 	neb::fin::gfx_phx::core::actor::rigidactor::base(parent)
 {}
 void						neb::fin::gfx_phx::core::actor::rigidstatic::base::init() {
+	neb::core::actor::base::init();
+
+	neb::gfx::core::actor::base::init();
+
+	neb::phx::core::actor::base::init();
+	//neb::phx::core::actor::actor::base::init();
+	//neb::phx::core::actor::rigidactor::base::init();
+	//neb::phx::core::actor::rigidstatic::base::init();
+
+	neb::fin::gfx_phx::core::actor::base::init();
+	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
 }
 void						neb::fin::gfx_phx::core::actor::rigidstatic::base::release() {
 }

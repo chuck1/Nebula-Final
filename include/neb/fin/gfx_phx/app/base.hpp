@@ -22,6 +22,7 @@
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
 
+#include <neb/phx/app/base.hpp>
 #include <neb/phx/game/game/util/parent.hpp>
 
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
@@ -35,9 +36,10 @@ namespace neb {
 				 * final implementation
 				 */
 				class base:
+					virtual public neb::app::__core,
 					virtual public neb::app::__gfx,
 					virtual public neb::app::__gfx_glsl,
-					virtual public neb::app::__core,
+					virtual public neb::phx::app::base,
 					virtual public neb::fin::gfx_phx::core::scene::util::parent,
 					virtual public neb::phx::game::game::util::parent
 				{

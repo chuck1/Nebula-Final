@@ -37,6 +37,11 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 
 	app->neb::core::app::__base::__init();
 
+	app->neb::app::__gfx::__init();
+	app->neb::app::__gfx_glsl::__init();
+
+	app->neb::phx::app::base::__init();
+
 	g_app_ = app;
 	return app;
 }

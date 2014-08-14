@@ -8,6 +8,9 @@ neb::fin::gfx_phx::core::shape::base::base(shared_ptr<neb::fin::gfx_phx::core::s
 {
 }
 void		neb::fin::gfx_phx::core::shape::base::init() {
+	neb::core::shape::base::init();
+	neb::gfx::core::shape::base::init();
+	neb::phx::core::shape::base::init();
 }
 void		neb::fin::gfx_phx::core::shape::base::release() {
 }

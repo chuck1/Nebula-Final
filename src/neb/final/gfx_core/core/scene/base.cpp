@@ -14,10 +14,16 @@ neb::fin::gfx_phx::core::scene::base::base(shared_ptr<neb::fin::gfx_phx::core::s
 {
 }
 void		neb::fin::gfx_phx::core::scene::base::init() {
+	neb::core::core::scene::base::init();
+	neb::gfx::core::scene::base::init();
+	neb::phx::core::scene::base::init();
 }
 void		neb::fin::gfx_phx::core::scene::base::release() {
 }
 void		neb::fin::gfx_phx::core::scene::base::step(gal::std::timestep const & ts) {
+	neb::core::core::scene::base::step(ts);
+	neb::gfx::core::scene::base::step(ts);
+	neb::phx::core::scene::base::step(ts);
 }
 wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pose) {
 	
