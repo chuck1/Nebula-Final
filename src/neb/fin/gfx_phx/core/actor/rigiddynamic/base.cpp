@@ -5,7 +5,7 @@
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	neb::core::actor::base(parent),
+	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::phx::core::actor::actor::base(parent),
 	neb::phx::core::actor::rigidactor::base(parent),
@@ -20,7 +20,7 @@ neb::fin::gfx_phx::core::actor::rigiddynamic::base::~base() {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
-	neb::core::actor::base::init();
+	neb::core::core::actor::base::init();
 
 	neb::phx::core::actor::base::init();
 	//neb::phx::core::actor::actor::base::init();
@@ -34,7 +34,7 @@ void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
 	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::release() {
-	neb::core::actor::base::release();
+	neb::core::core::actor::base::release();
 
 	//neb::phx::core::actor::base::release();
 	neb::phx::core::actor::actor::base::release();
@@ -48,7 +48,7 @@ void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::release() {
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::step(
 		gal::std::timestep const & ts) {
-	neb::core::actor::base::step(ts);
+	neb::core::core::actor::base::step(ts);
 
 	neb::phx::core::actor::base::step(ts);
 	//neb::phx::core::actor::actor::base::step(ts);

@@ -1,6 +1,6 @@
 
 
-#include <neb/gfx/GUI/Object/terminal.hh>
+#include <neb/gfx/gui/object/terminal.hh>
 
 #include <algorithm>
 #include <stdio.h>
@@ -19,7 +19,7 @@
 
 #include <neb/core/util/config.hpp>
 #include <neb/core/app/__base.hpp>
-#include <neb/core/scene/base.hpp>
+#include <neb/core/core/scene/base.hpp>
 
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/window/Base.hh>

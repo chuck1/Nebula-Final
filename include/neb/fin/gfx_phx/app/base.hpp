@@ -11,8 +11,8 @@
 #include <gal/std/shared.hpp>
 
 #include <neb/core/app/__core.hpp>
-#include <neb/core/scene/util/Parent.hh>
-#include <neb/core/shape/util/Types.hh>
+#include <neb/core/core/scene/util/parent.hpp>
+#include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/util/decl.hpp>
 

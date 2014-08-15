@@ -3,7 +3,7 @@
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 
-typedef weak_ptr<neb::core::actor::base>			wbase;
+typedef weak_ptr<neb::core::core::actor::base>			wbase;
 
 neb::fin::gfx_phx::core::scene::base::base(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent):
 	neb::core::core::scene::base(parent),
@@ -44,7 +44,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized
 
 	auto actor(make_shared<neb::fin::gfx_phx::core::actor::rigidstatic::base>(self));
 
-	neb::core::actor::util::parent::insert(actor);
+	neb::core::core::actor::util::parent::insert(actor);
 
 	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
@@ -59,7 +59,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialize
 
 	auto actor = make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(self);
 
-	neb::core::actor::util::parent::insert(actor);
+	neb::core::core::actor::util::parent::insert(actor);
 
 	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;

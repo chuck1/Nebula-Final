@@ -9,32 +9,24 @@
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 #include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
 
-typedef weak_ptr<neb::core::actor::base> wbase;
+typedef weak_ptr<neb::core::core::actor::base> wbase;
 
-namespace neb {
-	namespace fin {
-		namespace gfx_phx {
-			namespace core {
-				namespace scene {
-					class base:
-						virtual public neb::gfx::core::scene::base,
-						virtual public phx::core::scene::base,
-						virtual public neb::fin::gfx_phx::core::actor::util::parent
-					{
-						public:
-							base(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
-							virtual void			init();
-							virtual void			release();
-							virtual void			step(gal::std::timestep const & ts);
-							virtual wbase			createActorBase(neb::core::pose);
-							virtual wbase			createActorRigidStaticUninitialized();
-							virtual wbase			createActorRigidDynamicUninitialized();
-					};
-				}
-			}
-		}
-	}
-}
+namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace scene {
+	class base:
+		virtual public neb::gfx::core::scene::base,
+		virtual public phx::core::scene::base,
+		virtual public neb::fin::gfx_phx::core::actor::util::parent
+	{
+		public:
+			base(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
+			virtual void			init();
+			virtual void			release();
+			virtual void			step(gal::std::timestep const & ts);
+			virtual wbase			createActorBase(neb::core::pose);
+			virtual wbase			createActorRigidStaticUninitialized();
+			virtual wbase			createActorRigidDynamicUninitialized();
+	};
+}}}}}
 
 #endif
 

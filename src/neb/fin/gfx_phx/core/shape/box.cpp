@@ -2,7 +2,7 @@
 #include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
 neb::fin::gfx_phx::core::shape::box::box(shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
-	neb::core::shape::base(parent),
+	neb::core::core::shape::base(parent),
 	neb::gfx::core::shape::base(parent),
 	neb::gfx::core::shape::box(parent),
 	neb::phx::core::shape::base(parent),
@@ -11,7 +11,7 @@ neb::fin::gfx_phx::core::shape::box::box(shared_ptr<neb::fin::gfx_phx::core::sha
 {
 }
 void		neb::fin::gfx_phx::core::shape::box::init() {
-	neb::core::shape::base::init();
+	neb::core::core::shape::base::init();
 
 	neb::gfx::core::shape::base::init();
 	neb::gfx::core::shape::box::init();
