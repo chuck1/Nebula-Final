@@ -1,3 +1,7 @@
+#include <gal/log/log.hpp>
+
+#include <neb/core/util/log.hpp>
+
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
@@ -11,6 +15,9 @@ neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(shared_ptr<neb::fin::gf
 	neb::fin::gfx_phx::core::actor::base(parent),
 	neb::fin::gfx_phx::core::actor::rigidactor::base(parent)
 {
+}
+neb::fin::gfx_phx::core::actor::rigiddynamic::base::~base() {
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
 	neb::core::actor::base::init();
