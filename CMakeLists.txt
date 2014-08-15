@@ -4,8 +4,6 @@ INCLUDE($ENV{HOME}/.config.cmake)
 
 PROJECT(nebula_final)
 
-SET(nebula_final_STATIC TRUE)
-
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(CMakeHelper)
 FIND_PACKAGE(PhysX)
@@ -20,14 +18,13 @@ FIND_PACKAGE(Nebula COMPONENTS
 	core
 	gfx
 	physx
+	python
 	REQUIRED)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -D_DEBUG -std=c++0x")
 
 include_directories("/usr/include/freetype2")
-include_directories("../../glm")
-include_directories("../../maze/include")
 include_directories(${physx_INCLUDE_DIR})
 
 link_directories("../maze/Debug")
@@ -47,22 +44,10 @@ SET(libs
 	maze
 	${PhysX_LIBRARIES}
 	${Boost_LIBRARIES}
-	glfw3
-	GL
-	GLU
-	GLEW
-	freetype
-	png
-	rt
-	pthread
-	X11
-	Xrandr
-	Xi
-	Xcursor
-	Xxf86vm
+	${glfw_LIBRARIES}
 	)
 
-cmh_library()
+cmh_static_library()
 
 add_subdirectory(test)
 

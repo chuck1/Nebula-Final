@@ -27,6 +27,7 @@
 #include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 
+#include <neb/py/core/scene/base.hpp>
 
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global() {
 	auto app(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(g_app_));
@@ -105,6 +106,19 @@ weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::cr
 	neb::core::core::scene::util::parent::insert(scene);
 
 	scene->init();
+
+	// python object
+	if(console_) {
+		neb::py::core::scene::base py_scene;
+		py_scene.scene_ = scene;
+	
+		try {
+			console_->main_namespace_["scene"] = py_scene;
+		} catch(bp::error_already_set const &) {
+			cout << "unhandled execption\n";
+			PyErr_Print();
+		}
+	}
 
 	return scene;
 }
