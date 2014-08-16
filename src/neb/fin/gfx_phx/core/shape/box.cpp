@@ -1,7 +1,7 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
-neb::fin::gfx_phx::core::shape::box::box(shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
+neb::fin::gfx_phx::core::shape::box::box(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
 	neb::core::core::shape::base(parent),
 	neb::gfx::core::shape::base(parent),
 	neb::gfx::core::shape::box(parent),
@@ -23,7 +23,7 @@ void		neb::fin::gfx_phx::core::shape::box::init() {
 }
 void		neb::fin::gfx_phx::core::shape::box::release() {
 }
-void		neb::fin::gfx_phx::core::shape::box::step(gal::std::timestep const & ts) {
+void		neb::fin::gfx_phx::core::shape::box::step(gal::etc::timestep const & ts) {
 }
 
 

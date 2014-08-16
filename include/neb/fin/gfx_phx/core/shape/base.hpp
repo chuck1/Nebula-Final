@@ -17,11 +17,11 @@ namespace neb {
 						virtual public phx::core::shape::base
 					{
 						public:
-							base(shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
+							base(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
 							virtual void				init();
 							virtual void				release();
 							virtual void				step(
-									gal::std::timestep const & ts);
+									gal::etc::timestep const & ts);
 					};
 				}
 			}

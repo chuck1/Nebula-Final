@@ -12,10 +12,10 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 		virtual public neb::fin::gfx_phx::core::actor::base
 	{
 		public:
-			base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
+			base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
 			virtual void							init() = 0;
 			virtual void							release() = 0;
-			virtual void							step(gal::std::timestep const & ts) = 0;
+			virtual void							step(gal::etc::timestep const & ts) = 0;
 
 
 			weak_ptr<neb::core::core::shape::base>				createShapeBoxUninitialized(glm::vec3 size);

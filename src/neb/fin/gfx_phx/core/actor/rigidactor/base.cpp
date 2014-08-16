@@ -5,7 +5,7 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigidactor/base.hpp>
 
-neb::fin::gfx_phx::core::actor::rigidactor::base::base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
+neb::fin::gfx_phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::phx::core::actor::actor::base(parent),

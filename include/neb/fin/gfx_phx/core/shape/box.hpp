@@ -19,7 +19,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 
 			virtual void						init();
 			virtual void						release();
-			virtual void						step(gal::std::timestep const & ts);
+			virtual void						step(gal::etc::timestep const & ts);
 
 
 	};

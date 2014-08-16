@@ -1,7 +1,7 @@
 #include <neb/fin/gfx_phx/core/actor/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
-neb::fin::gfx_phx::core::actor::base::base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
+neb::fin::gfx_phx::core::actor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::gfx::core::actor::base(parent)
@@ -11,7 +11,7 @@ void						neb::fin::gfx_phx::core::actor::base::init() {
 }
 void						neb::fin::gfx_phx::core::actor::base::release() {
 }
-void						neb::fin::gfx_phx::core::actor::base::step(gal::std::timestep const & ts) {
+void						neb::fin::gfx_phx::core::actor::base::step(gal::etc::timestep const & ts) {
 }
 weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeBase(neb::core::pose pose) {
 

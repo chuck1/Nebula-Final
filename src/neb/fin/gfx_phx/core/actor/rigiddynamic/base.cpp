@@ -4,7 +4,7 @@
 
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 
-neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
+neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::phx::core::actor::actor::base(parent),
@@ -47,7 +47,7 @@ void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::release() {
 	neb::fin::gfx_phx::core::actor::base::release();
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::step(
-		gal::std::timestep const & ts) {
+		gal::etc::timestep const & ts) {
 	neb::core::core::actor::base::step(ts);
 
 	neb::phx::core::actor::base::step(ts);

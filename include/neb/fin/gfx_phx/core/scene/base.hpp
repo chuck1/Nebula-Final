@@ -18,10 +18,10 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 		virtual public neb::fin::gfx_phx::core::actor::util::parent
 	{
 		public:
-			base(shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
+			base(std::shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
 			virtual void			init();
 			virtual void			release();
-			virtual void			step(gal::std::timestep const & ts);
+			virtual void			step(gal::etc::timestep const & ts);
 			virtual wbase			createActorBase(neb::core::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 			virtual wbase			createActorRigidDynamicUninitialized();

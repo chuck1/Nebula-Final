@@ -57,7 +57,7 @@ void				neb::fin::gfx_phx::app::base::release() {
 }
 void				neb::fin::gfx_phx::app::base::loop() {
 
-	auto self(sp::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
 	assert(self);
 	
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
@@ -80,7 +80,7 @@ void				neb::fin::gfx_phx::app::base::loop() {
 //	if(client_) client_->close();
 
 }
-void				neb::fin::gfx_phx::app::base::step(gal::std::timestep const & ts) {
+void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::core::core::scene::util::parent::step(ts);
 
@@ -94,7 +94,7 @@ neb::core::pose						neb::fin::gfx_phx::app::base::getPose() {
 neb::core::pose						neb::fin::gfx_phx::app::base::getPoseGlobal() {
 	return neb::core::pose();
 }
-void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::std::wrapper& w) {
+void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::stl::wrapper& w) {
 }
 void							neb::fin::gfx_phx::app::base::set_should_release() {
 }

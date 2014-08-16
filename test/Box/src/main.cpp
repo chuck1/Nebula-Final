@@ -36,7 +36,7 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
-sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb::gfx::window::base> window) {
+std::shared_ptr<neb::gfx::context::window>		create_context_two(std::shared_ptr<neb::gfx::window::base> window) {
 
 	auto context = sp::make_shared<neb::gfx::context::window>(window);
 
@@ -46,11 +46,11 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_two(sp::shared_ptr<neb
 
 	context->init();
 
-	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
+	//auto context = window->cii< neb::gfx::context::window, std::shared_ptr<neb::gfx::window::base> >(window);
 
 	return context;
 }
-sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<neb::gfx::window::base> window) {
+std::shared_ptr<neb::gfx::context::window>		create_context_three(std::shared_ptr<neb::gfx::window::base> window) {
 	assert(window);
 
 	auto context = sp::make_shared<neb::gfx::context::window>(window);
@@ -65,7 +65,7 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<n
 
 	context->init();
 
-	//auto context = window->cii< neb::gfx::context::window, sp::shared_ptr<neb::gfx::window::base> >(window);
+	//auto context = window->cii< neb::gfx::context::window, std::shared_ptr<neb::gfx::window::base> >(window);
 
 	assert(environ->view_);
 
@@ -74,9 +74,9 @@ sp::shared_ptr<neb::gfx::context::window>		create_context_three(sp::shared_ptr<n
 	return context;
 }
 
-sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
-		sp::shared_ptr<neb::gfx::window::base> window,
-		sp::shared_ptr<neb::gfx::context::window> context) {
+std::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
+		std::shared_ptr<neb::gfx::window::base> window,
+		std::shared_ptr<neb::gfx::context::window> context) {
 
 	auto app = neb::fin::gfx_phx::app::base::global();
 
@@ -99,7 +99,7 @@ sp::shared_ptr<neb::gfx::gui::layout::base>	create_layout(
 
 	return layout;
 }
-shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dynamic(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dynamic(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 
 	auto actor = make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
 
@@ -135,7 +135,7 @@ shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dyn
 
 	return actor;	
 }
-weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
+weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(std::shared_ptr<neb::fin::gfx_phx::core::scene::base> scene) {
 
 	auto actor = sp::make_shared<neb::fin::gfx_phx::core::actor::rigiddynamic::base>(scene);
 
@@ -149,7 +149,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(shared_ptr<
 	actor->simulation_.word3 = neb::phx::filter::filter::type::PROJECTILE;
 
 	// testing for multiple inheritance
-	//auto test = actor->gal::std::shared::name();
+	//auto test = actor->gal::itf::shared::name();
 	//auto test = actor->shared_from_this();
 
 	actor->init();
@@ -225,7 +225,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
 
 	// testing for multiple inheritance
-	auto test = static_cube5->gal::std::shared::name();
+	auto test = static_cube5->gal::itf::shared::name();
 
 
 	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
@@ -251,7 +251,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	cam->actor_ = actor3;
 
-	//auto e3 = sp::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
+	//auto e3 = std::dynamic_pointer_cast<neb::gfx::environ::three>(context->environ_);
 	auto e3 = context->environ_->isEnvironThree();
 	assert(e3);
 
@@ -373,14 +373,14 @@ int			main() {
 	auto game = create_game();
 
 	// will be map in a minute...
-	//sp::shared_ptr<phx::core::scene::base> map;
+	//std::shared_ptr<phx::core::scene::base> map;
 
 	/*
 	// command
 	// create scene
 	auto cmd_create_scene = sp::make_shared<gal::std::command>();
 
-	cmd_create_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
+	cmd_create_scene->func_ = [&] (std::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating scene...";
 		//map = create_maze(window, context1);
 		//map = create_scene(window, context1);
@@ -393,7 +393,7 @@ int			main() {
 	// create scene
 	auto cmd_create_maze = sp::make_shared<gal::std::command>();
 
-	cmd_create_maze->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
+	cmd_create_maze->func_ = [&] (std::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "creating maze...";
 		game.lock()->scene_ = create_maze(window, context1);
 	};
@@ -403,7 +403,7 @@ int			main() {
 	// destroy scene
 	auto cmd_destroy_scene = sp::make_shared<gal::std::command>();
 
-	cmd_destroy_scene->func_ = [&] (sp::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
+	cmd_destroy_scene->func_ = [&] (std::shared_ptr<gal::std::terminal> term, bpo::variables_map vm) {
 		(*term) << "destroying scene...";
 		auto scene = game.lock()->scene_.lock();
 		if(scene) {

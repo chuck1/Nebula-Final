@@ -8,7 +8,7 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
-#include <gal/std/shared.hpp>
+#include <gal/itf/shared.hpp>
 
 #include <neb/core/app/__core.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
@@ -45,8 +45,8 @@ namespace neb {
 					virtual public neb::phx::game::game::util::parent
 				{
 					public:
-						static shared_ptr<neb::fin::gfx_phx::app::base>		global();
-						static shared_ptr<neb::fin::gfx_phx::app::base>		init();
+						static std::shared_ptr<neb::fin::gfx_phx::app::base>		global();
+						static std::shared_ptr<neb::fin::gfx_phx::app::base>		init();
 					public:
 						base();
 						virtual ~base();
@@ -55,10 +55,10 @@ namespace neb {
 					public:
 						neb::core::pose						getPose();
 						neb::core::pose						getPoseGlobal();
-						void							loadXml(::std::string filename, neb::std::wrapper& w);
+						void							loadXml(::std::string filename, neb::stl::wrapper& w);
 					public:
 						void							release();
-						virtual void						step(gal::std::timestep const & ts);
+						virtual void						step(gal::etc::timestep const & ts);
 						void							loop();
 						void							set_should_release();
 						weak_ptr<neb::fin::gfx_phx::core::scene::base>		createScene();
