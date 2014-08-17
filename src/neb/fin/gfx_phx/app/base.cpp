@@ -34,7 +34,11 @@
 #include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
 
+#include <neb/py/config.hpp>
 #include <neb/py/core/scene/base.hpp>
+
+#define STRINGIZE2(x) #x
+#define STRINGIZE(x) STRINGIZE2(x)
 
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global() {
 	auto app(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(g_app_));
@@ -61,6 +65,16 @@ neb::fin::gfx_phx::app::base::base() {
 neb::fin::gfx_phx::app::base::~base() {
 }
 void				neb::fin::gfx_phx::app::base::__init() {
+
+	try {
+		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
+	} catch(bp::error_already_set const &) {
+		std::cout << "unhandled execption\n";
+		// print all other errors to stderr
+		PyErr_Print();
+	}
+
+
 	// log levels
 
 	std::map<std::string, int> map_var({
