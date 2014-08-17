@@ -2,6 +2,7 @@
 
 #include <neb/gfx/gui/object/terminal.hh>
 
+#include <fstream>
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,11 +19,17 @@
 #include <gal/log/log.hpp>
 
 #include <neb/core/util/config.hpp>
+#include <neb/core/util/log.hpp>
 #include <neb/core/app/__base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
+
+#include <neb/gfx/util/log.hpp>
 #include <neb/gfx/Context/Base.hh>
 #include <neb/gfx/window/Base.hh>
+
+#include <neb/phx/util/log.hpp>
+
 
 #include <neb/fin/gfx_phx/app/base.hpp>
 #include <neb/fin/gfx_phx/core/scene/base.hpp>
@@ -44,6 +51,8 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 
 	app->neb::phx::app::base::__init();
 
+	app->neb::fin::gfx_phx::app::base::__init();
+
 	g_app_ = app;
 	return app;
 }
@@ -52,6 +61,66 @@ neb::fin::gfx_phx::app::base::base() {
 neb::fin::gfx_phx::app::base::~base() {
 }
 void				neb::fin::gfx_phx::app::base::__init() {
+	// log levels
+
+	std::map<std::string, int> map_var({
+			{"neb core",		0},
+			{"neb core scene",	1},
+			{"neb core actor",	2},
+			{"neb core shape",	3},
+			{"neb core light",	4},
+			{"neb gfx",		5},
+			{"neb phx",		6},
+			{"neb phx scene",	7},
+			{"neb phx actor",	8},
+			{"neb phx shape",	9}});
+	std::map<std::string, int> map_val({
+			{"debug",	debug},
+			{"info",	info},
+			{"warning",	warning},
+			{"error",	error},
+			{"critical",	critical}});
+
+
+	std::ifstream ifs(share_dir_ + "config.txt");
+	if(ifs.is_open()) {
+		for(std::string line; std::getline(ifs, line);) {
+			auto loc = line.find("=");
+			if(loc != std::string::npos) {
+				auto var = line.substr(0,loc);
+				auto val = line.substr(loc+1);
+
+				auto it_var = map_var.find(var);
+				auto it_val = map_val.find(val);
+
+				if(it_var == map_var.end()) {
+					std::cout << "invalid variable" << std::endl;
+					abort();
+				}
+				if(it_val == map_val.end()) {
+					std::cout << "invalid value" << std::endl;
+					abort();
+				}
+				
+				switch(it_var->second) {
+					case 0: neb::core::sl = (severity_level)it_val->second; break;
+					case 1: neb::core::core::scene::sl = (severity_level)it_val->second; break;
+					case 2: neb::core::core::actor::sl = (severity_level)it_val->second; break;
+					case 3: neb::core::core::shape::sl = (severity_level)it_val->second; break;
+					case 4: neb::core::core::light::sl = (severity_level)it_val->second; break;
+					case 5: neb::gfx::sl = (severity_level)it_val->second; break;
+					case 6: neb::phx::sl = (severity_level)it_val->second; break;
+					case 7: neb::phx::core::scene::sl = (severity_level)it_val->second; break;
+					case 8: neb::phx::core::actor::sl = (severity_level)it_val->second; break;
+					case 9: neb::phx::core::shape::sl = (severity_level)it_val->second; break;
+					default:
+						std::cout << "default" << std::endl;
+						abort();
+				}
+			}
+		}
+	}
+
 }
 void				neb::fin::gfx_phx::app::base::release() {
 }
@@ -64,8 +133,6 @@ void				neb::fin::gfx_phx::app::base::loop() {
 	
 	
 	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
-
-		::std::cout << "loop1" << ::std::endl;
 
 		ts_.step(glfwGetTime());
 
