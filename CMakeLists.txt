@@ -10,7 +10,7 @@ INCLUDE(cmh_build_config)
 
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(PhysX)
-FIND_PACKAGE(maze)
+#FIND_PACKAGE(maze)
 
 FIND_PACKAGE(galaxy 0 COMPONENTS
 	std
