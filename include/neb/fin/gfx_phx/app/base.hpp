@@ -38,8 +38,8 @@ namespace neb {
 				 */
 				class base:
 					virtual public neb::app::__core,
-					virtual public neb::app::__gfx,
-					virtual public neb::app::__gfx_glsl,
+					virtual public neb::gfx::app::__gfx,
+					virtual public neb::gfx::app::__gfx_glsl,
 					virtual public neb::phx::app::base,
 					virtual public neb::fin::gfx_phx::core::scene::util::parent,
 					virtual public neb::phx::game::game::util::parent
