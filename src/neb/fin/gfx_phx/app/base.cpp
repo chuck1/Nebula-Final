@@ -84,10 +84,11 @@ void				neb::fin::gfx_phx::app::base::__init() {
 			{"neb core shape",	3},
 			{"neb core light",	4},
 			{"neb gfx",		5},
-			{"neb phx",		6},
-			{"neb phx scene",	7},
-			{"neb phx actor",	8},
-			{"neb phx shape",	9}});
+			{"neb gfx shape",	6},
+			{"neb phx",		7},
+			{"neb phx scene",	8},
+			{"neb phx actor",	9},
+			{"neb phx shape",	10}});
 	std::map<std::string, int> map_val({
 			{"debug",	debug},
 			{"info",	info},
@@ -117,16 +118,17 @@ void				neb::fin::gfx_phx::app::base::__init() {
 				}
 				
 				switch(it_var->second) {
-					case 0: neb::core::sl = (severity_level)it_val->second; break;
-					case 1: neb::core::core::scene::sl = (severity_level)it_val->second; break;
-					case 2: neb::core::core::actor::sl = (severity_level)it_val->second; break;
-					case 3: neb::core::core::shape::sl = (severity_level)it_val->second; break;
-					case 4: neb::core::core::light::sl = (severity_level)it_val->second; break;
-					case 5: neb::gfx::sl = (severity_level)it_val->second; break;
-					case 6: neb::phx::sl = (severity_level)it_val->second; break;
-					case 7: neb::phx::core::scene::sl = (severity_level)it_val->second; break;
-					case 8: neb::phx::core::actor::sl = (severity_level)it_val->second; break;
-					case 9: neb::phx::core::shape::sl = (severity_level)it_val->second; break;
+					case 0: neb::core::sl			= (severity_level)it_val->second; break;
+					case 1: neb::core::core::scene::sl	= (severity_level)it_val->second; break;
+					case 2: neb::core::core::actor::sl	= (severity_level)it_val->second; break;
+					case 3: neb::core::core::shape::sl	= (severity_level)it_val->second; break;
+					case 4: neb::core::core::light::sl	= (severity_level)it_val->second; break;
+					case 5: neb::gfx::sl			= (severity_level)it_val->second; break;
+					case 6: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
+					case 7: neb::phx::sl			= (severity_level)it_val->second; break;
+					case 8: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
+					case 9: neb::phx::core::actor::sl	= (severity_level)it_val->second; break;
+					case 10: neb::phx::core::shape::sl	= (severity_level)it_val->second; break;
 					default:
 						std::cout << "default" << std::endl;
 						abort();
