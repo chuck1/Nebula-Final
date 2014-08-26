@@ -15,7 +15,7 @@
 #include <neb/gfx/environ/two.hpp>
 #include <neb/gfx/environ/three.hpp>
 #include <neb/gfx/GUI/Object/terminal.hh>
-#include <neb/gfx/Camera/View/ridealong.hh>
+#include <neb/gfx/camera/view/ridealong.hh>
 
 #include <neb/core/game/map/base.hpp>
 #include <neb/core/game/trigger/ActorEx1.hpp>
@@ -247,7 +247,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::camera::view::Ridealong>(context->environ_);
+	auto cam = make_shared<neb::gfx::camera::view::ridealong>(context->environ_);
 
 	cam->actor_ = actor3;
 
@@ -309,7 +309,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::camera::view::Ridealong>(context->environ_);
+	auto cam = make_shared<neb::gfx::camera::view::ridealong>(context->environ_);
 
 	cam->actor_ = actor3;
 
