@@ -247,7 +247,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
+	auto cam = make_shared<neb::gfx::camera::view::Ridealong>(context->environ_);
 
 	cam->actor_ = actor3;
 
@@ -309,7 +309,7 @@ shared_ptr<neb::phx::game::map::base>			create_maze(
 
 	actor3->create_control(window);
 
-	auto cam = make_shared<neb::gfx::Camera::View::Ridealong>(context->environ_);
+	auto cam = make_shared<neb::gfx::camera::view::Ridealong>(context->environ_);
 
 	cam->actor_ = actor3;
 
