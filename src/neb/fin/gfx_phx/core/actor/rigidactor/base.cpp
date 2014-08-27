@@ -23,7 +23,7 @@ weak_ptr<neb::core::core::shape::base>	neb::fin::gfx_phx::core::actor::rigidacto
 
 	neb::core::core::shape::util::parent::insert(shape);
 	
-	shape->s_ = size;
+	shape->scale_ = size;
 	
 	return shape;
 }

@@ -22,8 +22,8 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 
 			weak_ptr<neb::core::core::shape::base>			createShapeBase(
 					neb::core::pose pose);
-			weak_ptr<neb::core::core::shape::base>			createShapeBox(
-					neb::core::pose pose, glm::vec3 size);
+			weak_ptr<neb::core::core::shape::base>			createShapeCuboid(
+					neb::core::core::shape::cuboid::desc);
 	};
 }}}}}
 

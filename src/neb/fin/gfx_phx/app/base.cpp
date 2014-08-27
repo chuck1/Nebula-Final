@@ -153,7 +153,9 @@ void				neb::fin::gfx_phx::app::base::loop() {
 		ts_.step(glfwGetTime());
 
 		step(ts_);
-		
+	
+		neb::gfx::app::__gfx::render();
+
 		//::std::this_thread::yield();
 	}
 	

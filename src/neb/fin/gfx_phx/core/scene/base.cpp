@@ -30,7 +30,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pos
 	
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
-	auto actor(make_shared<neb::fin::gfx_phx::core::actor::base>(self));
+	auto actor(std::make_shared<neb::fin::gfx_phx::core::actor::base>(self));
 
 	insert(actor);
 

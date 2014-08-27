@@ -23,15 +23,22 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 	actor->init();
 	return actor;
 }
-weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeBox(neb::core::pose pose, glm::vec3 size) {
+weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeCuboid(
+		neb::core::core::shape::cuboid::desc desc)
+{
 
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(shared_from_this()));
 
-	auto actor(make_shared<neb::fin::gfx_phx::core::shape::box>(self));
+	auto shape(std::make_shared<neb::fin::gfx_phx::core::shape::box>(self));
+
+	shape->pose_ = desc.pose_;
+	shape->scale_ = desc.scale_;
+
+	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
 	
-	neb::fin::gfx_phx::core::shape::util::parent::insert(actor);
-	actor->init();
-	return actor;
+	shape->init();
+
+	return shape;
 
 }
 
