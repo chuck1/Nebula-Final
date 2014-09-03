@@ -32,6 +32,8 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pos
 
 	auto actor(std::make_shared<neb::fin::gfx_phx::core::actor::base>(self));
 
+	actor->pose_ = pose;
+
 	insert(actor);
 
 	actor->init();
