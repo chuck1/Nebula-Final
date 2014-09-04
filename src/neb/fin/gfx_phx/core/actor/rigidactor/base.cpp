@@ -14,12 +14,15 @@ neb::fin::gfx_phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::fin:
 	neb::fin::gfx_phx::core::actor::base(parent)
 {}
 weak_ptr<neb::core::core::shape::base>	neb::fin::gfx_phx::core::actor::rigidactor::base::createShapeBoxUninitialized(
-		glm::vec3 size) {
+		glm::vec3 size)
+{
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
 	auto self(::std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::rigidactor::base>(shared_from_this()));
-	
-	auto shape = sp::make_shared<neb::fin::gfx_phx::core::shape::box>(self);
+
+	typedef neb::fin::gfx_phx::core::shape::box T;
+
+	std::shared_ptr<T> shape(new T(self), T::deleter());
 
 	neb::core::core::shape::util::parent::insert(shape);
 	

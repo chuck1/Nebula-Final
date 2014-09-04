@@ -4,6 +4,25 @@
 
 #include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
 
+neb::fin::gfx_phx::core::actor::rigiddynamic::base::deleter::deleter()
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+
+}
+neb::fin::gfx_phx::core::actor::rigiddynamic::base::deleter::~deleter()
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+
+}
+void		neb::fin::gfx_phx::core::actor::rigiddynamic::base::deleter::operator()(base* p)
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+	
+	p->release();
+
+	delete p;
+}
+
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
@@ -17,7 +36,7 @@ neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(std::shared_ptr<neb::fi
 {
 }
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::~base() {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
 	neb::core::core::actor::base::init();
@@ -34,6 +53,8 @@ void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
 	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::release() {
+	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+
 	neb::core::core::actor::base::release();
 
 	//neb::phx::core::actor::base::release();

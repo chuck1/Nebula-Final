@@ -1,3 +1,5 @@
+#include <gal/stl/deleter.hpp>
+
 #include <neb/fin/gfx_phx/core/actor/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
@@ -17,11 +19,13 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(shared_from_this()));
 
-	auto actor(make_shared<neb::fin::gfx_phx::core::shape::base>(self));
+	typedef neb::fin::gfx_phx::core::shape::base T;
 
-	neb::fin::gfx_phx::core::shape::util::parent::insert(actor);
-	actor->init();
-	return actor;
+	std::shared_ptr<T> shape(new T(self), gal::stl::deleter<T>());
+
+	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
+	shape->init();
+	return shape;
 }
 weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeCuboid(
 		neb::core::core::shape::cuboid::desc desc)
@@ -29,7 +33,9 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 
 	auto self(std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(shared_from_this()));
 
-	auto shape(std::make_shared<neb::fin::gfx_phx::core::shape::box>(self));
+	typedef neb::fin::gfx_phx::core::shape::box T;
+
+	std::shared_ptr<T> shape(new T(self), T::deleter());
 
 	shape->pose_ = desc.pose_;
 	shape->scale_ = desc.scale_;

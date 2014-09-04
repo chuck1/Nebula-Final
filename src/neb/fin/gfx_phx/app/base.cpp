@@ -64,6 +64,7 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
 neb::fin::gfx_phx::app::base::base() {
 }
 neb::fin::gfx_phx::app::base::~base() {
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 void				neb::fin::gfx_phx::app::base::__init() {
 
@@ -154,7 +155,8 @@ void				neb::fin::gfx_phx::app::base::loop() {
 	double t;
 
 	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
-
+		
+		if(!neb::gfx::window::util::parent::map_.front()) break;
 
 		t = glfwGetTime();
 		sw_step.start(t);

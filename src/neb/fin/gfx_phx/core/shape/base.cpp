@@ -12,7 +12,9 @@ void		neb::fin::gfx_phx::core::shape::base::init() {
 	neb::gfx::core::shape::base::init();
 	neb::phx::core::shape::base::init();
 }
-void		neb::fin::gfx_phx::core::shape::base::release() {
+void		neb::fin::gfx_phx::core::shape::base::release()
+{
+	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
 void		neb::fin::gfx_phx::core::shape::base::step(gal::etc::timestep const & ts) {
 }

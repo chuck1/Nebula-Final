@@ -19,6 +19,12 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 			virtual public neb::fin::gfx_phx::core::actor::rigidactor::base
 		{
 			public:
+				struct deleter
+				{
+					deleter();
+					virtual ~deleter();
+					void	operator()(base*);
+				};
 				base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
 				~base();
 				virtual void						init();

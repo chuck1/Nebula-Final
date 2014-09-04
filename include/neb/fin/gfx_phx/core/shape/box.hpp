@@ -8,15 +8,22 @@
 #include <neb/fin/gfx_phx/core/shape/base.hpp>
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace shape {
-
+	
 	class box:
 		virtual public neb::gfx::core::shape::box,
 		virtual public phx::core::shape::box,
 		virtual public neb::fin::gfx_phx::core::shape::base
 	{
 		public:
-			box(::std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
+			struct deleter
+			{
+				deleter();
+				virtual ~deleter();
+				void	operator()(box* p) const;
+			};
 
+			box(::std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
+			virtual ~box();
 			virtual void						init();
 			virtual void						release();
 			virtual void						step(gal::etc::timestep const & ts);
