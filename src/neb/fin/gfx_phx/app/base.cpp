@@ -15,6 +15,7 @@
 #include <GLFW/glfw3.h>
 
 #include <gal/console/base.hpp>
+#include <gal/etc/stopwatch.hpp>
 
 #include <gal/log/log.hpp>
 
@@ -147,23 +148,49 @@ void				neb::fin::gfx_phx::app::base::loop() {
 	
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
 	
+	static gal::etc::stopwatch sw_step;
+	static gal::etc::stopwatch sw_render;
 	
+	double t;
+
 	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
 
-		ts_.step(glfwGetTime());
 
-		step(ts_);
-	
-		neb::gfx::app::__gfx::render();
+		t = glfwGetTime();
+		sw_step.start(t);
+		{
+			ts_.step(t);
+			step(ts_);
+		}
+		t = glfwGetTime();
+		sw_step.stop(t);
 
-		//::std::this_thread::yield();
+
+		t = glfwGetTime();
+		sw_render.start(t);
+		{
+			neb::gfx::app::__gfx::render();
+
+			//::std::this_thread::yield();
+		}
+		t = glfwGetTime();
+		sw_render.stop(t);
+
+		if((ts_.frame % 100) == 0)
+		{
+			std::cout
+				<< std::setw(16) << "step"
+				<< std::setw(16) << sw_step.getAvg()
+				<< std::setw(16) << "render"
+				<< std::setw(16) << sw_render.getAvg()
+				<< std::endl;
+		}
+		//t.join();
+
+		//	if(server_) server_->close();
+		//	if(client_) client_->close();
+
 	}
-	
-	//t.join();
-	
-//	if(server_) server_->close();
-//	if(client_) client_->close();
-
 }
 void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
@@ -196,7 +223,7 @@ weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::cr
 	if(console_) {
 		neb::py::core::scene::base py_scene;
 		py_scene.scene_ = scene;
-	
+
 		try {
 			console_->main_namespace_["scene"] = py_scene;
 		} catch(bp::error_already_set const &) {
