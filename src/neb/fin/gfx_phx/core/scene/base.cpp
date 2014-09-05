@@ -27,7 +27,7 @@ void		neb::fin::gfx_phx::core::scene::base::release() {
 	neb::phx::core::scene::base::release();
 }
 void		neb::fin::gfx_phx::core::scene::base::step(gal::etc::timestep const & ts) {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
 	neb::gfx::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
