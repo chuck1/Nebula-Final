@@ -3,10 +3,11 @@
 #include <neb/fin/gfx_phx/core/actor/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 
+neb::fin::gfx_phx::core::actor::base::base()
+{
+}
 neb::fin::gfx_phx::core::actor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	neb::core::core::actor::base(parent),
-	neb::phx::core::actor::base(parent),
-	neb::gfx::core::actor::base(parent)
+	gal::stl::child<neb::core::core::actor::util::parent>(parent.get())
 {
 }
 void						neb::fin::gfx_phx::core::actor::base::init() {

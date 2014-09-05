@@ -19,12 +19,7 @@ void	neb::fin::gfx_phx::core::shape::box::deleter::operator()(box* p) const
 }
 
 neb::fin::gfx_phx::core::shape::box::box(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
-	neb::core::core::shape::base(parent),
-	neb::gfx::core::shape::base(parent),
-	neb::gfx::core::shape::box(parent),
-	neb::phx::core::shape::base(parent),
-	neb::phx::core::shape::box(parent),
-	neb::fin::gfx_phx::core::shape::base(parent)
+	gal::stl::child<neb::core::core::shape::util::parent>(parent.get())
 {
 }
 neb::fin::gfx_phx::core::shape::box::~box()

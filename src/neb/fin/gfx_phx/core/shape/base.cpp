@@ -1,10 +1,11 @@
 #include <neb/fin/gfx_phx/core/shape/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
+neb::fin::gfx_phx::core::shape::base::base()
+{
+}
 neb::fin::gfx_phx::core::shape::base::base(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
-	neb::core::core::shape::base(parent),
-	neb::gfx::core::shape::base(parent),
-	neb::phx::core::shape::base(parent)
+	gal::stl::child<neb::core::core::shape::util::parent>(parent.get())
 {
 }
 void		neb::fin::gfx_phx::core::shape::base::init() {

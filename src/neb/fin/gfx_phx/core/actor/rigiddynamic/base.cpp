@@ -24,15 +24,7 @@ void		neb::fin::gfx_phx::core::actor::rigiddynamic::base::deleter::operator()(ba
 }
 
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	neb::core::core::actor::base(parent),
-	neb::phx::core::actor::base(parent),
-	neb::phx::core::actor::actor::base(parent),
-	neb::phx::core::actor::rigidactor::base(parent),
-	neb::phx::core::actor::rigidbody::base(parent),
-	neb::phx::core::actor::rigiddynamic::base(parent),
-	neb::gfx::core::actor::base(parent),
-	neb::fin::gfx_phx::core::actor::base(parent),
-	neb::fin::gfx_phx::core::actor::rigidactor::base(parent)
+	gal::stl::child<neb::core::core::actor::base::parent_t>(parent.get())
 {
 }
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::~base() {

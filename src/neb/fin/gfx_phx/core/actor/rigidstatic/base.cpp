@@ -5,14 +5,7 @@
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 
 neb::fin::gfx_phx::core::actor::rigidstatic::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	neb::core::core::actor::base(parent),
-	neb::phx::core::actor::base(parent),
-	neb::phx::core::actor::actor::base(parent),
-	neb::phx::core::actor::rigidactor::base(parent),
-	neb::phx::core::actor::rigidstatic::base(parent),
-	neb::gfx::core::actor::base(parent),
-	neb::fin::gfx_phx::core::actor::base(parent),
-	neb::fin::gfx_phx::core::actor::rigidactor::base(parent)
+	gal::stl::child<neb::core::core::actor::util::parent>(parent.get())
 {}
 neb::fin::gfx_phx::core::actor::rigidstatic::base::~base() {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;

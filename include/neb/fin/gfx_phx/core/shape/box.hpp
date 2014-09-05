@@ -22,7 +22,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 				void	operator()(box* p) const;
 			};
 
-			box(::std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
+			box(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
 			virtual ~box();
 			virtual void						init();
 			virtual void						release();

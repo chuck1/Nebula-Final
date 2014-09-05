@@ -5,14 +5,14 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/fin/gfx_phx/core/actor/rigidactor/base.hpp>
 
-neb::fin::gfx_phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
+/*neb::fin::gfx_phx::core::actor::rigidactor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
 	neb::core::core::actor::base(parent),
 	neb::phx::core::actor::base(parent),
 	neb::phx::core::actor::actor::base(parent),
 	neb::phx::core::actor::rigidactor::base(parent),
 	neb::gfx::core::actor::base(parent),
 	neb::fin::gfx_phx::core::actor::base(parent)
-{}
+{}*/
 weak_ptr<neb::core::core::shape::base>	neb::fin::gfx_phx::core::actor::rigidactor::base::createShapeBoxUninitialized(
 		glm::vec3 size)
 {

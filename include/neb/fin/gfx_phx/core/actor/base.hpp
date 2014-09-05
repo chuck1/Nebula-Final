@@ -15,6 +15,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 		virtual public neb::fin::gfx_phx::core::shape::util::parent
 	{
 		public:
+			base();
 			base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
 			virtual void						init();
 			virtual void						release();
