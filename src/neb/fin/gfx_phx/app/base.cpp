@@ -198,6 +198,8 @@ void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::core::core::scene::util::parent::step(ts);
 
+	neb::game::game::util::parent::step(ts);
+
 	neb::gfx::window::util::parent::step(ts);
 
 	glfwPollEvents();

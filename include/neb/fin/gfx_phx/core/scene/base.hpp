@@ -1,7 +1,6 @@
 #ifndef NEB_FINAL_GFX_PHX_CORE_SCENE_BASE_HPP
 #define NEB_FINAL_GFX_PHX_CORE_SCENE_BASE_HPP
 
-#include <neb/gfx/core/scene/base.hpp>
 
 #include <neb/phx/core/scene/base.hpp>
 
@@ -13,7 +12,6 @@ typedef weak_ptr<neb::core::core::actor::base> wbase;
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace scene {
 	class base:
-		virtual public neb::gfx::core::scene::base,
 		virtual public phx::core::scene::base,
 		virtual public neb::fin::gfx_phx::core::actor::util::parent
 	{

@@ -10,26 +10,22 @@ typedef weak_ptr<neb::core::core::actor::base>			wbase;
 
 neb::fin::gfx_phx::core::scene::base::base(std::shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent):
 	neb::core::core::scene::base(parent),
-	neb::gfx::core::scene::base(parent),
 	neb::phx::core::scene::base(parent)
 {
 }
 void		neb::fin::gfx_phx::core::scene::base::init() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::init();
-	neb::gfx::core::scene::base::init();
 	neb::phx::core::scene::base::init();
 }
 void		neb::fin::gfx_phx::core::scene::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::release();
-	neb::gfx::core::scene::base::release();
 	neb::phx::core::scene::base::release();
 }
 void		neb::fin::gfx_phx::core::scene::base::step(gal::etc::timestep const & ts) {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
-	neb::gfx::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
 wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pose) {
