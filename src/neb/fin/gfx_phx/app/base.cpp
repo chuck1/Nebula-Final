@@ -16,6 +16,7 @@
 
 #include <gal/console/base.hpp>
 #include <gal/etc/stopwatch.hpp>
+#include <gal/dll/helper.hpp>
 
 #include <gal/log/log.hpp>
 
@@ -24,6 +25,7 @@
 #include <neb/core/app/__base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
+#include <gal/stl/deleter.hpp>
 
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/Context/Base.hh>
@@ -79,18 +81,43 @@ void				neb::fin::gfx_phx::app::base::__init() {
 
 	// log levels
 
-	std::map<std::string, int> map_var({
+	struct Pair {
+		char const *		c;
+		severity_level * const	sl;
+	};
+
+	static const Pair pairs[13] = {
+		{"neb core",		&neb::core::sl},
+		{"neb core scene",	&neb::core::core::scene::sl},
+		{"neb core actor",	&neb::core::core::actor::sl},
+		{"neb core shape",	&neb::core::core::shape::sl},
+		{"neb core light",	&neb::core::core::light::sl},
+		{"neb gfx",		&neb::gfx::sl},
+		{"neb gfx actor",	&neb::gfx::core::actor::sl},
+		{"neb gfx shape",	&neb::gfx::core::shape::sl},
+		{"neb gfx light",	&neb::gfx::core::light::sl},
+		{"neb phx",		&neb::phx::sl},
+		{"neb phx scene",	&neb::phx::core::scene::sl},
+		{"neb phx actor",	&neb::phx::core::actor::sl},
+		{"neb phx shape",	&neb::phx::core::shape::sl}
+	};
+
+
+/*	std::map<std::string, int> map_var({
 			{"neb core",		0},
 			{"neb core scene",	1},
 			{"neb core actor",	2},
 			{"neb core shape",	3},
 			{"neb core light",	4},
 			{"neb gfx",		5},
-			{"neb gfx shape",	6},
-			{"neb phx",		7},
-			{"neb phx scene",	8},
-			{"neb phx actor",	9},
-			{"neb phx shape",	10}});
+			{"neb gfx actor",	6},
+			{"neb gfx shape",	7},
+			{"neb gfx light",	8},
+			{"neb phx",		9},
+			{"neb phx scene",	10},
+			{"neb phx actor",	11},
+			{"neb phx shape",	12}});
+			*/
 	std::map<std::string, int> map_val({
 			{"debug",	debug},
 			{"info",	info},
@@ -106,19 +133,36 @@ void				neb::fin::gfx_phx::app::base::__init() {
 			if(loc != std::string::npos) {
 				auto var = line.substr(0,loc);
 				auto val = line.substr(loc+1);
-
-				auto it_var = map_var.find(var);
+	
 				auto it_val = map_val.find(val);
-
-				if(it_var == map_var.end()) {
-					std::cout << "invalid variable" << std::endl;
-					abort();
-				}
 				if(it_val == map_val.end()) {
 					std::cout << "invalid value" << std::endl;
 					abort();
 				}
 				
+				unsigned int i = 0;
+				for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
+				{
+					if(strcmp(var.c_str(), pairs[i].c) == 0)
+					{
+						*pairs[i].sl = (severity_level)it_val->second;
+						break;
+					}
+				}
+				if(i == (sizeof(pairs) / sizeof(Pair)))
+				{
+					 std::cout << "log group not found: '" << var << "'" << std::endl;
+					 abort();
+				}
+
+				/*
+				auto it_var = map_var.find(var);
+
+				if(it_var == map_var.end()) {
+					std::cout << "invalid variable" << std::endl;
+					abort();
+				}
+
 				switch(it_var->second) {
 					case 0: neb::core::sl			= (severity_level)it_val->second; break;
 					case 1: neb::core::core::scene::sl	= (severity_level)it_val->second; break;
@@ -126,15 +170,18 @@ void				neb::fin::gfx_phx::app::base::__init() {
 					case 3: neb::core::core::shape::sl	= (severity_level)it_val->second; break;
 					case 4: neb::core::core::light::sl	= (severity_level)it_val->second; break;
 					case 5: neb::gfx::sl			= (severity_level)it_val->second; break;
-					case 6: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
-					case 7: neb::phx::sl			= (severity_level)it_val->second; break;
-					case 8: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
-					case 9: neb::phx::core::actor::sl	= (severity_level)it_val->second; break;
-					case 10: neb::phx::core::shape::sl	= (severity_level)it_val->second; break;
+					case 6: neb::gfx::core::actor::sl	= (severity_level)it_val->second; break;
+					case 7: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
+					case 8: neb::gfx::core::light::sl	= (severity_level)it_val->second; break;
+					case 9: neb::phx::sl			= (severity_level)it_val->second; break;
+					case 10: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
+					case 11: neb::phx::core::actor::sl	= (severity_level)it_val->second; break;
+					case 12: neb::phx::core::shape::sl	= (severity_level)it_val->second; break;
 					default:
-						std::cout << "default" << std::endl;
-						abort();
+						 std::cout << "default" << std::endl;
+						 abort();
 				}
+				*/
 			}
 		}
 	}
@@ -146,16 +193,16 @@ void				neb::fin::gfx_phx::app::base::loop() {
 
 	auto self(std::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
 	assert(self);
-	
+
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
-	
+
 	static gal::etc::stopwatch sw_step;
 	static gal::etc::stopwatch sw_render;
-	
+
 	double t;
 
 	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
-		
+
 		if(!neb::gfx::window::util::parent::map_.front()) break;
 
 		t = glfwGetTime();
@@ -214,10 +261,45 @@ void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::st
 }
 void							neb::fin::gfx_phx::app::base::set_should_release() {
 }
-weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene() {
+std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene() {
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
 
-	auto scene(make_shared<neb::fin::gfx_phx::core::scene::base>(self));
+	typedef neb::fin::gfx_phx::core::scene::base T;
+
+	std::shared_ptr<T> scene (new T(self), gal::stl::deleter<T>());
+
+	neb::core::core::scene::util::parent::insert(scene);
+
+	scene->init();
+
+	// python object
+	if(console_) {
+		neb::py::core::scene::base py_scene;
+		py_scene.scene_ = scene;
+
+		try {
+			console_->main_namespace_["scene"] = py_scene;
+		} catch(bp::error_already_set const &) {
+			cout << "unhandled execption\n";
+			PyErr_Print();
+		}
+	}
+
+	return scene;
+}
+std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createSceneDll(std::string dll_name)
+{
+	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+
+	typedef neb::fin::gfx_phx::core::scene::base		T;
+	typedef neb::fin::gfx_phx::core::scene::util::parent	P;
+	typedef gal::dll::helper<T, std::shared_ptr<P> >	H;
+	typedef gal::dll::deleter<H>				D;
+
+	std::shared_ptr<H> h(new H);
+	h->open(dll_name, "scene");
+
+	std::shared_ptr<T> scene (h->create(self), D(h));
 
 	neb::core::core::scene::util::parent::insert(scene);
 

@@ -34,7 +34,7 @@ void		neb::fin::gfx_phx::core::shape::box::init() {
 	neb::gfx::core::shape::box::init();
 
 	neb::phx::core::shape::base::init();
-	//neb::phx::core::shape::box::init();
+	neb::phx::core::shape::box::__init();
 
 	neb::fin::gfx_phx::core::shape::base::init();
 }

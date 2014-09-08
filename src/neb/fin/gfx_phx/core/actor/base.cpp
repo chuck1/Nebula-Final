@@ -2,6 +2,7 @@
 
 #include <neb/fin/gfx_phx/core/actor/base.hpp>
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
+#include <neb/phx/core/shape/HeightField.hpp>
 
 neb::fin::gfx_phx::core::actor::base::base()
 {
@@ -48,4 +49,23 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 	return shape;
 
 }
+std::weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeHeightField(
+					neb::core::core::shape::HeightField::desc const &)
+{
+	auto self(std::dynamic_pointer_cast<neb::fin::gfx_phx::core::actor::base>(shared_from_this()));
+
+	typedef neb::phx::core::shape::HeightField T;
+
+	std::shared_ptr<T> shape(new T(self), gal::stl::deleter<T>());
+	
+	//shape->pose_ = desc.pose_;
+	//shape->scale_ = desc.scale_;
+
+	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
+	
+	shape->init();
+
+	return shape;
+}
+
 

@@ -45,6 +45,8 @@ namespace neb {
 					virtual public neb::phx::game::game::util::parent
 				{
 					public:
+						typedef std::weak_ptr<neb::fin::gfx_phx::core::scene::base>	scene_w;
+					public:
 						static std::shared_ptr<neb::fin::gfx_phx::app::base>		global();
 						static std::shared_ptr<neb::fin::gfx_phx::app::base>		init();
 					public:
@@ -61,7 +63,8 @@ namespace neb {
 						virtual void						step(gal::etc::timestep const & ts);
 						void							loop();
 						void							set_should_release();
-						weak_ptr<neb::fin::gfx_phx::core::scene::base>		createScene();
+						scene_w				createScene();
+						scene_w				createSceneDll(std::string);
 
 				};
 			}

@@ -21,10 +21,13 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 			virtual void						release();
 			virtual void						step(gal::etc::timestep const & ts);
 
-			weak_ptr<neb::core::core::shape::base>			createShapeBase(
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
 					neb::core::pose pose);
-			weak_ptr<neb::core::core::shape::base>			createShapeCuboid(
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCuboid(
 					neb::core::core::shape::cuboid::desc);
+			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeHeightField(
+					neb::core::core::shape::HeightField::desc const &);
+
 	};
 }}}}}
 

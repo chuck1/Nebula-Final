@@ -15,7 +15,6 @@ FIND_PACKAGE(PhysX)
 FIND_PACKAGE(galaxy 0 COMPONENTS
 	std
 	log
-	console
 	REQUIRED)
 
 FIND_PACKAGE(nebula 0 COMPONENTS
@@ -32,15 +31,22 @@ ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
 set(include_extensions obj)
 
 INCLUDE(cmh_boost)
-FIND_PACKAGE(Boost 1.55 COMPONENTS program_options serialization log system thread)
 
 SET(libs
-	${nebula_LIBRARIES}
-	${galaxy_LIBRARIES}
+	nebula_physx_0_so_db
+	#${nebula_LIBRARIES}
+	#${galaxy_LIBRARIES}
 	${PhysX_LIBRARIES}
-	${Boost_LIBRARIES}
+	#${Boost_LIBRARIES}
 	${glfw_LIBRARIES}
 	)
+
+SET(exports
+	nebula_core_0_so_db
+	galaxy_std_0_so_db
+	galaxy_log_0_so_db
+	galaxy_console_0_so_db
+)
 
 INCLUDE(cmh_library)
 
