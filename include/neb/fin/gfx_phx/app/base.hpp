@@ -41,8 +41,7 @@ namespace neb {
 					virtual public neb::gfx::app::__gfx,
 					virtual public neb::gfx::app::__gfx_glsl,
 					virtual public neb::phx::app::base,
-					virtual public neb::fin::gfx_phx::core::scene::util::parent,
-					virtual public neb::phx::game::game::util::parent
+					virtual public neb::fin::gfx_phx::core::scene::util::parent
 				{
 					public:
 						typedef std::weak_ptr<neb::fin::gfx_phx::core::scene::base>	scene_w;

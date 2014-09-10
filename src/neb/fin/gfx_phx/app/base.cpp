@@ -49,8 +49,11 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global()
 	return app;
 }
 shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
-	auto app(make_shared<neb::fin::gfx_phx::app::base>());
 
+	typedef neb::fin::gfx_phx::app::base T;
+	
+	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
+	
 	app->neb::core::app::__base::__init();
 
 	app->neb::gfx::app::__gfx::__init();
@@ -187,7 +190,16 @@ void				neb::fin::gfx_phx::app::base::__init() {
 	}
 
 }
-void				neb::fin::gfx_phx::app::base::release() {
+void				neb::fin::gfx_phx::app::base::release()
+{
+	//neb::core::app::__base::__release();
+	neb::app::__core::__release();
+
+	neb::gfx::app::__gfx::__release();
+	//neb::gfx::app::__gfx_glsl::__release();
+
+	neb::phx::app::base::__release();
+
 }
 void				neb::fin::gfx_phx::app::base::loop() {
 
@@ -261,7 +273,8 @@ void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::st
 }
 void							neb::fin::gfx_phx::app::base::set_should_release() {
 }
-std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene() {
+std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene()
+{
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
 
 	typedef neb::fin::gfx_phx::core::scene::base T;
@@ -283,6 +296,25 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 			cout << "unhandled execption\n";
 			PyErr_Print();
 		}
+
+		//try {
+			console_->eval(
+					"def on_exit(sig, func=None):\n"
+					"    print \"exit handler\"\n"
+					"    import time\n"
+					"    time.sleep(10)"
+					);
+			console_->eval(
+					"set_exit_handler(on_exit)"
+					);
+			console_->eval(
+					"print on_exit"
+					);
+		//} catch(bp::error_already_set const &) {
+		//	cout << "unhandled execption\n";
+		//	PyErr_Print();
+		//}
+
 	}
 
 	return scene;
@@ -316,6 +348,38 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 			cout << "unhandled execption\n";
 			PyErr_Print();
 		}
+
+		console_->eval(
+				"import os, sys\n"
+				"def set_exit_handler(func):\n"
+				"    if os.name == \"nt\":\n"
+				"        try:\n"
+				"            import win32api\n"
+				"            win32api.SetConsoleCtrlHandler(func, True)\n"
+				"        except ImportError:\n"
+				"            version = \".\".join(map(str, sys.version_info[:2]))\n"
+				"            raise Exception(\"pywin32 not installed for Python \" + version)\n"
+				"    else:\n"
+				"        import signal\n"
+				"        signal.signal(signal.SIGTERM, func)"
+			      );
+
+		console_->eval(
+				"def on_exit(sig, func=None):\n"
+				"    print \"exit handler\"\n"
+				"    import time\n"
+				"    time.sleep(10)"
+			      );
+		console_->eval(
+				"set_exit_handler(on_exit)"
+			      );
+		console_->eval(
+				"print on_exit"
+			      );
+
+
+
+
 	}
 
 	return scene;

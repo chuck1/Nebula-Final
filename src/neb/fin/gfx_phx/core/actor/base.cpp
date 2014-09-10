@@ -14,6 +14,7 @@ neb::fin::gfx_phx::core::actor::base::base(std::shared_ptr<neb::fin::gfx_phx::co
 void						neb::fin::gfx_phx::core::actor::base::init() {
 }
 void						neb::fin::gfx_phx::core::actor::base::release() {
+	neb::core::core::actor::base::release();
 }
 void						neb::fin::gfx_phx::core::actor::base::step(gal::etc::timestep const & ts) {
 }

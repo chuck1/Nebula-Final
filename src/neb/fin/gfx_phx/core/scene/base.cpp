@@ -20,7 +20,9 @@ void		neb::fin::gfx_phx::core::scene::base::init() {
 }
 void		neb::fin::gfx_phx::core::scene::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
+
 	neb::core::core::scene::base::release();
+
 	neb::phx::core::scene::base::release();
 }
 void		neb::fin::gfx_phx::core::scene::base::step(gal::etc::timestep const & ts) {
@@ -75,6 +77,29 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialize
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	return actor;
+
+}
+wbase			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamic(
+		neb::core::core::actor::rigiddynamic::desc const * const & desc
+		)
+{
+
+	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
+
+	typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base T;
+
+	std::shared_ptr<T> actor(new T(self), T::deleter());
+
+	neb::core::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	actor->init();
 
 	return actor;
 

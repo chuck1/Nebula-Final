@@ -4,6 +4,8 @@
 
 #include <neb/phx/core/scene/base.hpp>
 
+#include <neb/core/core/actor/util/decl.hpp>
+
 #include <neb/fin/gfx_phx/core/actor/util/decl.hpp>
 #include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 #include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
@@ -22,6 +24,9 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 			virtual void			step(gal::etc::timestep const & ts);
 			virtual wbase			createActorBase(neb::core::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
+
+			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::desc const * const &);
+			
 			virtual wbase			createActorRigidDynamicUninitialized();
 	};
 }}}}}

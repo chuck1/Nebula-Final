@@ -27,8 +27,30 @@ neb::fin::gfx_phx::core::actor::rigiddynamic::base::base(std::shared_ptr<neb::fi
 	gal::stl::child<neb::core::core::actor::base::parent_t>(parent.get())
 {
 }
+neb::fin::gfx_phx::core::actor::rigiddynamic::base::base()
+{
+}
 neb::fin::gfx_phx::core::actor::rigiddynamic::base::~base() {
 	LOG(lg, neb::core::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+}
+void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init(
+		neb::core::core::actor::util::parent * const & p
+		)
+{
+	setParent(p);
+
+	neb::core::core::actor::base::init();
+
+	neb::phx::core::actor::base::init();
+	//neb::phx::core::actor::actor::base::init();
+	//neb::phx::core::actor::rigidactor::base::init();
+	//neb::phx::core::actor::rigidbody::base::init();
+	//neb::phx::core::actor::rigiddynamic::base::init();
+
+	neb::gfx::core::actor::base::init();
+
+	neb::fin::gfx_phx::core::actor::base::init();
+	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
 }
 void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init() {
 	neb::core::core::actor::base::init();
