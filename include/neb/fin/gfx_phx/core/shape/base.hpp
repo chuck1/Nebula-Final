@@ -23,6 +23,9 @@ namespace neb {
 							virtual void				release();
 							virtual void				step(
 									gal::etc::timestep const & ts);
+
+							virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
+							virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 					};
 				}
 			}

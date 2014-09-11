@@ -35,7 +35,7 @@ weak_ptr<neb::core::core::shape::base>				neb::fin::gfx_phx::core::actor::rigida
 
 	auto shape = createShapeBoxUninitialized(size).lock();
 	
-	shape->init();
+	shape->init(this);
 	
 	return shape;
 }    

@@ -37,6 +37,8 @@ void					neb::fin::gfx_phx::core::actor::rigiddynamic::base::init(
 		neb::core::core::actor::util::parent * const & p
 		)
 {
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+
 	setParent(p);
 
 	neb::core::core::actor::base::init();

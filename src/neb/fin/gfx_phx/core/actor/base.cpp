@@ -4,6 +4,8 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/phx/core/shape/HeightField.hpp>
 
+typedef neb::fin::gfx_phx::core::actor::base THIS;
+
 neb::fin::gfx_phx::core::actor::base::base()
 {
 }
@@ -13,6 +15,18 @@ neb::fin::gfx_phx::core::actor::base::base(std::shared_ptr<neb::fin::gfx_phx::co
 }
 void						neb::fin::gfx_phx::core::actor::base::init() {
 }
+void						THIS::init(neb::core::core::actor::util::parent* const & p)
+{
+	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
+
+	setParent(p);
+
+	init();
+
+	neb::util::parent<neb::actor::__base>::init(this);
+	neb::core::core::shape::util::parent::init(this);
+}
+
 void						neb::fin::gfx_phx::core::actor::base::release() {
 	neb::core::core::actor::base::release();
 }
@@ -57,16 +71,24 @@ std::weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::bas
 
 	typedef neb::phx::core::shape::HeightField T;
 
-	std::shared_ptr<T> shape(new T(self), gal::stl::deleter<T>());
-	
+	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
+
 	//shape->pose_ = desc.pose_;
 	//shape->scale_ = desc.scale_;
 
 	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
-	
-	shape->init();
+
+	shape->init(this);
 
 	return shape;
+}
+void	neb::fin::gfx_phx::core::actor::base::load(ba::polymorphic_iarchive & ar, unsigned int const &)
+{
+	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::base);
+}
+void	neb::fin::gfx_phx::core::actor::base::save(ba::polymorphic_oarchive & ar, unsigned int const &) const
+{
+	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::base);
 }
 
 

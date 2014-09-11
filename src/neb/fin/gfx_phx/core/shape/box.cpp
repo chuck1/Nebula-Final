@@ -18,25 +18,28 @@ void	neb::fin::gfx_phx::core::shape::box::deleter::operator()(box* p) const
 	delete p;
 }
 
-neb::fin::gfx_phx::core::shape::box::box(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
-	gal::stl::child<neb::core::core::shape::util::parent>(parent.get())
+neb::fin::gfx_phx::core::shape::box::box()
 {
 }
 neb::fin::gfx_phx::core::shape::box::~box()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void		neb::fin::gfx_phx::core::shape::box::init() {
+void		neb::fin::gfx_phx::core::shape::box::init(neb::core::core::shape::util::parent * const & p)
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	neb::core::core::shape::base::init();
 
-	neb::gfx::core::shape::base::init();
-	neb::gfx::core::shape::box::init();
+	setParent(p);
 
-	neb::phx::core::shape::base::init();
-	neb::phx::core::shape::box::__init();
+	neb::core::core::shape::base::init(p);
 
-	neb::fin::gfx_phx::core::shape::base::init();
+	neb::gfx::core::shape::base::init(p);
+	neb::gfx::core::shape::box::init(p);
+
+	neb::phx::core::shape::base::init(p);
+	neb::phx::core::shape::box::init(p);
+
+	neb::fin::gfx_phx::core::shape::base::init(p);
 }
 void		neb::fin::gfx_phx::core::shape::box::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;

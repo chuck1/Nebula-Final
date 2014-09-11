@@ -15,11 +15,16 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 		virtual public neb::fin::gfx_phx::core::shape::util::parent
 	{
 		public:
+			typedef neb::core::core::actor::util::parent parent_t;
 			base();
 			base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
 			virtual void						init();
+			virtual void						init(parent_t * const &);
 			virtual void						release();
 			virtual void						step(gal::etc::timestep const & ts);
+
+			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
+			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
 					neb::core::pose pose);
