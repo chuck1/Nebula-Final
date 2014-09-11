@@ -7,12 +7,10 @@ typedef neb::fin::gfx_phx::core::shape::base THIS;
 neb::fin::gfx_phx::core::shape::base::base()
 {
 }
-neb::fin::gfx_phx::core::shape::base::base(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent):
-	gal::stl::child<neb::core::core::shape::util::parent>(parent.get())
-{
-}
 void		neb::fin::gfx_phx::core::shape::base::init(neb::core::core::shape::util::parent * const & p)
 {
+	setParent(p);
+
 	neb::core::core::shape::base::init(p);
 	neb::gfx::core::shape::base::init(p);
 	neb::phx::core::shape::base::init(p);

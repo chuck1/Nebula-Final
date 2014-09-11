@@ -18,8 +18,7 @@ namespace neb {
 					{
 						public:
 							base();
-							base(std::shared_ptr<neb::fin::gfx_phx::core::shape::util::parent> parent);
-							virtual void				init();
+							virtual void				init(neb::core::core::shape::util::parent * const & p);
 							virtual void				release();
 							virtual void				step(
 									gal::etc::timestep const & ts);

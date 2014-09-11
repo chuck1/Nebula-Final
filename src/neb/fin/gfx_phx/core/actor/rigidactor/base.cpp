@@ -22,7 +22,7 @@ weak_ptr<neb::core::core::shape::base>	neb::fin::gfx_phx::core::actor::rigidacto
 
 	typedef neb::fin::gfx_phx::core::shape::box T;
 
-	std::shared_ptr<T> shape(new T(self), T::deleter());
+	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
 	neb::core::core::shape::util::parent::insert(shape);
 	

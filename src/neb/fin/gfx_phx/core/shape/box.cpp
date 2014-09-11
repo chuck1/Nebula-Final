@@ -1,22 +1,7 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
-neb::fin::gfx_phx::core::shape::box::deleter::deleter()
-{
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-neb::fin::gfx_phx::core::shape::box::deleter::~deleter()
-{
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
-}
-void	neb::fin::gfx_phx::core::shape::box::deleter::operator()(box* p) const
-{
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	p->release();
-
-	delete p;
-}
 
 neb::fin::gfx_phx::core::shape::box::box()
 {

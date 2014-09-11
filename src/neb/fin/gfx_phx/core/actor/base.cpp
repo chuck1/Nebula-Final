@@ -38,10 +38,12 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 
 	typedef neb::fin::gfx_phx::core::shape::base T;
 
-	std::shared_ptr<T> shape(new T(self), gal::stl::deleter<T>());
+	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
 	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
-	shape->init();
+	
+	shape->init(this);
+
 	return shape;
 }
 weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::createShapeCuboid(
@@ -52,14 +54,14 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 
 	typedef neb::fin::gfx_phx::core::shape::box T;
 
-	std::shared_ptr<T> shape(new T(self), T::deleter());
+	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
 	shape->pose_ = desc.pose_;
 	shape->scale_ = desc.scale_;
 
 	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
 	
-	shape->init();
+	shape->init(this);
 
 	return shape;
 
