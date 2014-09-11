@@ -36,13 +36,13 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pos
 
 	typedef neb::fin::gfx_phx::core::actor::base T;
 
-	std::shared_ptr<T> actor(new T(self), gal::stl::deleter<T>());
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
 	actor->pose_ = pose;
 
 	insert(actor);
 
-	actor->init();
+	actor->init(this);
 
 	return actor;
 }
@@ -52,7 +52,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized
 
 	typedef neb::fin::gfx_phx::core::actor::rigidstatic::base T;
 
-	std::shared_ptr<T> actor(new T(self), gal::stl::deleter<T>());
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
 	neb::core::core::actor::util::parent::insert(actor);
 
@@ -69,7 +69,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialize
 
 	typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base T;
 
-	std::shared_ptr<T> actor(new T(self), T::deleter());
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
 	neb::core::core::actor::util::parent::insert(actor);
 
@@ -90,7 +90,7 @@ wbase			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamic(
 
 	typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base T;
 
-	std::shared_ptr<T> actor(new T(self), T::deleter());
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
 	neb::core::core::actor::util::parent::insert(actor);
 
@@ -99,7 +99,7 @@ wbase			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamic(
 	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
 
-	actor->init();
+	actor->init(this);
 
 	return actor;
 

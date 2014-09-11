@@ -324,14 +324,13 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
 
 	typedef neb::fin::gfx_phx::core::scene::base		T;
-	typedef neb::fin::gfx_phx::core::scene::util::parent	P;
-	typedef gal::dll::helper<T, std::shared_ptr<P> >	H;
+	typedef gal::dll::helper<T>				H;
 	typedef gal::dll::deleter<H>				D;
 
-	std::shared_ptr<H> h(new H);
-	h->open(dll_name, "scene");
-
-	std::shared_ptr<T> scene (h->create(self), D(h));
+	std::shared_ptr<H> h(new H(dll_name, "scene"));
+	h->open();
+	
+	std::shared_ptr<T> scene = h->make_shared();
 
 	neb::core::core::scene::util::parent::insert(scene);
 

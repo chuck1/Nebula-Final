@@ -10,15 +10,11 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 
 	class base:
 		virtual public neb::phx::core::actor::base,
-		virtual public neb::gfx::core::actor::base,
-		virtual public neb::fin::gfx_phx::core::actor::util::parent,
-		virtual public neb::fin::gfx_phx::core::shape::util::parent
+		virtual public neb::gfx::core::actor::base
 	{
 		public:
 			typedef neb::core::core::actor::util::parent parent_t;
 			base();
-			base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent);
-			virtual void						init();
 			virtual void						init(parent_t * const &);
 			virtual void						release();
 			virtual void						step(gal::etc::timestep const & ts);

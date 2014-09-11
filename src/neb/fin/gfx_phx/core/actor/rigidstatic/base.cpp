@@ -4,26 +4,34 @@
 
 #include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
 
-neb::fin::gfx_phx::core::actor::rigidstatic::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	gal::stl::child<neb::core::core::actor::util::parent>(parent.get())
+neb::fin::gfx_phx::core::actor::rigidstatic::base::base()
 {}
-neb::fin::gfx_phx::core::actor::rigidstatic::base::~base() {
+neb::fin::gfx_phx::core::actor::rigidstatic::base::~base()
+{
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 }
-void						neb::fin::gfx_phx::core::actor::rigidstatic::base::init() {
-	neb::core::core::actor::base::init();
+void						neb::fin::gfx_phx::core::actor::rigidstatic::base::init(parent_t * const & p)
+{
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
-	neb::gfx::core::actor::base::init();
+	setParent(p);
 
-	neb::phx::core::actor::base::init();
+	neb::core::core::actor::base::init(p);
+
+	//neb::gfx::core::actor::base::init(p);
+
+	neb::phx::core::actor::base::init(p);
 	//neb::phx::core::actor::actor::base::init();
 	//neb::phx::core::actor::rigidactor::base::init();
 	//neb::phx::core::actor::rigidstatic::base::init();
 
-	neb::fin::gfx_phx::core::actor::base::init();
+	neb::fin::gfx_phx::core::actor::base::init(p);
 	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
 }
-void						neb::fin::gfx_phx::core::actor::rigidstatic::base::release() {
+void						neb::fin::gfx_phx::core::actor::rigidstatic::base::release()
+{
+	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+
 	neb::core::core::actor::base::release();
 	
 	neb::gfx::core::actor::base::release();

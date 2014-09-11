@@ -9,25 +9,25 @@ typedef neb::fin::gfx_phx::core::actor::base THIS;
 neb::fin::gfx_phx::core::actor::base::base()
 {
 }
-neb::fin::gfx_phx::core::actor::base::base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent> parent):
-	gal::stl::child<neb::core::core::actor::util::parent>(parent.get())
-{
-}
-void						neb::fin::gfx_phx::core::actor::base::init() {
-}
 void						THIS::init(neb::core::core::actor::util::parent* const & p)
 {
 	LOG(lg, neb::core::core::actor::sl, debug) << __FUNCSIG__;
 
 	setParent(p);
 
-	init();
-
 	neb::util::parent<neb::actor::__base>::init(this);
 	neb::core::core::shape::util::parent::init(this);
-}
 
-void						neb::fin::gfx_phx::core::actor::base::release() {
+	// base classes
+	
+	neb::core::core::actor::base::init(p);
+
+	neb::phx::core::actor::base::init(p);
+
+	//neb::gfx::core::actor::base::init(p);
+}
+void						neb::fin::gfx_phx::core::actor::base::release()
+{
 	neb::core::core::actor::base::release();
 }
 void						neb::fin::gfx_phx::core::actor::base::step(gal::etc::timestep const & ts) {
@@ -40,7 +40,7 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
-	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
+	neb::core::core::shape::util::parent::insert(shape);
 	
 	shape->init(this);
 
@@ -59,7 +59,7 @@ weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::base::cr
 	shape->pose_ = desc.pose_;
 	shape->scale_ = desc.scale_;
 
-	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
+	neb::core::core::shape::util::parent::insert(shape);
 	
 	shape->init(this);
 
@@ -78,7 +78,7 @@ std::weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::bas
 	//shape->pose_ = desc.pose_;
 	//shape->scale_ = desc.scale_;
 
-	neb::fin::gfx_phx::core::shape::util::parent::insert(shape);
+	neb::core::core::shape::util::parent::insert(shape);
 
 	shape->init(this);
 

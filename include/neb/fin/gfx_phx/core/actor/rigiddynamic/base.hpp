@@ -19,18 +19,9 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 			virtual public neb::fin::gfx_phx::core::actor::rigidactor::base
 		{
 			public:
-				struct deleter
-				{
-					deleter();
-					virtual ~deleter();
-					void	operator()(base*);
-				};
-
+	
 				base();
-				base(std::shared_ptr<neb::fin::gfx_phx::core::actor::util::parent>);
-
 				~base();
-				virtual void						init();
 				virtual void						init(neb::core::core::actor::util::parent * const &);
 				virtual void						release();
 				virtual void						step(gal::etc::timestep const & ts);

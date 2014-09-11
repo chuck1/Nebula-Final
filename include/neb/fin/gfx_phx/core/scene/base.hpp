@@ -7,21 +7,20 @@
 #include <neb/core/core/actor/util/decl.hpp>
 
 #include <neb/fin/gfx_phx/core/actor/util/decl.hpp>
-#include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
-#include <neb/fin/gfx_phx/core/actor/util/parent.hpp>
 
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 
 namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace scene {
 	class base:
-		virtual public phx::core::scene::base,
-		virtual public neb::fin::gfx_phx::core::actor::util::parent
+		virtual public phx::core::scene::base
 	{
 		public:
-			base(std::shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent);
-			virtual void			init();
+			base();
+
+			virtual void			init(parent_t * const & p);
 			virtual void			release();
 			virtual void			step(gal::etc::timestep const & ts);
+
 			virtual wbase			createActorBase(neb::core::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 
