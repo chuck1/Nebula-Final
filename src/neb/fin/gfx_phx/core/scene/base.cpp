@@ -8,15 +8,14 @@
 
 typedef weak_ptr<neb::core::core::actor::base>			wbase;
 
-neb::fin::gfx_phx::core::scene::base::base(std::shared_ptr<neb::fin::gfx_phx::core::scene::util::parent> parent):
-	neb::core::core::scene::base(parent),
-	neb::phx::core::scene::base(parent)
+neb::fin::gfx_phx::core::scene::base::base()
 {
 }
-void		neb::fin::gfx_phx::core::scene::base::init() {
+void		neb::fin::gfx_phx::core::scene::base::init(parent_t * const & p)
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
-	neb::core::core::scene::base::init();
-	neb::phx::core::scene::base::init();
+	neb::core::core::scene::base::init(p);
+	neb::phx::core::scene::base::init(p);
 }
 void		neb::fin::gfx_phx::core::scene::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;

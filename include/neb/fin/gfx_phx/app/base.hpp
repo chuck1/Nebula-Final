@@ -18,15 +18,15 @@
 
 #include <neb/gfx/app/__gfx.hpp>
 #include <neb/gfx/app/__gfx_glsl.hpp>
+#include <neb/gfx/app/glfw.hpp>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/window/util/Parent.hh>
+#include <neb/gfx/gui/layout/util/parent.hpp>
 
 #include <neb/phx/app/base.hpp>
-#include <neb/phx/game/game/util/parent.hpp>
 
 #include <neb/fin/gfx_phx/core/scene/util/decl.hpp>
-#include <neb/fin/gfx_phx/core/scene/util/parent.hpp>
 
 namespace neb {
 	namespace fin {
@@ -40,8 +40,9 @@ namespace neb {
 					virtual public neb::app::__core,
 					virtual public neb::gfx::app::__gfx,
 					virtual public neb::gfx::app::__gfx_glsl,
+					virtual public neb::gfx::app::glfw,
 					virtual public neb::phx::app::base,
-					virtual public neb::fin::gfx_phx::core::scene::util::parent
+					virtual public neb::gfx::gui::layout::util::parent
 				{
 					public:
 						typedef std::weak_ptr<neb::fin::gfx_phx::core::scene::base>	scene_w;

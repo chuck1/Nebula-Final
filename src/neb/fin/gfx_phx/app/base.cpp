@@ -195,7 +195,7 @@ void				neb::fin::gfx_phx::app::base::release()
 	//neb::core::app::__base::__release();
 	neb::app::__core::__release();
 
-	neb::gfx::app::__gfx::__release();
+	neb::gfx::app::__gfx::release();
 	//neb::gfx::app::__gfx_glsl::__release();
 
 	neb::phx::app::base::__release();
@@ -257,6 +257,8 @@ void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::core::core::scene::util::parent::step(ts);
 
+	neb::gfx::gui::layout::util::parent::step(ts);
+
 	neb::game::game::util::parent::step(ts);
 
 	neb::gfx::window::util::parent::step(ts);
@@ -279,11 +281,11 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 
 	typedef neb::fin::gfx_phx::core::scene::base T;
 
-	std::shared_ptr<T> scene (new T(self), gal::stl::deleter<T>());
+	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
 
 	neb::core::core::scene::util::parent::insert(scene);
 
-	scene->init();
+	scene->init(this);
 
 	// python object
 	if(console_) {
@@ -325,7 +327,6 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 
 	typedef neb::fin::gfx_phx::core::scene::base		T;
 	typedef gal::dll::helper<T>				H;
-	typedef gal::dll::deleter<H>				D;
 
 	std::shared_ptr<H> h(new H(dll_name, "scene"));
 	h->open();
@@ -334,7 +335,7 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 
 	neb::core::core::scene::util::parent::insert(scene);
 
-	scene->init();
+	scene->init(this);
 
 	// python object
 	if(console_) {
