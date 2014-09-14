@@ -48,12 +48,12 @@ namespace neb {
 						typedef std::weak_ptr<neb::fin::gfx_phx::core::scene::base>	scene_w;
 					public:
 						static std::shared_ptr<neb::fin::gfx_phx::app::base>		global();
-						static std::shared_ptr<neb::fin::gfx_phx::app::base>		init();
+						static std::shared_ptr<neb::fin::gfx_phx::app::base>		s_init();
 					public:
 						base();
 						virtual ~base();
 					protected:
-						void							__init();
+						virtual void						init();
 					public:
 						neb::core::pose						getPose();
 						neb::core::pose						getPoseGlobal();

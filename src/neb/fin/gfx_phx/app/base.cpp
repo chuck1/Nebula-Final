@@ -48,20 +48,21 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global()
 	assert(app);
 	return app;
 }
-shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::init() {
+shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::s_init() {
 
 	typedef neb::fin::gfx_phx::app::base T;
 	
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 	
-	app->neb::core::app::__base::__init();
+	app->neb::core::app::__base::init();
 
-	app->neb::gfx::app::__gfx::__init();
+	app->neb::gfx::app::__gfx::init();
 	app->neb::gfx::app::__gfx_glsl::__init();
+	app->neb::gfx::app::glfw::init();
 
 	app->neb::phx::app::base::__init();
 
-	app->neb::fin::gfx_phx::app::base::__init();
+	app->neb::fin::gfx_phx::app::base::init();
 
 	g_app_ = app;
 	return app;
@@ -71,7 +72,7 @@ neb::fin::gfx_phx::app::base::base() {
 neb::fin::gfx_phx::app::base::~base() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::fin::gfx_phx::app::base::__init() {
+void				neb::fin::gfx_phx::app::base::init() {
 
 	try {
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
@@ -230,7 +231,7 @@ void				neb::fin::gfx_phx::app::base::loop() {
 		t = glfwGetTime();
 		sw_render.start(t);
 		{
-			neb::gfx::app::__gfx::render();
+			neb::gfx::app::glfw::render();
 
 			//::std::this_thread::yield();
 		}

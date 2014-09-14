@@ -15,7 +15,7 @@ void						THIS::init(neb::core::core::actor::util::parent* const & p)
 
 	setParent(p);
 
-	neb::util::parent<neb::actor::__base>::init(this);
+	neb::core::core::actor::util::parent::init(this);
 	neb::core::core::shape::util::parent::init(this);
 
 	// base classes
