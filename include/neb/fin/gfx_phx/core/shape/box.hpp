@@ -15,13 +15,16 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 		virtual public neb::fin::gfx_phx::core::shape::base
 	{
 		public:
+			//neb::core::core::shape::util::parent
 			box();
 			virtual ~box();
-			virtual void						init(neb::core::core::shape::util::parent * const &);
-			virtual void						release();
-			virtual void						step(gal::etc::timestep const & ts);
+			virtual void		init(parent_t * const &);
+			virtual void		release();
+			virtual void		step(gal::etc::timestep const & ts);
 
-
+			virtual void		load(ba::polymorphic_iarchive & ar, unsigned int const &);
+			virtual void		save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
 	};
 }}}}}
 

@@ -84,13 +84,23 @@ std::weak_ptr<neb::core::core::shape::base>		neb::fin::gfx_phx::core::actor::bas
 
 	return shape;
 }
-void	neb::fin::gfx_phx::core::actor::base::load(ba::polymorphic_iarchive & ar, unsigned int const &)
+void			THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
+	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::base);
+
+	//gal::itf::shared::load(ar, v);
+	gal::itf::shared::serialize(ar, v);
+	neb::core::core::actor::base::load(ar, v);
 }
-void	neb::fin::gfx_phx::core::actor::base::save(ba::polymorphic_oarchive & ar, unsigned int const &) const
+void			THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 {
+	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::core::core::actor::base);
+
+	//gal::itf::shared::save(ar, v);
+	const_cast<THIS*>(this)->gal::itf::shared::serialize(ar, v);
+	neb::core::core::actor::base::save(ar, v);
 }
 
 

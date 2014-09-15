@@ -21,6 +21,10 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 			virtual void			release();
 			virtual void			step(gal::etc::timestep const & ts);
 
+			virtual void			load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version);
+			virtual void			save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
+			BOOST_SERIALIZATION_SPLIT_MEMBER();
+
 			virtual wbase			createActorBase(neb::core::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 

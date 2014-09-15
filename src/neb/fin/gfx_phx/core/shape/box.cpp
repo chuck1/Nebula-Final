@@ -1,9 +1,9 @@
 #include <neb/fin/gfx_phx/core/shape/box.hpp>
 #include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
 
+typedef neb::fin::gfx_phx::core::shape::box THIS;
 
-
-neb::fin::gfx_phx::core::shape::box::box()
+THIS::box()
 {
 }
 neb::fin::gfx_phx::core::shape::box::~box()
@@ -41,6 +41,20 @@ void		neb::fin::gfx_phx::core::shape::box::release() {
 	
 }
 void		neb::fin::gfx_phx::core::shape::box::step(gal::etc::timestep const & ts) {
+}
+void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
+{
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+
+	gal::itf::shared::serialize(ar, v);//load(ar, v);
+	neb::core::core::shape::base::load(ar, v);
+}
+void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
+{
+	LOG(lg, neb::core::core::shape::sl, debug) << __FUNCSIG__;
+
+	const_cast<THIS*>(this)->gal::itf::shared::serialize(ar, v);//save(ar, v);
+	neb::core::core::shape::base::save(ar, v);
 }
 
 
