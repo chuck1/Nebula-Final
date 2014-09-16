@@ -18,6 +18,9 @@ void		neb::fin::gfx_phx::core::shape::base::init(neb::core::core::shape::util::p
 void		neb::fin::gfx_phx::core::shape::base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
+
+	neb::gfx::core::shape::base::release();
+	neb::phx::core::shape::base::release();
 }
 void		neb::fin::gfx_phx::core::shape::base::step(gal::etc::timestep const & ts) {
 }
