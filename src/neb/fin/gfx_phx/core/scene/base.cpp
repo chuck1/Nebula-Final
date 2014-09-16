@@ -35,7 +35,7 @@ void		neb::fin::gfx_phx::core::scene::base::step(gal::etc::timestep const & ts) 
 	neb::phx::core::scene::base::step(ts);
 }
 wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pose) {
-	
+
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
 	typedef neb::fin::gfx_phx::core::actor::base T;
@@ -53,7 +53,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pos
 wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
-	
+
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
@@ -73,7 +73,7 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized
 wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialized()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
-	
+
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
@@ -96,7 +96,7 @@ wbase			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamic(
 		)
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
-	
+
 
 	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
 
