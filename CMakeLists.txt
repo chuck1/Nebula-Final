@@ -8,6 +8,8 @@ PROJECT(nebula_final)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
+SET(SHARED True)
+
 FIND_PACKAGE(glfw)
 FIND_PACKAGE(PhysX)
 #FIND_PACKAGE(maze)
@@ -15,6 +17,7 @@ FIND_PACKAGE(PhysX)
 FIND_PACKAGE(galaxy 0 COMPONENTS
 	std
 	log
+	console
 	REQUIRED)
 
 FIND_PACKAGE(nebula 0 COMPONENTS
@@ -33,7 +36,11 @@ set(include_extensions obj)
 INCLUDE(cmh_boost)
 
 SET(libs
-	nebula_physx_0_so_db
+	#nebula_core_0
+	#nebula_physx_0
+	#nebula_python_0
+	#galaxy_std_0
+	#galaxy_log_0
 	#${nebula_LIBRARIES}
 	#${galaxy_LIBRARIES}
 	${PhysX_LIBRARIES}
