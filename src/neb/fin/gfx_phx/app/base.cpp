@@ -130,7 +130,7 @@ void				neb::fin::gfx_phx::app::base::init() {
 			{"critical",	critical}});
 
 
-	std::ifstream ifs(share_dir_ + "config.txt");
+	std::ifstream ifs(NEB_SHARE_DIR"/config.txt");
 	if(ifs.is_open()) {
 		for(std::string line; std::getline(ifs, line);) {
 			auto loc = line.find("=");
