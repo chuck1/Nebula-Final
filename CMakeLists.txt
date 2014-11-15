@@ -22,6 +22,7 @@ FIND_PACKAGE(galaxy 0 COMPONENTS
 
 FIND_PACKAGE(nebula 0 COMPONENTS
 	core
+	gfx
 	physx
 	python
 	REQUIRED)
