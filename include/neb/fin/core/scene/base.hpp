@@ -8,9 +8,10 @@
 
 #include <neb/fin/core/actor/util/decl.hpp>
 
-typedef weak_ptr<neb::core::core::actor::base> wbase;
+typedef std::weak_ptr<neb::core::core::actor::base> wbase;
 
-namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace scene {
+namespace neb { namespace fin { namespace core { namespace scene {
+
 	class base:
 		virtual public phx::core::scene::base
 	{
@@ -25,14 +26,14 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 			virtual void			save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 
-			virtual wbase			createActorBase(neb::core::pose);
+			virtual wbase			createActorBase(neb::core::math::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 
 			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::desc const * const &);
 			
 			virtual wbase			createActorRigidDynamicUninitialized();
 	};
-}}}}}
+}}}}
 
 #endif
 

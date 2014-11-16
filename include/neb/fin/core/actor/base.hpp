@@ -33,12 +33,12 @@ namespace neb { namespace fin { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
-					neb::core::math::pose pose);
+					neb::core::math::pose const & pose);
 			/** @brief
 			 *
 			 */
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCuboid(
-					neb::core::core::shape::cuboid::desc);
+					neb::core::core::shape::cuboid::desc const &);
 			/** @brief
 			 *
 			 */

@@ -36,7 +36,7 @@ void						THIS::release()
 void						THIS::step(gal::etc::timestep const & ts)
 {
 }
-weak_ptr<neb::core::core::shape::base>		THIS::createShapeBase(neb::core::pose pose)
+std::weak_ptr<neb::core::core::shape::base>	THIS::createShapeBase(neb::core::math::pose const & pose)
 {
 	auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
@@ -50,8 +50,8 @@ weak_ptr<neb::core::core::shape::base>		THIS::createShapeBase(neb::core::pose po
 
 	return shape;
 }
-weak_ptr<neb::core::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
-		neb::core::core::shape::cuboid::desc desc)
+std::weak_ptr<neb::core::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
+		neb::core::core::shape::cuboid::desc const & desc)
 {
 
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));

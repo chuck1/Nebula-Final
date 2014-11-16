@@ -1,13 +1,13 @@
 #include <neb/phx/util/log.hpp>
-#include <neb/fin/gfx_phx/core/shape/base.hpp>
-#include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
+#include <neb/fin/core/shape/base.hpp>
+#include <neb/fin/core/shape/util/parent.hpp>
 
-typedef neb::fin::gfx_phx::core::shape::base THIS;
+typedef neb::fin::core::shape::base THIS;
 
-neb::fin::gfx_phx::core::shape::base::base()
+neb::fin::core::shape::base::base()
 {
 }
-void		neb::fin::gfx_phx::core::shape::base::init(neb::core::core::shape::util::parent * const & p)
+void		neb::fin::core::shape::base::init(neb::core::core::shape::util::parent * const & p)
 {
 	setParent(p);
 
@@ -15,14 +15,14 @@ void		neb::fin::gfx_phx::core::shape::base::init(neb::core::core::shape::util::p
 	neb::gfx::core::shape::base::init(p);
 	neb::phx::core::shape::base::init(p);
 }
-void		neb::fin::gfx_phx::core::shape::base::release()
+void		neb::fin::core::shape::base::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	neb::gfx::core::shape::base::release();
 	neb::phx::core::shape::base::release();
 }
-void		neb::fin::gfx_phx::core::shape::base::step(gal::etc::timestep const & ts) {
+void		neb::fin::core::shape::base::step(gal::etc::timestep const & ts) {
 }
 void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {

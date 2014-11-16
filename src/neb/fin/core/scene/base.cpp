@@ -4,41 +4,41 @@
 
 #include <neb/core/util/log.hpp>
 
-#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
-#include <neb/fin/gfx_phx/core/actor/rigiddynamic/base.hpp>
-#include <neb/fin/gfx_phx/core/scene/base.hpp>
+#include <neb/fin/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/core/actor/rigiddynamic/base.hpp>
+#include <neb/fin/core/scene/base.hpp>
 
-typedef neb::fin::gfx_phx::core::scene::base THIS;
+typedef neb::fin::core::scene::base THIS;
 
 typedef weak_ptr<neb::core::core::actor::base>			wbase;
 
-neb::fin::gfx_phx::core::scene::base::base()
+neb::fin::core::scene::base::base()
 {
 }
-void		neb::fin::gfx_phx::core::scene::base::init(parent_t * const & p)
+void		neb::fin::core::scene::base::init(parent_t * const & p)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	neb::phx::core::scene::base::init(p);
 	neb::core::core::scene::base::init(p);
 }
-void		neb::fin::gfx_phx::core::scene::base::release() {
+void		neb::fin::core::scene::base::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	neb::core::core::scene::base::release();
 
 	neb::phx::core::scene::base::release();
 }
-void		neb::fin::gfx_phx::core::scene::base::step(gal::etc::timestep const & ts) {
+void		neb::fin::core::scene::base::step(gal::etc::timestep const & ts) {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
-wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pose) {
+wbase		neb::fin::core::scene::base::createActorBase(neb::core::math::pose pose) {
 
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::actor::base T;
+	typedef neb::fin::core::actor::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -50,14 +50,14 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorBase(neb::core::pose pos
 
 	return actor;
 }
-wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized()
+wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
 
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::actor::rigidstatic::base T;
+	typedef neb::fin::core::actor::rigidstatic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -70,14 +70,14 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidStaticUninitialized
 
 	return actor;
 }
-wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialized()
+wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
 
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base T;
+	typedef neb::fin::core::actor::rigiddynamic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -91,16 +91,16 @@ wbase		neb::fin::gfx_phx::core::scene::base::createActorRigidDynamicUninitialize
 	return actor;
 
 }
-wbase			neb::fin::gfx_phx::core::scene::base::createActorRigidDynamic(
+wbase			neb::fin::core::scene::base::createActorRigidDynamic(
 		neb::core::core::actor::rigiddynamic::desc const * const & desc
 		)
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
 
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::actor::rigiddynamic::base T;
+	typedef neb::fin::core::actor::rigiddynamic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 

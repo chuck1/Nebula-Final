@@ -1,16 +1,16 @@
-#include <neb/fin/gfx_phx/core/shape/box.hpp>
-#include <neb/fin/gfx_phx/core/shape/util/parent.hpp>
+#include <neb/fin/core/shape/box.hpp>
+#include <neb/fin/core/shape/util/parent.hpp>
 
-typedef neb::fin::gfx_phx::core::shape::box THIS;
+typedef neb::fin::core::shape::box THIS;
 
 THIS::box()
 {
 }
-neb::fin::gfx_phx::core::shape::box::~box()
+THIS::~box()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void		neb::fin::gfx_phx::core::shape::box::init(neb::core::core::shape::util::parent * const & p)
+void		THIS::init(neb::core::core::shape::util::parent * const & p)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
@@ -24,9 +24,9 @@ void		neb::fin::gfx_phx::core::shape::box::init(neb::core::core::shape::util::pa
 	neb::phx::core::shape::base::init(p);
 	neb::phx::core::shape::box::init(p);
 
-	neb::fin::gfx_phx::core::shape::base::init(p);
+	neb::fin::core::shape::base::init(p);
 }
-void		neb::fin::gfx_phx::core::shape::box::release() {
+void		THIS::release() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
 	neb::core::core::shape::base::release();
@@ -37,10 +37,10 @@ void		neb::fin::gfx_phx::core::shape::box::release() {
 	neb::phx::core::shape::base::release();
 	//neb::phx::core::shape::box::release();
 
-	neb::fin::gfx_phx::core::shape::base::release();
+	neb::fin::core::shape::base::release();
 	
 }
-void		neb::fin::gfx_phx::core::shape::box::step(gal::etc::timestep const & ts) {
+void		THIS::step(gal::etc::timestep const & ts) {
 }
 void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {

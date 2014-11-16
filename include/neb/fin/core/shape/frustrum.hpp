@@ -1,13 +1,12 @@
-#ifndef PHYSX_SHAPE_FRUSTRUM_HH
-#define PHYSX_SHAPE_FRUSTRUM_HH
+#ifndef NEB_FIN_CORE_SHAPE_FRUSTRUM_HPP
+#define NEB_FIN_CORE_SHAPE_FRUSTRUM_HPP
 
 #include <neb/phx/core/shape/base.hpp>
 
 #include <neb/gfx/camera/util/decl.hpp>
 
-namespace neb { namespace phx { namespace core { namespace shape {
-
-
+namespace neb { namespace fin { namespace core { namespace shape {
+	/** @ brief */
 	class frustrum:
 		virtual public neb::phx::core::shape::base
 	{
@@ -22,9 +21,7 @@ namespace neb { namespace phx { namespace core { namespace shape {
 			
 			virtual physx::PxGeometry*			to_geo();
 	};
-
-
-
 }}}}
 
 #endif
+

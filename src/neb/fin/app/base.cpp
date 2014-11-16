@@ -34,8 +34,8 @@
 #include <neb/phx/util/log.hpp>
 
 
-#include <neb/fin/gfx_phx/app/base.hpp>
-#include <neb/fin/gfx_phx/core/scene/base.hpp>
+#include <neb/fin/app/base.hpp>
+#include <neb/fin/core/scene/base.hpp>
 
 #include <neb/py/config.hpp>
 #include <neb/py/core/scene/base.hpp>
@@ -43,14 +43,14 @@
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
 
-shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::global() {
-	auto app(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(g_app_));
+shared_ptr<neb::fin::app::base>		neb::fin::gfx_phx::app::base::global() {
+	auto app(dynamic_pointer_cast<neb::fin::app::base>(g_app_));
 	assert(app);
 	return app;
 }
-shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::s_init() {
+shared_ptr<neb::fin::app::base>		neb::fin::gfx_phx::app::base::s_init() {
 
-	typedef neb::fin::gfx_phx::app::base T;
+	typedef neb::fin::app::base T;
 	
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 	
@@ -62,17 +62,17 @@ shared_ptr<neb::fin::gfx_phx::app::base>		neb::fin::gfx_phx::app::base::s_init()
 
 	app->neb::phx::app::base::__init();
 
-	app->neb::fin::gfx_phx::app::base::init();
+	app->neb::fin::app::base::init();
 
 	g_app_ = app;
 	return app;
 }
-neb::fin::gfx_phx::app::base::base() {
+neb::fin::app::base::base() {
 }
-neb::fin::gfx_phx::app::base::~base() {
+neb::fin::app::base::~base() {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::fin::gfx_phx::app::base::init() {
+void				neb::fin::app::base::init() {
 
 	try {
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
@@ -191,7 +191,7 @@ void				neb::fin::gfx_phx::app::base::init() {
 	}
 
 }
-void				neb::fin::gfx_phx::app::base::release()
+void				neb::fin::app::base::release()
 {
 	//neb::core::app::__base::__release();
 	neb::app::__core::__release();
@@ -202,7 +202,7 @@ void				neb::fin::gfx_phx::app::base::release()
 	neb::phx::app::base::__release();
 
 }
-void				neb::fin::gfx_phx::app::base::loop() {
+void				neb::fin::app::base::loop() {
 
 	auto self(std::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
 	assert(self);
@@ -254,7 +254,7 @@ void				neb::fin::gfx_phx::app::base::loop() {
 
 	}
 }
-void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
+void				neb::fin::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::core::core::scene::util::parent::step(ts);
 
@@ -266,21 +266,21 @@ void				neb::fin::gfx_phx::app::base::step(gal::etc::timestep const & ts) {
 
 	glfwPollEvents();
 }
-neb::core::pose						neb::fin::gfx_phx::app::base::getPose() {
+neb::core::pose						neb::fin::app::base::getPose() {
 	return neb::core::pose();
 }
-neb::core::pose						neb::fin::gfx_phx::app::base::getPoseGlobal() {
+neb::core::pose						neb::fin::app::base::getPoseGlobal() {
 	return neb::core::pose();
 }
-void							neb::fin::gfx_phx::app::base::loadXml(::std::string filename, neb::stl::wrapper& w) {
+void							neb::fin::app::base::loadXml(::std::string filename, neb::stl::wrapper& w) {
 }
-void							neb::fin::gfx_phx::app::base::set_should_release() {
+void							neb::fin::app::base::set_should_release() {
 }
-std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createScene()
+std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::createScene()
 {
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::scene::base T;
+	typedef neb::fin::core::scene::base T;
 
 	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
 
@@ -322,11 +322,11 @@ std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::bas
 
 	return scene;
 }
-std::weak_ptr<neb::fin::gfx_phx::core::scene::base>		neb::fin::gfx_phx::app::base::createSceneDll(std::string dll_name)
+std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::createSceneDll(std::string dll_name)
 {
-	auto self(dynamic_pointer_cast<neb::fin::gfx_phx::app::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
-	typedef neb::fin::gfx_phx::core::scene::base		T;
+	typedef neb::fin::core::scene::base		T;
 	typedef gal::dll::helper<T>				H;
 
 	std::shared_ptr<H> h(new H(dll_name, "scene"));

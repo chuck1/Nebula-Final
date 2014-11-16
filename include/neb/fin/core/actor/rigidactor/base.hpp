@@ -12,14 +12,26 @@ namespace neb { namespace fin { namespace core { namespace actor { namespace rig
 		virtual public neb::fin::core::actor::base
 	{
 		public:
-			//base(std::shared_ptr<> parent);
+			/** @brief
+			 *
+			 */
 			virtual void							init(neb::core::core::actor::util::parent * const & p) = 0;
+			/** @brief
+			 *
+			 */
 			virtual void							release() = 0;
+			/** @brief
+			 *
+			 */
 			virtual void							step(gal::etc::timestep const & ts) = 0;
-
-
-			weak_ptr<neb::core::core::shape::base>				createShapeBoxUninitialized(glm::vec3 size);
-			weak_ptr<neb::core::core::shape::base>				createShapeBox(neb::core::pose, glm::vec3 size);
+			/** @brief
+			 *
+			 */
+			std::weak_ptr<neb::core::core::shape::base>			createShapeBoxUninitialized(glm::vec3 size);
+			/** @brief
+			 *
+			 */
+			std::weak_ptr<neb::core::core::shape::base>			createShapeBox(neb::core::math::pose, glm::vec3 size);
 	};
 
 }}}}}
