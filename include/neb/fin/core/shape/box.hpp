@@ -5,14 +5,14 @@
 
 #include <neb/gfx/core/shape/box.hpp>
 
-#include <neb/fin/gfx_phx/core/shape/base.hpp>
+#include <neb/fin/core/shape/base.hpp>
 
-namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace shape {
+namespace neb { namespace fin { namespace core { namespace shape {
 	
 	class box:
 		virtual public neb::gfx::core::shape::box,
-		virtual public phx::core::shape::box,
-		virtual public neb::fin::gfx_phx::core::shape::base
+		virtual public neb::phx::core::shape::box,
+		virtual public neb::fin::core::shape::base
 	{
 		public:
 			//neb::core::core::shape::util::parent
@@ -26,7 +26,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace s
 			virtual void		save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 	};
-}}}}}
+}}}}
 
 #endif
 

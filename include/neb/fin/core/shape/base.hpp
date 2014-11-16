@@ -5,11 +5,10 @@
 
 #include <neb/gfx/core/shape/base.hpp>
 
-#include <neb/fin/gfx_phx/core/shape/util/decl.hpp>
+#include <neb/fin/core/shape/util/decl.hpp>
 
 namespace neb {
 	namespace fin {
-		namespace gfx_phx {
 			namespace core {
 				namespace shape {
 					class base:
@@ -28,7 +27,6 @@ namespace neb {
 					};
 				}
 			}
-		}
 	}
 }
 

@@ -6,7 +6,7 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
-#include <neb/fin/gfx_phx/core/actor/util/decl.hpp>
+#include <neb/fin/core/actor/util/decl.hpp>
 
 typedef weak_ptr<neb::core::core::actor::base> wbase;
 

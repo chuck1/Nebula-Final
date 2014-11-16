@@ -2,15 +2,16 @@
 
 #include <neb/core/util/log.hpp>
 
-#include <neb/fin/gfx_phx/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/core/actor/rigidstatic/base.hpp>
 
-neb::fin::gfx_phx::core::actor::rigidstatic::base::base()
-{}
-neb::fin::gfx_phx::core::actor::rigidstatic::base::~base()
+neb::fin::core::actor::rigidstatic::base::base()
+{
+}
+neb::fin::core::actor::rigidstatic::base::~base()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 }
-void						neb::fin::gfx_phx::core::actor::rigidstatic::base::init(parent_t * const & p)
+void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
@@ -25,10 +26,10 @@ void						neb::fin::gfx_phx::core::actor::rigidstatic::base::init(parent_t * con
 	//neb::phx::core::actor::rigidactor::base::init();
 	//neb::phx::core::actor::rigidstatic::base::init();
 
-	neb::fin::gfx_phx::core::actor::base::init(p);
-	//neb::fin::gfx_phx::core::actor::rigidactor::base::init();
+	neb::fin::core::actor::base::init(p);
+	//neb::fin::core::actor::rigidactor::base::init();
 }
-void						neb::fin::gfx_phx::core::actor::rigidstatic::base::release()
+void						neb::fin::core::actor::rigidstatic::base::release()
 {
 	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
 
@@ -41,9 +42,9 @@ void						neb::fin::gfx_phx::core::actor::rigidstatic::base::release()
 	//neb::phx::core::actor::rigidactor::base::release();
 	//neb::phx::core::actor::rigidstatic::base::release();
 
-	neb::fin::gfx_phx::core::actor::base::release();
-	//neb::fin::gfx_phx::core::actor::rigidactor::base::release();
+	neb::fin::core::actor::base::release();
+	//neb::fin::core::actor::rigidactor::base::release();
 }
-void						neb::fin::gfx_phx::core::actor::rigidstatic::base::step(gal::etc::timestep const & ts) {
+void						neb::fin::core::actor::rigidstatic::base::step(gal::etc::timestep const & ts) {
 }
 

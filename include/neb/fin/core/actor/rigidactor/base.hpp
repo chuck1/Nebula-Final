@@ -3,13 +3,13 @@
 
 #include <neb/phx/core/actor/rigidactor/base.hpp>
 
-#include <neb/fin/gfx_phx/core/actor/base.hpp>
+#include <neb/fin/core/actor/base.hpp>
 
-namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace actor { namespace rigidactor {
+namespace neb { namespace fin { namespace core { namespace actor { namespace rigidactor {
 
 	class base:
-		virtual public phx::core::actor::rigidactor::base,
-		virtual public neb::fin::gfx_phx::core::actor::base
+		virtual public neb::phx::core::actor::rigidactor::base,
+		virtual public neb::fin::core::actor::base
 	{
 		public:
 			//base(std::shared_ptr<> parent);
@@ -22,7 +22,7 @@ namespace neb { namespace fin { namespace gfx_phx { namespace core { namespace a
 			weak_ptr<neb::core::core::shape::base>				createShapeBox(neb::core::pose, glm::vec3 size);
 	};
 
-}}}}}}
+}}}}}
 
 
 #endif
