@@ -9,6 +9,7 @@
 #include FT_FREETYPE_H
 
 #include <gal/itf/shared.hpp>
+#include <gal/stl/wrapper.hpp>
 
 #include <neb/core/app/__core.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
@@ -50,9 +51,11 @@ namespace neb { namespace fin { namespace app {
 		protected:
 			virtual void			init();
 		public:
-			neb::core::math::pose			getPose();
-			neb::core::math::pose			getPoseGlobal();
-			void				loadXml(::std::string filename, neb::stl::wrapper& w);
+			neb::core::math::pose		getPose();
+			neb::core::math::pose		getPoseGlobal();
+			template<typename T> void	loadXml(std::string filename, gal::stl::wrapper<T>& w)
+			{
+			}
 			void				release();
 			virtual void			step(gal::etc::timestep const & ts);
 			void				loop();

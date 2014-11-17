@@ -43,12 +43,12 @@
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
 
-shared_ptr<neb::fin::app::base>		neb::fin::gfx_phx::app::base::global() {
+shared_ptr<neb::fin::app::base>		neb::fin::app::base::global() {
 	auto app(dynamic_pointer_cast<neb::fin::app::base>(g_app_));
 	assert(app);
 	return app;
 }
-shared_ptr<neb::fin::app::base>		neb::fin::gfx_phx::app::base::s_init() {
+shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init() {
 
 	typedef neb::fin::app::base T;
 	
@@ -194,7 +194,7 @@ void				neb::fin::app::base::init() {
 void				neb::fin::app::base::release()
 {
 	//neb::core::app::__base::__release();
-	neb::app::__core::__release();
+	nc::app::__core::__release();
 
 	neb::gfx::app::__gfx::release();
 	//neb::gfx::app::__gfx_glsl::__release();
@@ -269,14 +269,14 @@ void				neb::fin::app::base::step(gal::etc::timestep const & ts) {
 neb::core::pose						neb::fin::app::base::getPose() {
 	return neb::core::pose();
 }
-neb::core::pose						neb::fin::app::base::getPoseGlobal() {
+neb::core::pose						neb::fin::app::base::getPoseGlobal()
+{
 	return neb::core::pose();
 }
-void							neb::fin::app::base::loadXml(::std::string filename, neb::stl::wrapper& w) {
+void							neb::fin::app::base::set_should_release()
+{
 }
-void							neb::fin::app::base::set_should_release() {
-}
-std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::createScene()
+std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createScene()
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
@@ -289,7 +289,8 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::create
 	scene->init(this);
 
 	// python object
-	if(console_) {
+	if(console_)
+	{
 		neb::py::core::scene::base py_scene;
 		py_scene.scene_ = scene;
 
@@ -322,7 +323,7 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::create
 
 	return scene;
 }
-std::weak_ptr<neb::fin::core::scene::base>		neb::fin::gfx_phx::app::base::createSceneDll(std::string dll_name)
+std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createSceneDll(std::string dll_name)
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
