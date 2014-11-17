@@ -34,7 +34,7 @@ namespace neb { namespace fin { namespace app {
 	 * final implementation
 	 */
 	class base:
-		virtual public neb::app::__core,
+		virtual public neb::core::app::__core,
 		virtual public neb::gfx::app::__gfx,
 		virtual public neb::gfx::app::__gfx_glsl,
 		virtual public neb::gfx::app::glfw,
@@ -42,16 +42,16 @@ namespace neb { namespace fin { namespace app {
 		virtual public neb::gfx::gui::layout::util::parent
 	{
 		public:
-			typedef std::weak_ptr<neb::fin::gfx_phx::core::scene::base>	scene_w;
-			static std::shared_ptr<neb::fin::gfx_phx::app::base>		global();
-			static std::shared_ptr<neb::fin::gfx_phx::app::base>		s_init();
+			typedef std::weak_ptr<neb::fin::core::scene::base>	scene_w;
+			static std::shared_ptr<neb::fin::app::base>		global();
+			static std::shared_ptr<neb::fin::app::base>		s_init();
 			base();
 			virtual ~base();
 		protected:
 			virtual void			init();
 		public:
-			neb::core::pose			getPose();
-			neb::core::pose			getPoseGlobal();
+			neb::core::math::pose			getPose();
+			neb::core::math::pose			getPoseGlobal();
 			void				loadXml(::std::string filename, neb::stl::wrapper& w);
 			void				release();
 			virtual void			step(gal::etc::timestep const & ts);
