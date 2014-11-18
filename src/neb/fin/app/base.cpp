@@ -260,18 +260,18 @@ void				neb::fin::app::base::step(gal::etc::timestep const & ts) {
 
 	neb::gfx::gui::layout::util::parent::step(ts);
 
-	neb::game::game::util::parent::step(ts);
+	nc::game::game::util::parent::step(ts);
 
 	neb::gfx::window::util::parent::step(ts);
 
 	glfwPollEvents();
 }
-neb::core::pose						neb::fin::app::base::getPose() {
-	return neb::core::pose();
+neb::core::math::pose						neb::fin::app::base::getPose() {
+	return neb::core::math::pose();
 }
-neb::core::pose						neb::fin::app::base::getPoseGlobal()
+neb::core::math::pose						neb::fin::app::base::getPoseGlobal()
 {
-	return neb::core::pose();
+	return neb::core::math::pose();
 }
 void							neb::fin::app::base::set_should_release()
 {
