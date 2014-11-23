@@ -75,7 +75,7 @@ std::weak_ptr<neb::core::core::shape::base>		neb::fin::core::actor::base::create
 {
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
-	typedef neb::fin::core::shape::HeightField T;
+	typedef neb::fin::core::shape::HeightField::Base T;
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 

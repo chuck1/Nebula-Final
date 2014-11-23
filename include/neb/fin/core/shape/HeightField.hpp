@@ -1,14 +1,13 @@
 #ifndef NEB_FIN_CORE_SHAPE_HEIGHT_FIELD_HPP
 #define NEB_FIN_CORE_SHAPE_HEIGHT_FIELD_HPP
 
-#include <neb/gfx/core/shape/HeightField.hpp>
-#include <neb/phx/core/shape/HeightField.hpp>
+#include <neb/gfx/core/shape/HeightField/Base.hpp>
+#include <neb/phx/core/shape/HeightField/Base.hpp>
 
-namespace neb { namespace fin { namespace core { namespace shape {
-
-	class HeightField:
-		public neb::gfx::core::shape::HeightField,
-		public neb::phx::core::shape::HeightField
+namespace neb { namespace fin { namespace core { namespace shape { namespace HeightField {
+	class Base:
+		public neb::gfx::core::shape::HeightField::Base,
+		public neb::phx::core::shape::HeightField::Base
 	{
 		public:
 			typedef nc::core::shape::util::parent	parent_t;
@@ -22,7 +21,7 @@ namespace neb { namespace fin { namespace core { namespace shape {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 	};
 
-}}}}
+}}}}}
 
 #endif
 
