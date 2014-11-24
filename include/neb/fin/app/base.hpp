@@ -27,6 +27,8 @@
 
 #include <neb/phx/app/base.hpp>
 
+#include <neb/fin/app/glfw.hpp>
+
 #include <neb/fin/core/scene/util/decl.hpp>
 
 namespace neb { namespace fin { namespace app {
@@ -38,7 +40,7 @@ namespace neb { namespace fin { namespace app {
 		virtual public neb::core::app::__core,
 		virtual public neb::gfx::app::__gfx,
 		virtual public neb::gfx::app::__gfx_glsl,
-		virtual public neb::gfx::app::glfw,
+		virtual public neb::fin::app::glfw,
 		virtual public neb::phx::app::base,
 		virtual public neb::gfx::gui::layout::util::parent
 	{

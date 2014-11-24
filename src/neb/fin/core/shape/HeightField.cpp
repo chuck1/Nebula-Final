@@ -21,5 +21,14 @@ void			THIS::release()
 	neb::gfx::core::shape::base::__release();
 	neb::phx::core::shape::base::__release();
 }
+void		THIS::step(gal::etc::timestep  const & ts)
+{
+}
+void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const &)
+{
+}
+void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const &) const
+{
+}
 
 

@@ -10,7 +10,7 @@ namespace neb { namespace fin { namespace camera { namespace proj {
 		virtual public neb::gfx::camera::proj::base
 	{
 		public:
-			void		calculate_geometry();
+			virtual void		calculate_geometry();
 
 			physx::PxGeometry*	_M_px_geometry;
 	};

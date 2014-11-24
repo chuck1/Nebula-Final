@@ -28,7 +28,7 @@
 #include <gal/stl/deleter.hpp>
 
 #include <neb/gfx/util/log.hpp>
-#include <neb/gfx/Context/Base.hh>
+#include <neb/gfx/context/Base.hh>
 #include <neb/gfx/window/Base.hh>
 
 #include <neb/phx/util/log.hpp>
