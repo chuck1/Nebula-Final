@@ -52,6 +52,7 @@ namespace neb { namespace fin { namespace app {
 			virtual ~base();
 		protected:
 			virtual void			init();
+			void				initRegistry();
 		public:
 			neb::core::math::pose		getPose();
 			neb::core::math::pose		getPoseGlobal();

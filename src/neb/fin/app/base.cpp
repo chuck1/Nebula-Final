@@ -20,6 +20,7 @@
 
 #include <gal/log/log.hpp>
 
+#include <neb/core/free.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
 #include <neb/core/app/__base.hpp>
@@ -30,6 +31,8 @@
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/context/Base.hh>
 #include <neb/gfx/window/Base.hh>
+#include <neb/gfx/core/light/spot.hpp>
+#include <neb/gfx/core/light/point.hpp>
 
 #include <neb/phx/util/log.hpp>
 
@@ -37,18 +40,27 @@
 #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/scene/base.hpp>
 
+#include <neb/fin/core/actor/rigiddynamic/base.hpp>
+#include <neb/fin/core/actor/rigidstatic/base.hpp>
+#include <neb/fin/core/shape/box.hpp>
+#include <neb/fin/core/shape/HeightField.hpp>
+
 #include <neb/py/config.hpp>
 #include <neb/py/core/scene/base.hpp>
 
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
 
-shared_ptr<neb::fin::app::base>		neb::fin::app::base::global() {
+typedef neb::fin::app::base THIS;
+
+shared_ptr<neb::fin::app::base>		THIS::global()
+{
 	auto app(dynamic_pointer_cast<neb::fin::app::base>(g_app_));
 	assert(app);
 	return app;
 }
-shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init() {
+shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init()
+{
 
 	typedef neb::fin::app::base T;
 	
@@ -67,12 +79,15 @@ shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init() {
 	g_app_ = app;
 	return app;
 }
-neb::fin::app::base::base() {
+neb::fin::app::base::base()
+{
 }
-neb::fin::app::base::~base() {
+neb::fin::app::base::~base()
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::fin::app::base::init() {
+void				neb::fin::app::base::init()
+{
 
 	try {
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
@@ -190,6 +205,23 @@ void				neb::fin::app::base::init() {
 		}
 	}
 
+	initRegistry();
+}
+void				THIS::initRegistry()
+{
+	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
+
+	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
+	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
+
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
+	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::HeightField::Base>();
+
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
 }
 void				neb::fin::app::base::release()
 {
@@ -302,18 +334,18 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createScene()
 		}
 
 		//try {
-			console_->eval(
-					"def on_exit(sig, func=None):\n"
-					"    print \"exit handler\"\n"
-					"    import time\n"
-					"    time.sleep(10)"
-					);
-			console_->eval(
-					"set_exit_handler(on_exit)"
-					);
-			console_->eval(
-					"print on_exit"
-					);
+		console_->eval(
+				"def on_exit(sig, func=None):\n"
+				"    print \"exit handler\"\n"
+				"    import time\n"
+				"    time.sleep(10)"
+			      );
+		console_->eval(
+				"set_exit_handler(on_exit)"
+			      );
+		console_->eval(
+				"print on_exit"
+			      );
 		//} catch(bp::error_already_set const &) {
 		//	cout << "unhandled execption\n";
 		//	PyErr_Print();
@@ -332,7 +364,7 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createSceneDll(
 
 	std::shared_ptr<H> h(new H(dll_name, "scene"));
 	h->open();
-	
+
 	std::shared_ptr<T> scene = h->make_shared();
 
 	neb::core::core::scene::util::parent::insert(scene);

@@ -47,16 +47,17 @@ void			THIS::step(gal::etc::timestep const & ts)
 	neb::core::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
-void			THIS::init(parent_t * const & p)
+void			THIS::__init(parent_t * const & p)
 {
 }
-void			THIS::release()
+void			THIS::__release()
 {
 }
-void			THIS::step(gal::etc::timestep const & ts)
+void			THIS::__step(gal::etc::timestep const & ts)
 {
 }
-{wbase		neb::fin::core::scene::base::createActorBase(neb::core::math::pose pose) {
+wbase		neb::fin::core::scene::base::createActorBase(neb::core::math::pose pose)
+{
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -75,7 +76,6 @@ void			THIS::step(gal::etc::timestep const & ts)
 wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
-
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
