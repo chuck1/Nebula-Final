@@ -20,29 +20,43 @@ typedef neb::fin::core::scene::base THIS;
 
 typedef weak_ptr<neb::core::core::actor::base>			wbase;
 
-neb::fin::core::scene::base::base()
+THIS::base()
 {
 }
-void		neb::fin::core::scene::base::init(parent_t * const & p)
+void			THIS::init(parent_t * const & p)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	neb::phx::core::scene::base::init(p);
-	neb::core::core::scene::base::init(p);
+	setParent(p);
+	
+	neb::core::core::scene::base::__init(p);
+	neb::phx::core::scene::base::__init(p);
+	neb::gfx::core::scene::base::__init(p);
 }
-void		neb::fin::core::scene::base::release() {
+void			THIS::release()
+{
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 
-	neb::core::core::scene::base::release();
-
-	neb::phx::core::scene::base::release();
+	neb::core::core::scene::base::__release();
+	neb::phx::core::scene::base::__release();
+	neb::gfx::core::scene::base::__release();
 }
-void		neb::fin::core::scene::base::step(gal::etc::timestep const & ts) {
+void			THIS::step(gal::etc::timestep const & ts)
+{
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
-wbase		neb::fin::core::scene::base::createActorBase(neb::core::math::pose pose) {
+void			THIS::init(parent_t * const & p)
+{
+}
+void			THIS::release()
+{
+}
+void			THIS::step(gal::etc::timestep const & ts)
+{
+}
+{wbase		neb::fin::core::scene::base::createActorBase(neb::core::math::pose pose) {
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
