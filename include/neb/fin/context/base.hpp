@@ -1,5 +1,5 @@
 #ifndef NEBULA_FIN_CONTEXT_BASE_HH
-#define NEBULA_fin_CONTEXT_BASE_HH
+#define NEBULA_FIN_CONTEXT_BASE_HH
 
 #include <neb/gfx/context/Base.hh>
 

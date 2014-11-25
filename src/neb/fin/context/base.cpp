@@ -4,6 +4,8 @@
 #include <neb/gfx/context/util/Parent.hh>
 #include <neb/gfx/window/Base.hh>
 
+#include <neb/fin/environ/two.hpp>
+#include <neb/fin/environ/VisDepth.hpp>
 #include <neb/fin/environ/NormalMap.hpp>
 #include <neb/fin/environ/SceneDefault.hpp>
 #include <neb/fin/environ/shadow/point.hpp>
@@ -32,7 +34,7 @@ std::weak_ptr<neb::gfx::environ::SceneDefault>		THIS::createEnvironSceneDefault(
 
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::NormalMap>		neb::gfx::context::base::createEnvironNormalMap() {
+std::weak_ptr<neb::gfx::environ::NormalMap>		THIS::createEnvironNormalMap() {
 
 	typedef neb::fin::environ::NormalMap E;
 	
@@ -50,11 +52,11 @@ std::weak_ptr<neb::gfx::environ::NormalMap>		neb::gfx::context::base::createEnvi
 
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::shadow::directional>	neb::gfx::context::base::createEnvironShadowDirectional() {
+std::weak_ptr<neb::gfx::environ::shadow::directional>	THIS::createEnvironShadowDirectional() {
 
 	typedef neb::fin::environ::shadow::directional E;
 
-	std::shared_ptr<E> environ (new E());
+	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
 	auto p = getParent();
 	auto w = p->isWindowBase();
@@ -69,10 +71,12 @@ std::weak_ptr<neb::gfx::environ::shadow::directional>	neb::gfx::context::base::c
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::two>			neb::gfx::context::base::createEnvironTwo()
+std::weak_ptr<neb::gfx::environ::two>			THIS::createEnvironTwo()
 {
-	auto environ = std::make_shared<neb::gfx::environ::two>();
+	typedef neb::fin::environ::two E;
 	
+	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
+
 	auto w = getParent()->isWindowBase();
 	if(w)
 	{
@@ -85,9 +89,11 @@ std::weak_ptr<neb::gfx::environ::two>			neb::gfx::context::base::createEnvironTw
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::vis_depth>		neb::gfx::context::base::createEnvironVisDepth()
+std::weak_ptr<neb::gfx::environ::vis_depth>		THIS::createEnvironVisDepth()
 {
-	auto environ = std::make_shared<neb::gfx::environ::vis_depth>();
+	typedef neb::fin::environ::VisDepth E;
+	
+	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
 	auto p = getParent();
 	auto w = p->isWindowBase();
@@ -102,9 +108,11 @@ std::weak_ptr<neb::gfx::environ::vis_depth>		neb::gfx::context::base::createEnvi
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::shadow::point>		neb::gfx::context::base::createEnvironShadowPoint()
+std::weak_ptr<neb::gfx::environ::shadow::point>		THIS::createEnvironShadowPoint()
 {
-	auto environ = sp::make_shared<neb::gfx::environ::shadow::point>();
+	typedef neb::fin::environ::shadow::point E;
+	
+	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
 	auto p = getParent();
 	auto w = p->isWindowBase();

@@ -4,6 +4,7 @@
 #include <neb/core/core/actor/util/decl.hpp>
 
 #include <neb/gfx/RenderDesc.hpp>
+#include <neb/gfx/core/scene/base.hpp>
 
 #include <neb/phx/core/scene/base.hpp>
 
@@ -14,7 +15,8 @@ typedef std::weak_ptr<neb::core::core::actor::base> wbase;
 namespace neb { namespace fin { namespace core { namespace scene {
 	/***/
 	class base:
-		virtual public phx::core::scene::base
+		virtual public neb::phx::core::scene::base,
+		virtual public neb::gfx::core::scene::base
 	{
 		public:
 			base();
