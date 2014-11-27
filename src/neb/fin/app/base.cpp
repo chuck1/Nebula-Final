@@ -308,7 +308,7 @@ neb::core::math::pose						neb::fin::app::base::getPoseGlobal()
 void							neb::fin::app::base::set_should_release()
 {
 }
-std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createScene()
+std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createScene()
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
@@ -323,8 +323,7 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createScene()
 	// python object
 	if(console_)
 	{
-		neb::py::core::scene::base py_scene;
-		py_scene.scene_ = scene;
+		neb::py::core::scene::base py_scene(scene);
 
 		try {
 			console_->main_namespace_["scene"] = py_scene;
@@ -355,7 +354,7 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createScene()
 
 	return scene;
 }
-std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createSceneDll(std::string dll_name)
+std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL(std::string dll_name)
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
@@ -373,8 +372,7 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createSceneDll(
 
 	// python object
 	if(console_) {
-		neb::py::core::scene::base py_scene;
-		py_scene.scene_ = scene;
+		neb::py::core::scene::base py_scene(scene);
 
 		try {
 			console_->main_namespace_["scene"] = py_scene;
@@ -418,7 +416,21 @@ std::weak_ptr<neb::fin::core::scene::base>		neb::fin::app::base::createSceneDll(
 
 	return scene;
 }
+std::weak_ptr<neb::gfx::gui::layout::base>	THIS::createLayout(
+		std::shared_ptr<neb::core::input::source> input_source,
+		std::shared_ptr<neb::gfx::context::base> context)
+{
+	typedef neb::gfx::gui::layout::base T;
 
+	auto layout = neb::gfx::gui::layout::util::parent::create<T>().lock();
 
+	layout->connect(input_source);
+	
+	layout->createObjectTerminal();
+
+	context->setDrawable(layout);
+
+	return layout;
+}
 
 
