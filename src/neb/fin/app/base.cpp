@@ -342,25 +342,6 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createScene()
 			cout << "unhandled execption\n";
 			PyErr_Print();
 		}
-
-		//try {
-		console_->eval(
-				"def on_exit(sig, func=None):\n"
-				"    print \"exit handler\"\n"
-				"    import time\n"
-				"    time.sleep(10)"
-			      );
-		console_->eval(
-				"set_exit_handler(on_exit)"
-			      );
-		console_->eval(
-				"print on_exit"
-			      );
-		//} catch(bp::error_already_set const &) {
-		//	cout << "unhandled execption\n";
-		//	PyErr_Print();
-		//}
-
 	}
 
 	return scene;
