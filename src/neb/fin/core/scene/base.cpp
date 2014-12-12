@@ -23,6 +23,7 @@ typedef weak_ptr<neb::core::core::actor::base>			wbase;
 THIS::base()
 {
 }
+
 void			THIS::init(parent_t * const & p)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -33,6 +34,7 @@ void			THIS::init(parent_t * const & p)
 	neb::phx::core::scene::base::__init(p);
 	neb::gfx::core::scene::base::__init(p);
 }
+
 void			THIS::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -41,12 +43,14 @@ void			THIS::release()
 	neb::phx::core::scene::base::__release();
 	neb::gfx::core::scene::base::__release();
 }
+
 void			THIS::step(gal::etc::timestep const & ts)
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
+
 void			THIS::__init(parent_t * const & p)
 {
 }
