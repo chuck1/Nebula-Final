@@ -3,8 +3,12 @@
 
 typedef neb::fin::app::glfw THIS;
 
-THIS::window_w	THIS::createWindow()
+THIS::window_w THIS::createWindow()
 {
-	return create<neb::fin::window::base>();
+	auto window = create<neb::fin::window::base>();
+	
+	onFirstContext();
+	
+	return window;
 }
 
