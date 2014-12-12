@@ -92,7 +92,8 @@ void				neb::fin::app::base::init()
 	try {
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
 	} catch(bp::error_already_set const &) {
-		std::cout << "unhandled execption\n";
+		printf("unhandled python execption\n");
+		printf("%s\n", STRINGIZE(PY_LIB_NAME));
 		// print all other errors to stderr
 		PyErr_Print();
 	}
