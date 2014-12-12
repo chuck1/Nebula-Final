@@ -89,16 +89,28 @@ neb::fin::app::base::~base()
 void				neb::fin::app::base::init()
 {
 
+	char buffer[256];
+	strcpy(buffer, "import sys\nsys.path.append(\"");
+	strcat(buffer, STRINGIZE(PY_LIB_DIR));
+	strcat(buffer, "\")");
+
 	try {
+		console_->eval(buffer);
+
+		
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
 		printf("%s\n", STRINGIZE(PY_LIB_NAME));
 		// print all other errors to stderr
 		PyErr_Print();
+
+		printf("lines: %lu\n", console_->lines_.size());
+
+		abort();
 	}
-
-
+	
+	
 	// log levels
 
 	struct Pair {
