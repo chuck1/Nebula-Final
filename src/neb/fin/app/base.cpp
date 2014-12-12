@@ -45,7 +45,7 @@
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
 
-#include <neb/py/config.hpp>
+#include <neb/py/util/config.hpp>
 #include <neb/py/core/scene/base.hpp>
 
 #define STRINGIZE2(x) #x
