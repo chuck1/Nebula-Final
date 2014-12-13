@@ -66,7 +66,7 @@ shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init()
 	
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 	
-	app->neb::core::app::__base::init();
+	app->neb::core::app::base::__init();
 
 	app->neb::gfx::app::__gfx::init();
 	app->neb::gfx::app::__gfx_glsl::__init();
@@ -74,7 +74,7 @@ shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init()
 
 	app->neb::phx::app::base::__init();
 
-	app->neb::fin::app::base::init();
+	app->neb::fin::app::base::__init();
 
 	g_app_ = app;
 	return app;
@@ -86,7 +86,7 @@ neb::fin::app::base::~base()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::fin::app::base::init()
+void				neb::fin::app::base::__init()
 {
 
 	char buffer[256];
@@ -237,7 +237,7 @@ void				THIS::initRegistry()
 void				neb::fin::app::base::release()
 {
 	//neb::core::app::__base::__release();
-	nc::app::__core::__release();
+	nc::app::base::__release();
 
 	neb::gfx::app::__gfx::release();
 	//neb::gfx::app::__gfx_glsl::__release();
@@ -247,7 +247,7 @@ void				neb::fin::app::base::release()
 }
 void				neb::fin::app::base::loop() {
 
-	auto self(std::dynamic_pointer_cast<neb::core::app::__base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::core::app::base>(shared_from_this()));
 	assert(self);
 
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));

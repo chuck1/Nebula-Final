@@ -11,7 +11,7 @@
 #include <gal/itf/shared.hpp>
 #include <gal/stl/wrapper.hpp>
 
-#include <neb/core/app/__core.hpp>
+#include <neb/core/app/__base.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/util/wrapper.hpp>
@@ -37,7 +37,7 @@ namespace neb { namespace fin { namespace app {
 	 * final implementation
 	 */
 	class base:
-		virtual public neb::core::app::__core,
+		virtual public neb::core::app::base,
 		virtual public neb::gfx::app::__gfx,
 		virtual public neb::gfx::app::__gfx_glsl,
 		virtual public neb::fin::app::glfw,
@@ -51,8 +51,9 @@ namespace neb { namespace fin { namespace app {
 			base();
 			virtual ~base();
 		protected:
-			virtual void					init();
-			void						initRegistry();
+			//virtual void						init();
+			void							__init();
+			void							initRegistry();
 		public:
 			neb::core::math::pose					getPose();
 			neb::core::math::pose					getPoseGlobal();
