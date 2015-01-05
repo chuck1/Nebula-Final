@@ -51,7 +51,7 @@ std::weak_ptr<neb::core::core::shape::base>	THIS::createShapeBase(neb::core::mat
 	return shape;
 }
 std::weak_ptr<neb::core::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
-		neb::core::core::shape::cuboid::desc const & desc)
+		neb::core::core::shape::cuboid::Desc const & desc)
 {
 
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));

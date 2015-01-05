@@ -38,7 +38,7 @@ namespace neb { namespace fin { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCuboid(
-					neb::core::core::shape::cuboid::desc const &);
+					neb::core::core::shape::cuboid::Desc const &);
 			/** @brief
 			 *
 			 */
