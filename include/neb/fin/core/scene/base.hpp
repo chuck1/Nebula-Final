@@ -39,6 +39,7 @@ namespace neb { namespace fin { namespace core { namespace scene {
 			virtual wbase			createActorBase(neb::core::math::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 			/***/
+			virtual wbase			createActorRigidDynamic();
 			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::desc const * const &);
 			/***/
 			virtual wbase			createActorRigidDynamicUninitialized();

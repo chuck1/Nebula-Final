@@ -23,7 +23,6 @@ typedef weak_ptr<neb::core::core::actor::base>			wbase;
 THIS::base()
 {
 }
-
 void			THIS::init(parent_t * const & p)
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -34,7 +33,6 @@ void			THIS::init(parent_t * const & p)
 	neb::phx::core::scene::base::__init(p);
 	neb::gfx::core::scene::base::__init(p);
 }
-
 void			THIS::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
@@ -43,14 +41,12 @@ void			THIS::release()
 	neb::phx::core::scene::base::__release();
 	neb::gfx::core::scene::base::__release();
 }
-
 void			THIS::step(gal::etc::timestep const & ts)
 {
 	//std::cout << __PRETTY_FUNCTION__ << std::endl;
 	neb::core::core::scene::base::step(ts);
 	neb::phx::core::scene::base::step(ts);
 }
-
 void			THIS::__init(parent_t * const & p)
 {
 }
@@ -117,12 +113,9 @@ wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 	return actor;
 
 }
-wbase			neb::fin::core::scene::base::createActorRigidDynamic(
-		neb::core::core::actor::rigiddynamic::desc const * const & desc
-		)
+wbase			neb::fin::core::scene::base::createActorRigidDynamic()
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
-
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -140,7 +133,28 @@ wbase			neb::fin::core::scene::base::createActorRigidDynamic(
 	actor->init(this);
 
 	return actor;
+}
+wbase			neb::fin::core::scene::base::createActorRigidDynamic(
+		neb::core::core::actor::rigiddynamic::desc const * const & desc)
+{
+	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
+	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+
+	typedef neb::fin::core::actor::rigiddynamic::base T;
+
+	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
+
+	neb::core::core::actor::util::parent::insert(actor);
+
+	actor->simulation_.word0 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
+	actor->simulation_.word2 = phx::filter::filter::type::DYNAMIC;
+	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
+
+	actor->init(this);
+
+	return actor;
 }
 
 typedef neb::core::core::scene::base Base1;
