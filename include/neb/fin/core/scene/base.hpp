@@ -40,7 +40,7 @@ namespace neb { namespace fin { namespace core { namespace scene {
 			virtual wbase			createActorRigidStaticUninitialized();
 			/***/
 			virtual wbase			createActorRigidDynamic();
-			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::desc const * const &);
+			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::Desc const * const &);
 			/***/
 			virtual wbase			createActorRigidDynamicUninitialized();
 	};

@@ -135,7 +135,7 @@ wbase			neb::fin::core::scene::base::createActorRigidDynamic()
 	return actor;
 }
 wbase			neb::fin::core::scene::base::createActorRigidDynamic(
-		neb::core::core::actor::rigiddynamic::desc const * const & desc)
+		neb::core::core::actor::rigiddynamic::Desc const * const & desc)
 {
 	LOG(lg, neb::core::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
