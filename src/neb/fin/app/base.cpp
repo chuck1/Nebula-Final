@@ -59,7 +59,7 @@ shared_ptr<neb::fin::app::base>		THIS::global()
 	assert(app);
 	return app;
 }
-shared_ptr<neb::fin::app::base>		neb::fin::app::base::s_init()
+std::shared_ptr<neb::fin::app::base>	THIS::s_init(int * ac, char ** av)
 {
 
 	typedef neb::fin::app::base T;

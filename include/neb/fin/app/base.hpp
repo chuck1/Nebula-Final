@@ -47,7 +47,7 @@ namespace neb { namespace fin { namespace app {
 		public:
 			typedef std::weak_ptr<neb::core::core::scene::base>	scene_w;
 			static std::shared_ptr<neb::fin::app::base>		global();
-			static std::shared_ptr<neb::fin::app::base>		s_init();
+			static std::shared_ptr<neb::fin::app::base>		s_init(int * ac, char ** av);
 			base();
 			virtual ~base();
 		protected:
