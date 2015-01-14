@@ -22,7 +22,7 @@ namespace neb { namespace fin { namespace core { namespace actor {
 				virtual void						release();
 				virtual void						step(gal::etc::timestep const & ts);
 
-
+		
 		};
 	}
 
