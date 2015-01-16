@@ -18,6 +18,8 @@
 #include <gal/etc/stopwatch.hpp>
 #include <gal/dll/helper.hpp>
 
+#include <argparse.hpp>
+
 #include <gal/log/log.hpp>
 
 #include <neb/core/free.hpp>
@@ -59,10 +61,11 @@ shared_ptr<neb::fin::app::base>		THIS::global()
 	assert(app);
 	return app;
 }
-std::shared_ptr<neb::fin::app::base>	THIS::s_init(int * ac, char ** av)
+std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 {
-
 	typedef neb::fin::app::base T;
+	
+	auto args = Parse(ac, av, "");
 	
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 	
