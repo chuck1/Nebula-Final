@@ -62,6 +62,7 @@ namespace neb { namespace fin { namespace app {
 			}
 			void							release();
 			virtual void						step(gal::etc::timestep const & ts);
+			void							preloop();
 			void							loop();
 			void							set_should_release();
 			virtual std::weak_ptr<neb::core::core::scene::base>	createScene();

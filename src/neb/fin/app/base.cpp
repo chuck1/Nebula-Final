@@ -35,7 +35,7 @@
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/core/light/point.hpp>
-
+#include <neb/gfx/gui/layout/util/parent.hpp>
 #include <neb/phx/util/log.hpp>
 
 
@@ -66,6 +66,14 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	typedef neb::fin::app::base T;
 	
 	auto args = Parse(ac, av, "");
+	
+	if(args.has_long("python")) {
+		auto filename = args.get_value_from_long("python");
+
+		printf("%s\n", filename.c_str());
+
+		exit(0);
+	}
 	
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 	
@@ -248,8 +256,12 @@ void				neb::fin::app::base::release()
 	neb::phx::app::base::__release();
 
 }
-void				neb::fin::app::base::loop() {
-
+void				neb::fin::app::base::preloop()
+{
+	neb::gfx::gui::layout::util::parent::preloop();
+}
+void				neb::fin::app::base::loop()
+{
 	auto self(std::dynamic_pointer_cast<neb::core::app::base>(shared_from_this()));
 	assert(self);
 
@@ -259,6 +271,8 @@ void				neb::fin::app::base::loop() {
 	static gal::etc::stopwatch sw_render;
 
 	double t;
+
+	preloop();
 
 	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
 
@@ -403,10 +417,6 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL
 		console_->eval(
 				"print on_exit"
 			      );
-
-
-
-
 	}
 
 	return scene;
