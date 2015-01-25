@@ -13,7 +13,7 @@ namespace neb { namespace fin { namespace app {
 	{
 		public:
 			typedef std::weak_ptr<neb::gfx::window::base>		window_w;
-			window_w						createWindow();
+			virtual window_w					createWindow();
 	};
 }}}
 
