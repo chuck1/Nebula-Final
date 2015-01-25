@@ -64,19 +64,21 @@ shared_ptr<neb::fin::app::base>		THIS::global()
 std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 {
 	typedef neb::fin::app::base T;
-	
+
+	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
+
+	// parse args	
 	auto args = Parse(ac, av, "");
 	
 	if(args.has_long("python")) {
 		auto filename = args.get_value_from_long("python");
 
-		printf("%s\n", filename.c_str());
+		app->_M_preloop_scripts_python.push_back(filename);
 
-		exit(0);
+		printf("%s\n", filename.c_str());
 	}
 	
-	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
-	
+	// continue init
 	app->neb::core::app::base::__init();
 
 	app->neb::gfx::app::__gfx::init();
