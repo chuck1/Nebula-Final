@@ -2,6 +2,8 @@
 #include <gal/stl/deleter.hpp>
 
 #include <neb/gfx/context/util/Parent.hh>
+#include <neb/gfx/core/light/directional.hpp>
+#include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/window/Base.hh>
 
 #include <neb/fin/environ/two.hpp>

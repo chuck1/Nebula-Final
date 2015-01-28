@@ -7,7 +7,7 @@
 
 typedef neb::fin::context::util::parent THIS;
 
-std::weak_ptr<neb::gfx::context::window>	THIS::createContextWindow()
+std::weak_ptr<neb::core::context::Window>	THIS::createContextWindow()
 {
 	//auto self = isWindowBase();
 	//assert(self);
@@ -22,7 +22,7 @@ std::weak_ptr<neb::gfx::context::window>	THIS::createContextWindow()
 	
 	return context;*/
 }
-std::weak_ptr<neb::gfx::context::fbo>		THIS::createContextFBO()
+std::weak_ptr<neb::core::context::FBO>		THIS::createContextFBO()
 {
 
 	return create<neb::fin::context::fbo>();
@@ -38,11 +38,11 @@ std::weak_ptr<neb::gfx::context::fbo>		THIS::createContextFBO()
 
 	return context;*/
 }
-std::weak_ptr<neb::gfx::context::fbo_multi>	THIS::createContextFBOMulti()
+std::weak_ptr<neb::core::context::FBOM>		THIS::createContextFBOMulti()
 {
 	return create<neb::fin::context::FBOMulti>();
 }
-std::weak_ptr<neb::gfx::context::window>	THIS::createContextVisDepth()
+std::weak_ptr<neb::core::context::Window>	THIS::createContextVisDepth()
 {
 	return create<neb::fin::context::window>();
 }
