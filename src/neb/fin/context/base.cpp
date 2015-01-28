@@ -1,6 +1,8 @@
 
 #include <gal/stl/deleter.hpp>
 
+#include <neb/core/environ/util/decl.hpp>
+
 #include <neb/gfx/context/util/Parent.hh>
 #include <neb/gfx/core/light/directional.hpp>
 #include <neb/gfx/core/light/point.hpp>
@@ -18,13 +20,13 @@
 
 typedef neb::fin::context::base THIS;
 
-std::weak_ptr<neb::gfx::environ::SceneDefault>		THIS::createEnvironSceneDefault()
+std::weak_ptr<neb::core::environ::SceneDefault>		THIS::createEnvironSceneDefault()
 {
 	typedef neb::fin::environ::SceneDefault E;
 	
 	std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
 
-	auto w = getParent()->isWindowBase();
+	auto w = getParent()->is_fnd_window_base();
 	if(w)
 	{
 		w->makeCurrent();
@@ -36,8 +38,8 @@ std::weak_ptr<neb::gfx::environ::SceneDefault>		THIS::createEnvironSceneDefault(
 
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::NormalMap>		THIS::createEnvironNormalMap() {
-
+std::weak_ptr<neb::core::environ::visualization::Normal>	THIS::createEnvironNormalMap()
+{
 	typedef neb::fin::environ::NormalMap E;
 	
 	std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
@@ -54,8 +56,8 @@ std::weak_ptr<neb::gfx::environ::NormalMap>		THIS::createEnvironNormalMap() {
 
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::shadow::directional>	THIS::createEnvironShadowDirectional() {
-
+std::weak_ptr<neb::gfx::environ::shadow::directional>	THIS::createEnvironShadowDirectional()
+{
 	typedef neb::fin::environ::shadow::directional E;
 
 	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());

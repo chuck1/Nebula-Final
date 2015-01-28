@@ -425,7 +425,7 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL
 }
 std::weak_ptr<neb::gfx::gui::layout::base>	THIS::createLayout(
 		std::shared_ptr<neb::core::input::source> input_source,
-		std::shared_ptr<neb::gfx::context::base> context)
+		std::shared_ptr<neb::core::context::Base> context)
 {
 	typedef neb::gfx::gui::layout::base T;
 
