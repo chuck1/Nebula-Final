@@ -3,16 +3,16 @@
 
 #include <neb/gfx/environ/vis_depth.hpp>
 
-#include <neb/fin/environ/VisDepth.hpp>
+//#include <neb/fin/environ/VisDepth.hpp>
 
-namespace neb { namespace fin { namespace environ {
+namespace neb { namespace fin { namespace environ { namespace visualization {
 	/** @brief base
 	 */
-	class VisDepth:
+	class Depth:
 		virtual public neb::gfx::environ::vis_depth,
 		virtual public neb::fin::environ::base
 	{
 	};
-}}}
+}}}}
 
 #endif

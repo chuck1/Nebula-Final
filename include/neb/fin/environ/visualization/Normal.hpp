@@ -1,13 +1,14 @@
 #ifndef NEBULA_FIN_ENVIRON_NORMAL_MAP_HPP
 #define NEBULA_FIN_ENVIRON_NORMAL_MAP_HPP
 
-#include <neb/fin/environ/base.hpp>
 #include <neb/gfx/environ/NormalMap.hpp>
 
-namespace neb { namespace fin { namespace environ {
-	/** @brief base
+#include <neb/fin/environ/base.hpp>
+
+namespace neb { namespace fin { namespace environ { namespace visualization {
+	/** @brief Normal
 	 */
-	class NormalMap:
+	class Normal:
 		virtual public neb::gfx::environ::NormalMap,
 		virtual public neb::fin::environ::base
 	{
@@ -19,9 +20,6 @@ namespace neb { namespace fin { namespace environ {
 			//virtual void		init();
 			//virtual void		step(gal::etc::timestep const & ts);
 	};
-
-
-}}}
-
+}}}}
 
 #endif
