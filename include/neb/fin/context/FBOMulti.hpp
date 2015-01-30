@@ -12,6 +12,8 @@ namespace neb { namespace fin { namespace context {
 		virtual public neb::gfx::context::fbo_multi,
 		virtual public neb::fin::context::base
 	{
+		virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
+		virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
 	};
 }}}
 

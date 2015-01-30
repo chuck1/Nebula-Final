@@ -3,6 +3,8 @@
 
 #include <neb/gfx/context/fbo.hpp>
 
+#include <neb/fin/context/window.hpp>
+
 namespace neb { namespace fin { namespace context {
 	/** @brief Context
 	 *
@@ -13,8 +15,10 @@ namespace neb { namespace fin { namespace context {
 	 */
 	class fbo:
 		virtual public neb::gfx::context::fbo,
-		virtual public neb::fin::context::base
+		virtual public neb::fin::context::Window
 	{
+		virtual void								render();
+		virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
 	};
 }}}
 

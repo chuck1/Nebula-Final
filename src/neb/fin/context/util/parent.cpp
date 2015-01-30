@@ -12,7 +12,7 @@ std::weak_ptr<neb::core::context::Window>	THIS::createContextWindow()
 	//auto self = isWindowBase();
 	//assert(self);
 	
-	return create<neb::fin::context::window>();
+	return create<neb::fin::context::Window>();
 	/*
 	std::shared_ptr<C_W> context(new C_W());
 	
@@ -44,6 +44,6 @@ std::weak_ptr<neb::core::context::FBOM>		THIS::createContextFBOMulti()
 }
 std::weak_ptr<neb::core::context::Window>	THIS::createContextVisDepth()
 {
-	return create<neb::fin::context::window>();
+	return create<neb::fin::context::Window>();
 }
 

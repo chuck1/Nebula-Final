@@ -8,10 +8,16 @@
 namespace neb { namespace fin { namespace context {
 	/** @brief %window
 	 */
-	class window:
-		virtual public neb::gfx::context::window,
+	class Window:
+		virtual public neb::gfx::context::Window,
 		virtual public neb::fin::context::base
 	{
+			virtual void		init(parent_t * const parent);
+			virtual void		step(gal::etc::timestep const & ts);
+			virtual void		render();
+//			virtual void		setDrawable(std::shared_ptr<neb::core::drawable::Base>);
+//			virtual void		setEnviron(std::shared_ptr<neb::core::environ::Base>)  0;
+
 	};
 }}}
 
