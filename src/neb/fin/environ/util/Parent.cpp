@@ -1,88 +1,107 @@
+#include <gal/stl/deleter.hpp>
 
+#include <neb/core/context/Window.hpp>
+#include <neb/core/context/util/Parent.hpp>
+#include <neb/core/window/Base.hpp>
 
-typedef neb::fin::context::base THIS;
+#include <neb/gfx/core/light/directional.hpp>
+#include <neb/gfx/core/light/point.hpp>
 
-std::weak_ptr<neb::core::environ::SceneDefault>		THIS::createEnvironSceneDefault()
+#include <neb/fin/environ/two.hpp>
+#include <neb/fin/environ/SceneDefault.hpp>
+#include <neb/fin/environ/util/Parent.hpp>
+#include <neb/fin/environ/visualization/Depth.hpp>
+#include <neb/fin/environ/visualization/Normal.hpp>
+#include <neb/fin/environ/shadow/Directional.hpp>
+#include <neb/fin/environ/shadow/Point.hpp>
+
+typedef neb::fin::environ::util::Parent THIS;
+
+std::weak_ptr<neb::core::environ::SceneDefault>			THIS::createEnvironSceneDefault()
 {
 	typedef neb::fin::environ::SceneDefault E;
 	
 	std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
+	
+	auto c = is_fnd_context_Base();
 
-	auto w = getParent()->is_fnd_window_base();
-	if(w)
-	{
+	auto w = c->getParent()->is_fnd_window_base();
+	if(w) {
 		w->makeCurrent();
 	}
-
+	
 	environ->init();
 
-	environ_ = environ;
+	c->setEnviron(environ);
 
 	return environ;
 }
-std::weak_ptr<neb::core::environ::visualization::Normal>	THIS::createEnvironNormalMap()
+std::weak_ptr<neb::core::environ::visualization::Normal>	THIS::createEnvironVisualizationNormal()
 {
-	typedef neb::fin::environ::NormalMap E;
+	typedef neb::fin::environ::visualization::Normal E;
 	
 	std::shared_ptr<E> environ(new E(), gal::stl::deleter<E>());
 
-	auto w = getParent()->isWindowBase();
-	if(w)
-	{
+	auto c = is_fnd_context_Base();
+	
+	auto w = c->getParent()->is_fnd_window_base();
+	if(w) {
 		w->makeCurrent();
 	}
 
 	environ->init();
 
-	environ_ = environ;
+	c->setEnviron(environ);
 
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::shadow::directional>	THIS::createEnvironShadowDirectional()
+std::weak_ptr<neb::core::environ::shadow::Directional>		THIS::createEnvironShadowDirectional()
 {
-	typedef neb::fin::environ::shadow::directional E;
+	typedef neb::fin::environ::shadow::Directional E;
 
 	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
-	auto p = getParent();
-	auto w = p->isWindowBase();
-	if(w)
-	{
+	auto c = is_fnd_context_Base();
+
+	auto w = c->getParent()->is_fnd_window_base();
+	if(w) {
 		w->makeCurrent();
 	}
 
 	environ->init();
 	
-	environ_ = environ;
+	c->setEnviron(environ);
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::two>			THIS::createEnvironTwo()
+std::weak_ptr<neb::core::environ::Two>			THIS::createEnvironTwo()
 {
-	typedef neb::fin::environ::two E;
+	typedef neb::fin::environ::Two E;
 	
 	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
-	auto w = getParent()->isWindowBase();
-	if(w)
-	{
+	auto c = is_fnd_context_Base();
+	
+	auto w = c->getParent()->is_fnd_window_base();
+	if(w) {
 		w->makeCurrent();
 	}
 
 	environ->init();
 
-	environ_ = environ;
+	c->setEnviron(environ);
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::vis_depth>		THIS::createEnvironVisDepth()
+std::weak_ptr<neb::core::environ::visualization::Depth>		THIS::createEnvironVisualizationDepth()
 {
-	typedef neb::fin::environ::VisDepth E;
+	typedef neb::fin::environ::visualization::Depth E;
 	
 	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
-	auto p = getParent();
-	auto w = p->isWindowBase();
+	auto c = is_fnd_context_Base();
+
+	auto w = c->getParent()->is_fnd_window_base();
 	if(w)
 	{
 		w->makeCurrent();
@@ -90,26 +109,25 @@ std::weak_ptr<neb::gfx::environ::vis_depth>		THIS::createEnvironVisDepth()
 
 	environ->init();
 	
-	environ_ = environ;
+	c->setEnviron(environ);
 	
 	return environ;
 }
-std::weak_ptr<neb::gfx::environ::shadow::point>		THIS::createEnvironShadowPoint()
+std::weak_ptr<neb::core::environ::shadow::Point>		THIS::createEnvironShadowPoint()
 {
-	typedef neb::fin::environ::shadow::point E;
+	typedef neb::fin::environ::shadow::Point E;
 	
 	std::shared_ptr<E> environ (new E(), gal::stl::deleter<E>());
 
-	auto p = getParent();
-	auto w = p->isWindowBase();
-	if(w)
-	{
-		w->makeCurrent();
-	}
+	auto c = is_fnd_context_Base();
+
+	auto w = c->getParent()->is_fnd_window_base();
+	if(w) w->makeCurrent();
 
 	environ->init();
 	
-	environ_ = environ;
+	c->setEnviron(environ);
 	
 	return environ;
 }
+

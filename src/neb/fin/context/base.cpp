@@ -1,4 +1,5 @@
 
+
 #include <gal/stl/deleter.hpp>
 
 #include <neb/core/environ/util/decl.hpp>
@@ -9,7 +10,7 @@
 #include <neb/gfx/window/Base.hh>
 
 #include <neb/fin/environ/two.hpp>
-#include <neb/fin/environ/VisDepth.hpp>
+//#include <neb/fin/environ/VisDepth.hpp>
 #include <neb/fin/environ/NormalMap.hpp>
 #include <neb/fin/environ/SceneDefault.hpp>
 #include <neb/fin/environ/shadow/point.hpp>

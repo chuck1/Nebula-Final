@@ -8,7 +8,7 @@
 namespace neb { namespace fin { namespace environ { namespace shadow {
 	/** @brief base
 	 */
-	class directional:
+	class Directional:
 		virtual public neb::gfx::environ::shadow::directional,
        		virtual public neb::fin::environ::base
 	{

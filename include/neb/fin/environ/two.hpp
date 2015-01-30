@@ -8,7 +8,7 @@
 namespace neb { namespace fin { namespace environ {
 	/** @brief base
 	 */
-	class two:
+	class Two:
 		virtual public neb::gfx::environ::two,
 		virtual public neb::fin::environ::base
 	{
