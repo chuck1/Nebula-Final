@@ -12,6 +12,7 @@ namespace neb { namespace fin { namespace context {
 		virtual public neb::gfx::context::Window,
 		virtual public neb::fin::context::base
 	{
+		public:
 			virtual void		init(parent_t * const parent);
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		render();

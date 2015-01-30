@@ -17,8 +17,12 @@ namespace neb { namespace fin { namespace context {
 		virtual public neb::gfx::context::fbo,
 		virtual public neb::fin::context::Window
 	{
-		virtual void								render();
-		virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
+		public:
+			typedef neb::core::environ::shadow::Directional ESD;
+
+			virtual void			init(parent_t * const parent);
+			virtual void			render();
+			virtual std::weak_ptr<ESD>	createEnvironShadowDirectional();
 	};
 }}}
 

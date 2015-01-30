@@ -12,10 +12,12 @@ namespace neb { namespace fin { namespace context {
 		virtual public neb::gfx::context::fbo_multi,
 		virtual public neb::fin::context::base
 	{
-		virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
-		virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
+		public:
+			virtual void		init(parent_t * const parent);
+			virtual void		setTexture(std::shared_ptr<neb::core::itf::shared>);
+			virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
+			virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
 	};
 }}}
 
 #endif
-
