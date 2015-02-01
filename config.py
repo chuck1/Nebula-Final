@@ -61,7 +61,7 @@ INCLUDE(cmh_library)
 add_subdirectory(test)
 """
 
-l = Library("nebula_final")
+l = Static("nebula_final")
 
 l.inc_dirs.append("/usr/include/freetype2")
 
