@@ -10,7 +10,7 @@ namespace neb { namespace fin { namespace context {
 	 */
 	class Window:
 		virtual public neb::gfx::context::Window,
-		virtual public neb::fin::context::base
+		virtual public neb::fin::context::Base
 	{
 		public:
 			virtual void		init(parent_t * const parent);

@@ -10,7 +10,7 @@
 namespace neb { namespace fin { namespace context {
 	/** @brief Context
 	*/
-	class base:
+	class Base:
 		virtual public neb::gfx::context::base,
 		virtual public neb::fin::environ::util::Parent
 	{

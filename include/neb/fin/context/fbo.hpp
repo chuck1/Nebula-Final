@@ -23,8 +23,8 @@ namespace neb { namespace fin { namespace context {
 			virtual void			init(parent_t * const parent);
 			virtual void			render();
 			virtual std::weak_ptr<ESD>	createEnvironShadowDirectional();
+			virtual void			setTexture(std::shared_ptr<neb::core::itf::shared>);
 	};
 }}}
 
 #endif
-

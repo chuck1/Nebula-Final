@@ -28,7 +28,6 @@ FIND_PACKAGE(nebula 0 COMPONENTS
 	python
 	REQUIRED)
 
-include_directories("/usr/include/freetype2")
 include_directories(${physx_INCLUDE_DIR})
 
 ADD_DEFINITIONS("-DGLM_FORCE_RADIANS")
@@ -63,6 +62,8 @@ add_subdirectory(test)
 """
 
 l = Library("nebula_final")
+
+l.inc_dirs.append("/usr/include/freetype2")
 
 l.require("galaxy_std")
 l.require("galaxy_log")
