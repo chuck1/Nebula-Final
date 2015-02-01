@@ -3,7 +3,7 @@
 
 #include <neb/gfx/context/fbo.hpp>
 
-#include <neb/fin/context/window.hpp>
+#include <neb/fin/context/Window.hpp>
 
 namespace neb { namespace fin { namespace context {
 	/** @brief Context

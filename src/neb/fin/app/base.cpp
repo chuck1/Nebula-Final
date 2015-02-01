@@ -36,18 +36,17 @@
 #include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/gui/layout/util/parent.hpp>
-#include <neb/phx/util/log.hpp>
 
+#include <neb/phx/util/log.hpp>
 
 #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/scene/base.hpp>
-
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
 
-#include <neb/py/util/config.hpp>
+#include <neb/py/util/config.hpp> // neb/py/util/config.hpp.in
 #include <neb/py/core/scene/base.hpp>
 
 #define STRINGIZE2(x) #x
@@ -106,6 +105,8 @@ void				neb::fin::app::base::__init()
 	strcpy(buffer, "import sys\nsys.path.append(\"");
 	strcat(buffer, STRINGIZE(PY_LIB_DIR));
 	strcat(buffer, "\")");
+
+	printf("%s\n", buffer);
 
 	try {
 		console_->eval(buffer);

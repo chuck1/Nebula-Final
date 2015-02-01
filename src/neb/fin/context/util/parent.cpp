@@ -1,7 +1,7 @@
 
 #include <neb/fin/context/util/parent.hpp>
 
-#include <neb/fin/context/window.hpp>
+#include <neb/fin/context/Window.hpp>
 #include <neb/fin/context/fbo.hpp>
 #include <neb/fin/context/FBOMulti.hpp>
 
