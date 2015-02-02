@@ -424,15 +424,15 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL
 
 	return scene;
 }
-std::weak_ptr<neb::gfx::gui::layout::base>	THIS::createLayout(
-		std::shared_ptr<neb::core::input::source> input_source,
+std::weak_ptr<neb::core::gui::layout::Base>	THIS::createLayout(
+		std::shared_ptr<neb::core::window::Base> window,
 		std::shared_ptr<neb::core::context::Base> context)
 {
 	typedef neb::gfx::gui::layout::base T;
 
 	auto layout = neb::gfx::gui::layout::util::parent::create<T>().lock();
 
-	layout->connect(input_source);
+	layout->connect(window);
 	
 	layout->createObjectTerminal();
 

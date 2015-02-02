@@ -67,8 +67,8 @@ namespace neb { namespace fin { namespace app {
 			void							set_should_release();
 			virtual std::weak_ptr<neb::core::core::scene::base>	createScene();
 			virtual std::weak_ptr<neb::core::core::scene::base>	createSceneDLL(std::string);
-			virtual std::weak_ptr<neb::gfx::gui::layout::base>	createLayout(
-					std::shared_ptr<neb::core::input::source> input_source,
+			virtual std::weak_ptr<neb::core::gui::layout::Base>	createLayout(
+					std::shared_ptr<neb::core::window::Base> window,
 					std::shared_ptr<neb::core::context::Base> context);
 	};
 }}}
