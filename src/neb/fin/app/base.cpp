@@ -1,7 +1,3 @@
-
-
-#include <neb/gfx/gui/object/terminal.hh>
-
 #include <fstream>
 #include <algorithm>
 #include <stdio.h>
@@ -17,10 +13,9 @@
 #include <gal/console/base.hpp>
 #include <gal/etc/stopwatch.hpp>
 #include <gal/dll/helper.hpp>
-
-#include <argparse.hpp>
-
 #include <gal/log/log.hpp>
+#include <gal/stl/deleter.hpp>
+#include <argparse.hpp>
 
 #include <neb/core/free.hpp>
 #include <neb/core/util/config.hpp>
@@ -28,16 +23,19 @@
 #include <neb/core/app/__base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
-#include <gal/stl/deleter.hpp>
-
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/context/Base.hh>
 #include <neb/gfx/window/Base.hh>
 #include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/gui/layout/util/parent.hpp>
+#include <neb/gfx/gui/object/terminal.hh>
 
 #include <neb/phx/util/log.hpp>
+
+#include <neb/py/util/config.hpp> // neb/py/util/config.hpp.in
+#include <neb/py/core/scene/base.hpp>
+#include <neb/py/app/base.hpp>
 
 #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/scene/base.hpp>
@@ -45,9 +43,7 @@
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
-
-#include <neb/py/util/config.hpp> // neb/py/util/config.hpp.in
-#include <neb/py/core/scene/base.hpp>
+#include <neb/fin/util/log.hpp>
 
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
@@ -56,12 +52,16 @@ typedef neb::fin::app::base THIS;
 
 shared_ptr<neb::fin::app::base>		THIS::global()
 {
+	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+
 	auto app(dynamic_pointer_cast<neb::fin::app::base>(g_app_));
 	assert(app);
 	return app;
 }
 std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 {
+	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+
 	typedef neb::fin::app::base T;
 
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
@@ -88,6 +88,8 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 
 	app->neb::fin::app::base::__init();
 
+
+	LOG(lg, neb::fin::sl, debug) << "&g_app_ = " << &g_app_;
 	g_app_ = app;
 	return app;
 }
@@ -98,9 +100,8 @@ neb::fin::app::base::~base()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 }
-void				neb::fin::app::base::__init()
+void			THIS::__init()
 {
-
 	char buffer[256];
 	strcpy(buffer, "import sys\nsys.path.append(\"");
 	strcat(buffer, STRINGIZE(PY_LIB_DIR));
@@ -108,9 +109,12 @@ void				neb::fin::app::base::__init()
 
 	printf("%s\n", buffer);
 
+	auto app = global();
+
 	try {
 		console_->eval(buffer);
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
+		console_->main_namespace_["neb"]["app"] = neb::py::app::base(app);
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
 		printf("%s\n", STRINGIZE(PY_LIB_NAME));
@@ -122,10 +126,10 @@ void				neb::fin::app::base::__init()
 		abort();
 	}
 	
-	
 	// log levels
 
-	struct Pair {
+	struct Pair
+	{
 		char const *		c;
 		severity_level * const	sl;
 	};
@@ -145,7 +149,6 @@ void				neb::fin::app::base::__init()
 		{"neb phx actor",	&neb::phx::core::actor::sl},
 		{"neb phx shape",	&neb::phx::core::shape::sl}
 	};
-
 
 /*	std::map<std::string, int> map_var({
 			{"neb core",		0},

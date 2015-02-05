@@ -14,5 +14,6 @@ void		THIS::step(gal::etc::timestep const & ts)
 }
 void		THIS::render()
 {
+	neb::gfx::context::Window::render();
 }
 
