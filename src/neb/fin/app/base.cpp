@@ -109,12 +109,16 @@ void			THIS::__init()
 
 	printf("%s\n", buffer);
 
-	auto app = global();
+	//auto app = global();
+	
+	auto me = std::dynamic_pointer_cast<THIS>(shared_from_this());
+
+	neb::py::app::Base py_app(me);
 
 	try {
 		console_->eval(buffer);
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
-		console_->main_namespace_["neb"]["app"] = neb::py::app::Base(app);
+		console_->main_namespace_["app"] = py_app;
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
 		printf("%s\n", STRINGIZE(PY_LIB_NAME));
@@ -320,8 +324,8 @@ void				neb::fin::app::base::loop()
 
 	}
 }
-void				neb::fin::app::base::step(gal::etc::timestep const & ts) {
-
+void							THIS::step(gal::etc::timestep const & ts)
+{
 	neb::core::core::scene::util::parent::step(ts);
 
 	neb::gfx::gui::layout::util::parent::step(ts);
@@ -332,17 +336,28 @@ void				neb::fin::app::base::step(gal::etc::timestep const & ts) {
 
 	glfwPollEvents();
 }
-neb::core::math::pose						neb::fin::app::base::getPose() {
-	return neb::core::math::pose();
+void				neb::fin::app::base::render()
+{
+	//neb::core::core::scene::util::parent::render();
+
+	//neb::gfx::gui::layout::util::parent::render();
+
+	//nc::game::game::util::parent::render();
+
+	neb::gfx::window::util::parent::render();
 }
-neb::core::math::pose						neb::fin::app::base::getPoseGlobal()
+neb::core::math::pose					THIS::getPose()
 {
 	return neb::core::math::pose();
 }
-void							neb::fin::app::base::set_should_release()
+neb::core::math::pose					THIS::getPoseGlobal()
+{
+	return neb::core::math::pose();
+}
+void							THIS::set_should_release()
 {
 }
-std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createScene()
+std::weak_ptr<neb::core::core::scene::base>		THIS::createScene()
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 

@@ -3,7 +3,7 @@
 
 typedef neb::fin::app::glfw THIS;
 
-THIS::window_w THIS::createWindow()
+std::weak_ptr<neb::core::window::Base>	THIS::createWindow()
 {
 	auto window = neb::gfx::window::util::parent::create<neb::fin::window::base>();
 	

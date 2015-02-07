@@ -62,6 +62,7 @@ namespace neb { namespace fin { namespace app {
 			}
 			void							release();
 			virtual void						step(gal::etc::timestep const & ts);
+			virtual void						render();
 			void							preloop();
 			void							loop();
 			void							set_should_release();
