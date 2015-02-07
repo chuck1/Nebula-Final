@@ -78,7 +78,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	}
 	
 	// continue init
-	app->neb::core::app::base::__init();
+	app->neb::core::app::Base::__init();
 
 	app->neb::gfx::app::__gfx::init();
 	app->neb::gfx::app::__gfx_glsl::__init();
@@ -114,7 +114,7 @@ void			THIS::__init()
 	try {
 		console_->eval(buffer);
 		console_->main_namespace_["neb"] = boost::python::import(STRINGIZE(PY_LIB_NAME));
-		console_->main_namespace_["neb"]["app"] = neb::py::app::base(app);
+		console_->main_namespace_["neb"]["app"] = neb::py::app::Base(app);
 	} catch(bp::error_already_set const &) {
 		printf("unhandled python execption\n");
 		printf("%s\n", STRINGIZE(PY_LIB_NAME));
@@ -254,7 +254,7 @@ void				THIS::initRegistry()
 void				neb::fin::app::base::release()
 {
 	//neb::core::app::__base::__release();
-	nc::app::base::__release();
+	neb::core::app::Base::__release();
 
 	neb::gfx::app::__gfx::release();
 	//neb::gfx::app::__gfx_glsl::__release();
@@ -268,7 +268,7 @@ void				neb::fin::app::base::preloop()
 }
 void				neb::fin::app::base::loop()
 {
-	auto self(std::dynamic_pointer_cast<neb::core::app::base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::core::app::Base>(shared_from_this()));
 	assert(self);
 
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));

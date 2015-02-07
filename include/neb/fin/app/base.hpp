@@ -37,7 +37,7 @@ namespace neb { namespace fin { namespace app {
 	 * final implementation
 	 */
 	class base:
-		virtual public neb::core::app::base,
+		virtual public neb::core::app::Base,
 		virtual public neb::gfx::app::__gfx,
 		virtual public neb::gfx::app::__gfx_glsl,
 		virtual public neb::fin::app::glfw,
