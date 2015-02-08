@@ -18,12 +18,12 @@ namespace neb { namespace fin { namespace context {
 		virtual public neb::fin::context::Window
 	{
 		public:
-			typedef neb::core::environ::shadow::Directional ESD;
+			typedef neb::fnd::environ::shadow::Directional ESD;
 
 			virtual void			init(parent_t * const parent);
 			virtual void			render();
 			virtual std::weak_ptr<ESD>	createEnvironShadowDirectional();
-			virtual void			setTexture(std::shared_ptr<neb::core::itf::shared>);
+			virtual void			setTexture(std::shared_ptr<neb::fnd::itf::shared>);
 	};
 }}}
 

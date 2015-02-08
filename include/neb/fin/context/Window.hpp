@@ -16,8 +16,8 @@ namespace neb { namespace fin { namespace context {
 			virtual void		init(parent_t * const parent);
 			virtual void		step(gal::etc::timestep const & ts);
 			virtual void		render();
-//			virtual void		setDrawable(std::shared_ptr<neb::core::drawable::Base>);
-//			virtual void		setEnviron(std::shared_ptr<neb::core::environ::Base>)  0;
+//			virtual void		setDrawable(std::shared_ptr<neb::fnd::drawable::Base>);
+//			virtual void		setEnviron(std::shared_ptr<neb::fnd::environ::Base>)  0;
 
 	};
 }}}

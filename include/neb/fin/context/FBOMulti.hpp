@@ -14,9 +14,9 @@ namespace neb { namespace fin { namespace context {
 	{
 		public:
 			virtual void		init(parent_t * const parent);
-			//virtual void		setTexture(std::shared_ptr<neb::core::itf::shared>);
-			virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
-			virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
+			//virtual void		setTexture(std::shared_ptr<neb::fnd::itf::shared>);
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Directional>		createEnvironShadowDirectional();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint();
 	};
 }}}
 

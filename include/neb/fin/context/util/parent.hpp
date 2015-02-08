@@ -9,13 +9,13 @@ namespace neb { namespace fin { namespace context { namespace util {
 		virtual public neb::gfx::context::util::parent
 	{
 		public:
-			typedef neb::core::context::Window C_W;
+			typedef neb::fnd::context::Window C_W;
 			//virtual void			init();
 			//virtual void			release();
 			//virtual void			step(gal::etc::timestep const & ts);
 			//virtual void			render();
-			virtual std::weak_ptr<neb::core::context::FBO>		createContextFBO();
-			virtual std::weak_ptr<neb::core::context::FBOM>		createContextFBOMulti();
+			virtual std::weak_ptr<neb::fnd::context::FBO>		createContextFBO();
+			virtual std::weak_ptr<neb::fnd::context::FBOM>		createContextFBOMulti();
 			virtual std::weak_ptr<C_W>				createContextWindow();
 			virtual std::weak_ptr<C_W>				createContextVisDepth();
 	};

@@ -3,7 +3,7 @@
 #include <neb/fin/context/fbo.hpp>
 
 typedef neb::fin::context::fbo THIS;
-typedef neb::core::environ::shadow::Directional ESD;
+typedef neb::fnd::environ::shadow::Directional ESD;
 
 void			THIS::init(parent_t * const parent)
 {
@@ -20,7 +20,7 @@ std::weak_ptr<ESD>	THIS::createEnvironShadowDirectional()
 	return neb::fin::environ::util::Parent::createEnvironShadowDirectional();
 }
 void			THIS::setTexture(
-		std::shared_ptr<neb::core::itf::shared> tex)
+		std::shared_ptr<neb::fnd::itf::shared> tex)
 {
 	auto t = std::dynamic_pointer_cast<neb::gfx::texture>(tex);
 	texture_ = t;

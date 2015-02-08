@@ -17,7 +17,7 @@
 
 typedef neb::fin::environ::util::Parent THIS;
 
-std::weak_ptr<neb::core::environ::SceneDefault>			THIS::createEnvironSceneDefault()
+std::weak_ptr<neb::fnd::environ::SceneDefault>			THIS::createEnvironSceneDefault()
 {
 	typedef neb::fin::environ::SceneDefault E;
 	
@@ -36,7 +36,7 @@ std::weak_ptr<neb::core::environ::SceneDefault>			THIS::createEnvironSceneDefaul
 
 	return environ;
 }
-std::weak_ptr<neb::core::environ::visualization::Normal>	THIS::createEnvironVisualizationNormal()
+std::weak_ptr<neb::fnd::environ::visualization::Normal>	THIS::createEnvironVisualizationNormal()
 {
 	typedef neb::fin::environ::visualization::Normal E;
 	
@@ -55,7 +55,7 @@ std::weak_ptr<neb::core::environ::visualization::Normal>	THIS::createEnvironVisu
 
 	return environ;
 }
-std::weak_ptr<neb::core::environ::shadow::Directional>		THIS::createEnvironShadowDirectional()
+std::weak_ptr<neb::fnd::environ::shadow::Directional>		THIS::createEnvironShadowDirectional()
 {
 	typedef neb::fin::environ::shadow::Directional E;
 
@@ -74,7 +74,7 @@ std::weak_ptr<neb::core::environ::shadow::Directional>		THIS::createEnvironShado
 	
 	return environ;
 }
-std::weak_ptr<neb::core::environ::Two>			THIS::createEnvironTwo()
+std::weak_ptr<neb::fnd::environ::Two>			THIS::createEnvironTwo()
 {
 	typedef neb::fin::environ::Two E;
 	
@@ -93,7 +93,7 @@ std::weak_ptr<neb::core::environ::Two>			THIS::createEnvironTwo()
 	
 	return environ;
 }
-std::weak_ptr<neb::core::environ::visualization::Depth>		THIS::createEnvironVisualizationDepth()
+std::weak_ptr<neb::fnd::environ::visualization::Depth>		THIS::createEnvironVisualizationDepth()
 {
 	typedef neb::fin::environ::visualization::Depth E;
 	
@@ -113,7 +113,7 @@ std::weak_ptr<neb::core::environ::visualization::Depth>		THIS::createEnvironVisu
 	
 	return environ;
 }
-std::weak_ptr<neb::core::environ::shadow::Point>		THIS::createEnvironShadowPoint()
+std::weak_ptr<neb::fnd::environ::shadow::Point>		THIS::createEnvironShadowPoint()
 {
 	typedef neb::fin::environ::shadow::Point E;
 	

@@ -15,7 +15,7 @@ namespace neb { namespace fin { namespace core { namespace actor { namespace rig
 			/** @brief
 			 *
 			 */
-			virtual void							init(neb::core::core::actor::util::parent * const & p) = 0;
+			virtual void							init(neb::fnd::core::actor::util::parent * const & p) = 0;
 			/** @brief
 			 *
 			 */
@@ -27,11 +27,11 @@ namespace neb { namespace fin { namespace core { namespace actor { namespace rig
 			/** @brief
 			 *
 			 */
-			std::weak_ptr<neb::core::core::shape::base>			createShapeBoxUninitialized(glm::vec3 size);
+			std::weak_ptr<neb::fnd::core::shape::base>			createShapeBoxUninitialized(glm::vec3 size);
 			/** @brief
 			 *
 			 */
-			std::weak_ptr<neb::core::core::shape::base>			createShapeBox(neb::core::math::pose, glm::vec3 size);
+			std::weak_ptr<neb::fnd::core::shape::base>			createShapeBox(neb::fnd::math::pose, glm::vec3 size);
 	};
 
 }}}}}

@@ -9,7 +9,7 @@ void			THIS::init(THIS::parent_t * const & p)
 	
 	setParent(p);
 	
-	//neb::core::core::shape::base::__init(p);
+	//neb::fnd::core::shape::base::__init(p);
 	//neb::gfx::core::shape::base::__init(p);
 	neb::phx::core::shape::HeightField::Base::__init(p);
 }
@@ -17,7 +17,7 @@ void			THIS::release()
 {
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
-	neb::core::core::shape::base::__release();
+	neb::fnd::core::shape::base::__release();
 	neb::gfx::core::shape::base::__release();
 	neb::phx::core::shape::base::__release();
 }

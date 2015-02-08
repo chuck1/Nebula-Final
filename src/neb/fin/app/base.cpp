@@ -78,7 +78,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	}
 	
 	// continue init
-	app->neb::core::app::Base::__init();
+	app->neb::fnd::app::Base::__init();
 
 	app->neb::gfx::app::__gfx::init();
 	app->neb::gfx::app::__gfx_glsl::__init();
@@ -139,11 +139,11 @@ void			THIS::__init()
 	};
 
 	static const Pair pairs[13] = {
-		{"neb core",		&neb::core::sl},
-		{"neb core scene",	&neb::core::core::scene::sl},
-		{"neb core actor",	&neb::core::core::actor::sl},
-		{"neb core shape",	&neb::core::core::shape::sl},
-		{"neb core light",	&neb::core::core::light::sl},
+		{"neb core",		&neb::fnd::sl},
+		{"neb core scene",	&neb::fnd::core::scene::sl},
+		{"neb core actor",	&neb::fnd::core::actor::sl},
+		{"neb core shape",	&neb::fnd::core::shape::sl},
+		{"neb core light",	&neb::fnd::core::light::sl},
 		{"neb gfx",		&neb::gfx::sl},
 		{"neb gfx actor",	&neb::gfx::core::actor::sl},
 		{"neb gfx shape",	&neb::gfx::core::shape::sl},
@@ -215,11 +215,11 @@ void			THIS::__init()
 				}
 
 				switch(it_var->second) {
-					case 0: neb::core::sl			= (severity_level)it_val->second; break;
-					case 1: neb::core::core::scene::sl	= (severity_level)it_val->second; break;
-					case 2: neb::core::core::actor::sl	= (severity_level)it_val->second; break;
-					case 3: neb::core::core::shape::sl	= (severity_level)it_val->second; break;
-					case 4: neb::core::core::light::sl	= (severity_level)it_val->second; break;
+					case 0: neb::fnd::sl			= (severity_level)it_val->second; break;
+					case 1: neb::fnd::core::scene::sl	= (severity_level)it_val->second; break;
+					case 2: neb::fnd::core::actor::sl	= (severity_level)it_val->second; break;
+					case 3: neb::fnd::core::shape::sl	= (severity_level)it_val->second; break;
+					case 4: neb::fnd::core::light::sl	= (severity_level)it_val->second; break;
 					case 5: neb::gfx::sl			= (severity_level)it_val->second; break;
 					case 6: neb::gfx::core::actor::sl	= (severity_level)it_val->second; break;
 					case 7: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
@@ -241,24 +241,24 @@ void			THIS::__init()
 }
 void				THIS::initRegistry()
 {
-	makeDLLFunc<neb::core::core::scene::base, neb::fin::core::scene::base>();
+	makeDLLFunc<neb::fnd::core::scene::base, neb::fin::core::scene::base>();
 
-	makeDefaultFunc<neb::core::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::base>();
-	makeDefaultFunc<neb::core::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
 
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::base>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::box>();
-	makeDefaultFunc<neb::core::core::shape::base, neb::fin::core::shape::HeightField::Base>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::base>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::box>();
+	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::HeightField::Base>();
 
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::core::core::light::__base, neb::gfx::core::light::point>();
+	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
+	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
 }
 void				neb::fin::app::base::release()
 {
-	//neb::core::app::__base::__release();
-	neb::core::app::Base::__release();
+	//neb::fnd::app::__base::__release();
+	neb::fnd::app::Base::__release();
 
 	neb::gfx::app::__gfx::release();
 	//neb::gfx::app::__gfx_glsl::__release();
@@ -272,7 +272,7 @@ void				neb::fin::app::base::preloop()
 }
 void				neb::fin::app::base::loop()
 {
-	auto self(std::dynamic_pointer_cast<neb::core::app::Base>(shared_from_this()));
+	auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
 	assert(self);
 
 	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
@@ -284,7 +284,7 @@ void				neb::fin::app::base::loop()
 
 	preloop();
 
-	while(!flag_.any(neb::core::app::util::flag::E::SHOULD_RELEASE)) {
+	while(!flag_.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
 
 		if(!neb::gfx::window::util::parent::map_.front()) break;
 
@@ -326,7 +326,7 @@ void				neb::fin::app::base::loop()
 }
 void							THIS::step(gal::etc::timestep const & ts)
 {
-	neb::core::core::scene::util::parent::step(ts);
+	neb::fnd::core::scene::util::parent::step(ts);
 
 	neb::gfx::gui::layout::util::parent::step(ts);
 
@@ -338,7 +338,7 @@ void							THIS::step(gal::etc::timestep const & ts)
 }
 void				neb::fin::app::base::render()
 {
-	//neb::core::core::scene::util::parent::render();
+	//neb::fnd::core::scene::util::parent::render();
 
 	//neb::gfx::gui::layout::util::parent::render();
 
@@ -346,18 +346,18 @@ void				neb::fin::app::base::render()
 
 	neb::gfx::window::util::parent::render();
 }
-neb::core::math::pose					THIS::getPose()
+neb::fnd::math::pose					THIS::getPose()
 {
-	return neb::core::math::pose();
+	return neb::fnd::math::pose();
 }
-neb::core::math::pose					THIS::getPoseGlobal()
+neb::fnd::math::pose					THIS::getPoseGlobal()
 {
-	return neb::core::math::pose();
+	return neb::fnd::math::pose();
 }
 void							THIS::set_should_release()
 {
 }
-std::weak_ptr<neb::core::core::scene::base>		THIS::createScene()
+std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
@@ -365,7 +365,7 @@ std::weak_ptr<neb::core::core::scene::base>		THIS::createScene()
 
 	std::shared_ptr<T> scene (new T, gal::stl::deleter<T>());
 
-	neb::core::core::scene::util::parent::insert(scene);
+	neb::fnd::core::scene::util::parent::insert(scene);
 
 	scene->init(this);
 
@@ -384,7 +384,7 @@ std::weak_ptr<neb::core::core::scene::base>		THIS::createScene()
 
 	return scene;
 }
-std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL(std::string dll_name)
+std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(std::string dll_name)
 {
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
@@ -396,7 +396,7 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL
 
 	std::shared_ptr<T> scene = h->make_shared();
 
-	neb::core::core::scene::util::parent::insert(scene);
+	neb::fnd::core::scene::util::parent::insert(scene);
 
 	scene->init(this);
 
@@ -442,9 +442,9 @@ std::weak_ptr<neb::core::core::scene::base>		neb::fin::app::base::createSceneDLL
 
 	return scene;
 }
-std::weak_ptr<neb::core::gui::layout::Base>	THIS::createLayout(
-		std::shared_ptr<neb::core::window::Base> window,
-		std::shared_ptr<neb::core::context::Base> context)
+std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
+		std::shared_ptr<neb::fnd::window::Base> window,
+		std::shared_ptr<neb::fnd::context::Base> context)
 {
 	typedef neb::gfx::gui::layout::base T;
 

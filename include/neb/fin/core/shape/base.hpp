@@ -17,7 +17,7 @@ namespace neb {
 					{
 						public:
 							base();
-							virtual void				init(neb::core::core::shape::util::parent * const & p);
+							virtual void				init(neb::fnd::core::shape::util::parent * const & p);
 							virtual void				release();
 							virtual void				step(
 									gal::etc::timestep const & ts);

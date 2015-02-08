@@ -8,15 +8,15 @@ void		THIS::init(parent_t * const parent)
 
 	neb::gfx::context::fbo_multi::init(parent);
 }
-/*void		THIS::setTexture(std::shared_ptr<neb::core::itf::shared>)
+/*void		THIS::setTexture(std::shared_ptr<neb::fnd::itf::shared>)
 {
 
 }*/
-std::weak_ptr<neb::core::environ::shadow::Directional>		THIS::createEnvironShadowDirectional()
+std::weak_ptr<neb::fnd::environ::shadow::Directional>		THIS::createEnvironShadowDirectional()
 {
 	return neb::fin::environ::util::Parent::createEnvironShadowDirectional();
 }
-std::weak_ptr<neb::core::environ::shadow::Point>		THIS::createEnvironShadowPoint()
+std::weak_ptr<neb::fnd::environ::shadow::Point>		THIS::createEnvironShadowPoint()
 {
 	return neb::fin::environ::util::Parent::createEnvironShadowPoint();
 }

@@ -15,7 +15,7 @@ namespace neb { namespace fin { namespace core { namespace actor {
 		virtual public neb::gfx::core::actor::base
 	{
 		public:
-			typedef neb::core::core::actor::util::parent parent_t;
+			typedef neb::fnd::core::actor::util::parent parent_t;
 			base();
 			virtual void						init(parent_t * const &);
 			virtual void						release();
@@ -32,18 +32,18 @@ namespace neb { namespace fin { namespace core { namespace actor {
 			/** @brief
 			 *
 			 */
-			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeBase(
-					neb::core::math::pose const & pose);
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeBase(
+					neb::fnd::math::pose const & pose);
 			/** @brief
 			 *
 			 */
-			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeCuboid(
-					neb::core::core::shape::cuboid::Desc const &);
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeCuboid(
+					neb::fnd::core::shape::cuboid::Desc const &);
 			/** @brief
 			 *
 			 */
-			virtual std::weak_ptr<neb::core::core::shape::base>		createShapeHeightField(
-					neb::core::core::shape::HeightField::desc const &);
+			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeHeightField(
+					neb::fnd::core::shape::HeightField::desc const &);
 
 	};
 }}}}

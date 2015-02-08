@@ -9,15 +9,15 @@ neb::fin::core::actor::rigidstatic::base::base()
 }
 neb::fin::core::actor::rigidstatic::base::~base()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 }
 void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	setParent(p);
 
-	neb::core::core::actor::base::init(p);
+	neb::fnd::core::actor::base::init(p);
 
 	//neb::gfx::core::actor::base::init(p);
 
@@ -31,9 +31,9 @@ void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 }
 void						neb::fin::core::actor::rigidstatic::base::release()
 {
-	LOG(lg, neb::core::sl, debug) << __PRETTY_FUNCTION__;
+	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
-	neb::core::core::actor::base::release();
+	neb::fnd::core::actor::base::release();
 	
 	neb::gfx::core::actor::base::release();
 	

@@ -18,7 +18,7 @@ namespace neb { namespace fin { namespace core { namespace actor {
 	
 				base();
 				~base();
-				virtual void						init(neb::core::core::actor::util::parent * const &);
+				virtual void						init(neb::fnd::core::actor::util::parent * const &);
 				virtual void						release();
 				virtual void						step(gal::etc::timestep const & ts);
 

@@ -9,15 +9,15 @@
 
 namespace neb { namespace fin { namespace environ { namespace util {
 	class Parent:
-		virtual public neb::core::environ::util::Parent
+		virtual public neb::fnd::environ::util::Parent
 	{
 		public:
-			virtual std::weak_ptr<neb::core::environ::Two>				createEnvironTwo();
-			virtual std::weak_ptr<neb::core::environ::SceneDefault>			createEnvironSceneDefault();
-			virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
-			virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
-			virtual std::weak_ptr<neb::core::environ::visualization::Depth>		createEnvironVisualizationDepth();
-			virtual std::weak_ptr<neb::core::environ::visualization::Normal>	createEnvironVisualizationNormal();
+			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo();
+			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Directional>		createEnvironShadowDirectional();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Depth>		createEnvironVisualizationDepth();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Normal>	createEnvironVisualizationNormal();
 	};
 }}}}
 

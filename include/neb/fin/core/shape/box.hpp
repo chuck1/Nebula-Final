@@ -15,7 +15,7 @@ namespace neb { namespace fin { namespace core { namespace shape {
 		virtual public neb::fin::core::shape::base
 	{
 		public:
-			//neb::core::core::shape::util::parent
+			//neb::fnd::core::shape::util::parent
 			box();
 			virtual ~box();
 			virtual void		init(parent_t * const &);

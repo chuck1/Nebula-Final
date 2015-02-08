@@ -10,7 +10,7 @@
 
 #include <neb/fin/core/actor/util/decl.hpp>
 
-typedef std::weak_ptr<neb::core::core::actor::base> wbase;
+typedef std::weak_ptr<neb::fnd::core::actor::base> wbase;
 
 namespace neb { namespace fin { namespace core { namespace scene {
 	/***/
@@ -36,11 +36,11 @@ namespace neb { namespace fin { namespace core { namespace scene {
 			void				drawPhysxVisualization(
 					neb::gfx::RenderDesc const & desc);
 			/***/
-			virtual wbase			createActorBase(neb::core::math::pose);
+			virtual wbase			createActorBase(neb::fnd::math::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 			/***/
 			virtual wbase			createActorRigidDynamic();
-			virtual wbase			createActorRigidDynamic(neb::core::core::actor::rigiddynamic::Desc const * const &);
+			virtual wbase			createActorRigidDynamic(neb::fnd::core::actor::rigiddynamic::Desc const * const &);
 			/***/
 			virtual wbase			createActorRigidDynamicUninitialized();
 	};

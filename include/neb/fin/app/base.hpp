@@ -37,7 +37,7 @@ namespace neb { namespace fin { namespace app {
 	 * final implementation
 	 */
 	class base:
-		virtual public neb::core::app::Base,
+		virtual public neb::fnd::app::Base,
 		virtual public neb::gfx::app::__gfx,
 		virtual public neb::gfx::app::__gfx_glsl,
 		virtual public neb::fin::app::glfw,
@@ -45,7 +45,7 @@ namespace neb { namespace fin { namespace app {
 		virtual public neb::gfx::gui::layout::util::parent
 	{
 		public:
-			typedef std::weak_ptr<neb::core::core::scene::base>	scene_w;
+			typedef std::weak_ptr<neb::fnd::core::scene::base>	scene_w;
 			static std::shared_ptr<neb::fin::app::base>		global();
 			static std::shared_ptr<neb::fin::app::base>		s_init(int ac, char ** av);
 			base();
@@ -55,8 +55,8 @@ namespace neb { namespace fin { namespace app {
 			void							__init();
 			void							initRegistry();
 		public:
-			neb::core::math::pose					getPose();
-			neb::core::math::pose					getPoseGlobal();
+			neb::fnd::math::pose					getPose();
+			neb::fnd::math::pose					getPoseGlobal();
 			template<typename T> void				loadXml(std::string filename, gal::stl::wrapper<T>& w)
 			{
 			}
@@ -66,11 +66,11 @@ namespace neb { namespace fin { namespace app {
 			void							preloop();
 			void							loop();
 			void							set_should_release();
-			virtual std::weak_ptr<neb::core::core::scene::base>	createScene();
-			virtual std::weak_ptr<neb::core::core::scene::base>	createSceneDLL(std::string);
-			virtual std::weak_ptr<neb::core::gui::layout::Base>	createLayout(
-					std::shared_ptr<neb::core::window::Base> window,
-					std::shared_ptr<neb::core::context::Base> context);
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createScene();
+			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string);
+			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
+					std::shared_ptr<neb::fnd::window::Base> window,
+					std::shared_ptr<neb::fnd::context::Base> context);
 	};
 }}}
 

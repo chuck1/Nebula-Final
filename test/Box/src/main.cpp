@@ -105,7 +105,7 @@ shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dyn
 
 	scene->insert(actor);
 
-	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+	actor->flag_.set(neb::fnd::actor::util::flag::DESTRUCTIBLE);
 
 	actor->simulation_.word0 = neb::phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = neb::phx::filter::filter::RIGID_AGAINST;
@@ -125,7 +125,7 @@ shared_ptr<neb::fin::gfx_phx::core::actor::rigiddynamic::base>		create_actor_dyn
 	// shape	
 	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
 
-	actor->neb::core::shape::util::parent::insert(shape);
+	actor->neb::fnd::shape::util::parent::insert(shape);
 
 	shape->init();
 
@@ -141,7 +141,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(std::shared
 
 	scene->insert(actor);
 
-	actor->flag_.set(neb::core::actor::util::flag::DESTRUCTIBLE);
+	actor->flag_.set(neb::fnd::actor::util::flag::DESTRUCTIBLE);
 
 	actor->simulation_.word0 = neb::phx::filter::filter::type::DYNAMIC;
 	actor->simulation_.word1 = neb::phx::filter::filter::RIGID_AGAINST;
@@ -157,7 +157,7 @@ weak_ptr<neb::phx::core::actor::rigiddynamic::base>		create_actor_ai(std::shared
 	// shape	
 	auto shape = make_shared<neb::fin::gfx_phx::core::shape::box>(actor);
 
-	actor->neb::core::shape::util::parent::insert(shape);
+	actor->neb::fnd::shape::util::parent::insert(shape);
 
 	shape->init();
 
@@ -209,7 +209,7 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 
 	std::cout << "6\n";
 
-	app->neb::core::core::scene::util::parent::insert(scene);
+	app->neb::fnd::core::scene::util::parent::insert(scene);
 
 	std::cout << "7\n";
 
@@ -218,17 +218,17 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 	std::cout << "8\n";
 
 	// actors
-	scene->createActorRigidStaticCube(neb::core::pose(vec3(-5, 0, 0)), 1.0);
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 5, 0, 0)), 1.0);
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0,-5, 0)), 1.0);
-	scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 5, 0)), 1.0);
-	auto static_cube5 = scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0,-5)), 1.0).lock();
+	scene->createActorRigidStaticCube(neb::fnd::pose(vec3(-5, 0, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 5, 0, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0,-5, 0)), 1.0);
+	scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0, 5, 0)), 1.0);
+	auto static_cube5 = scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0, 0,-5)), 1.0).lock();
 
 	// testing for multiple inheritance
 	auto test = static_cube5->gal::itf::shared::name();
 
 
-	//scene->createActorRigidStaticCube(neb::core::pose(vec3( 0, 0, 5)), 1.0);
+	//scene->createActorRigidStaticCube(neb::fnd::pose(vec3( 0, 0, 5)), 1.0);
 
 	// player's actor
 	auto actor3 = create_actor_dynamic(scene);

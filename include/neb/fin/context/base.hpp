@@ -18,12 +18,12 @@ namespace neb { namespace fin { namespace context {
 			//typedef neb::gfx::context::util::parent parent_t;
 
 			/*
-			virtual std::weak_ptr<neb::core::environ::Two>				createEnvironTwo();
-			virtual std::weak_ptr<neb::core::environ::SceneDefault>			createEnvironSceneDefault();
-			virtual std::weak_ptr<neb::core::environ::shadow::Point>		createEnvironShadowPoint();
-			virtual std::weak_ptr<neb::core::environ::shadow::Directional>		createEnvironShadowDirectional();
-			virtual std::weak_ptr<neb::core::environ::visualization::Normal>	createEnvironVisualNormal();
-			virtual std::weak_ptr<neb::core::environ::visualization::Depth>		createEnvironVisualDepth();
+			virtual std::weak_ptr<neb::fnd::environ::Two>				createEnvironTwo();
+			virtual std::weak_ptr<neb::fnd::environ::SceneDefault>			createEnvironSceneDefault();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Point>		createEnvironShadowPoint();
+			virtual std::weak_ptr<neb::fnd::environ::shadow::Directional>		createEnvironShadowDirectional();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Normal>	createEnvironVisualNormal();
+			virtual std::weak_ptr<neb::fnd::environ::visualization::Depth>		createEnvironVisualDepth();
 			*/
 	};
 
