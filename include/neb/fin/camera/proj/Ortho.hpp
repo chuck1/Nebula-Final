@@ -9,7 +9,7 @@
 
 namespace neb { namespace fin { namespace camera { namespace proj {
 	class Ortho:
-		virtual public neb::gfx::camera::proj::ortho,
+		virtual public neb::gfx::camera::proj::Ortho,
 		virtual public neb::fin::camera::proj::Base
 	{
 		public:

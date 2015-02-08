@@ -11,8 +11,8 @@ namespace neb { namespace fin { namespace environ {
 		virtual public neb::fin::environ::base
 	{
 		public:
-			typedef std::shared_ptr<neb::gfx::glsl::program::base>		program_shared;
-			typedef std::shared_ptr<neb::gfx::camera::view::base>		view_shared;
+			typedef std::shared_ptr<neb::gfx::glsl::program::Base>		program_shared;
+			typedef std::shared_ptr<neb::gfx::camera::view::Base>		view_shared;
 			typedef std::shared_ptr<neb::gfx::camera::proj::base>		proj_shared;
 		public:
 			//virtual void							init();

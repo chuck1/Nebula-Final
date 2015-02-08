@@ -9,7 +9,7 @@
 
 namespace neb { namespace fin { namespace camera { namespace proj {
 	class Perspective:
-		virtual public neb::gfx::camera::proj::perspective,
+		virtual public neb::gfx::camera::proj::Perspective,
 		virtual public neb::fin::camera::proj::Base
 	{
 		public:
