@@ -330,7 +330,7 @@ void							THIS::step(gal::etc::timestep const & ts)
 
 	neb::gfx::gui::layout::util::parent::step(ts);
 
-	nc::game::game::util::parent::step(ts);
+	neb::fnd::game::game::util::parent::step(ts);
 
 	neb::gfx::window::util::parent::step(ts);
 
@@ -342,7 +342,7 @@ void				neb::fin::app::base::render()
 
 	//neb::gfx::gui::layout::util::parent::render();
 
-	//nc::game::game::util::parent::render();
+	//neb::fnd::game::game::util::parent::render();
 
 	neb::gfx::window::util::parent::render();
 }

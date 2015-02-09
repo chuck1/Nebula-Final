@@ -22,7 +22,7 @@ namespace neb { namespace fin { namespace window {
 			*/
 			/*
 			   typedef neb::gfx::window::util::parent parent_t;
-			   typedef nc::util::parent<neb::gfx::context::base, neb::gfx::context::util::parent> contexts;
+			   typedef neb::fnd::util::parent<neb::gfx::context::base, neb::gfx::context::util::parent> contexts;
 
 
 			   base();

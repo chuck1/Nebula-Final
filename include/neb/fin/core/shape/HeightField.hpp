@@ -10,7 +10,7 @@ namespace neb { namespace fin { namespace core { namespace shape { namespace Hei
 		public neb::phx::core::shape::HeightField::Base
 	{
 		public:
-			typedef nc::core::shape::util::parent	parent_t;
+			typedef neb::fnd::core::shape::util::parent	parent_t;
 
 			virtual void		init(parent_t * const & p);
 			virtual void		release();
