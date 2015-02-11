@@ -11,7 +11,7 @@
 #include <gal/itf/shared.hpp>
 #include <gal/stl/wrapper.hpp>
 
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/core/scene/util/parent.hpp>
 #include <neb/core/core/shape/util/decl.hpp>
 #include <neb/core/util/wrapper.hpp>
@@ -21,8 +21,8 @@
 #include <neb/gfx/app/__gfx_glsl.hpp>
 #include <neb/gfx/app/glfw.hpp>
 #include <neb/gfx/util/decl.hpp>
-#include <neb/gfx/window/Base.hh>
-#include <neb/gfx/window/util/Parent.hh>
+#include <neb/gfx/window/Base.hpp>
+#include <neb/gfx/window/util/Parent.hpp>
 #include <neb/gfx/gui/layout/util/parent.hpp>
 
 #include <neb/phx/app/base.hpp>
@@ -39,10 +39,10 @@ namespace neb { namespace fin { namespace app {
 	class base:
 		virtual public neb::fnd::app::Base,
 		virtual public neb::gfx::app::__gfx,
-		virtual public neb::gfx::app::__gfx_glsl,
+		virtual public neb::gfx::app::glsl,
+		virtual public neb::gfx::gui::layout::util::parent,
 		virtual public neb::fin::app::glfw,
-		virtual public neb::phx::app::base,
-		virtual public neb::gfx::gui::layout::util::parent
+		virtual public neb::phx::app::base
 	{
 		public:
 			typedef std::weak_ptr<neb::fnd::core::scene::base>	scene_w;

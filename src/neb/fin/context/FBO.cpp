@@ -1,4 +1,4 @@
-#include <neb/gfx/texture.hpp>
+#include <neb/gfx/texture/Base.hpp>
 
 #include <neb/fin/context/fbo.hpp>
 
@@ -22,7 +22,7 @@ std::weak_ptr<ESD>	THIS::createEnvironShadowDirectional()
 void			THIS::setTexture(
 		std::shared_ptr<neb::fnd::itf::shared> tex)
 {
-	auto t = std::dynamic_pointer_cast<neb::gfx::texture>(tex);
+	auto t = std::dynamic_pointer_cast<neb::gfx::texture::Base>(tex);
 	texture_ = t;
 }
 

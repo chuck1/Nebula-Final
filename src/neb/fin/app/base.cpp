@@ -20,12 +20,12 @@
 #include <neb/core/free.hpp>
 #include <neb/core/util/config.hpp>
 #include <neb/core/util/log.hpp>
-#include <neb/core/app/__base.hpp>
+#include <neb/core/app/Base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
 #include <neb/gfx/util/log.hpp>
-#include <neb/gfx/context/Base.hh>
-#include <neb/gfx/window/Base.hh>
+#include <neb/gfx/context/Base.hpp>
+#include <neb/gfx/window/Base.hpp>
 #include <neb/gfx/core/light/spot.hpp>
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/gui/layout/util/parent.hpp>
@@ -81,7 +81,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	app->neb::fnd::app::Base::__init();
 
 	app->neb::gfx::app::__gfx::init();
-	app->neb::gfx::app::__gfx_glsl::__init();
+	app->neb::gfx::app::glsl::__init();
 	app->neb::gfx::app::glfw::init();
 
 	app->neb::phx::app::base::__init();

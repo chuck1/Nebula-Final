@@ -1,14 +1,14 @@
 #ifndef NEB_FIN_WINDOW_H__
 #define NEB_FIN_WINDOW_H__
 
-#include <neb/gfx/window/Base.hh>
+#include <neb/gfx/window/Base.hpp>
 
 #include <neb/fin/context/util/parent.hpp>
 
 namespace neb { namespace fin { namespace window {
 	/***/
 	class base:
-		virtual public neb::gfx::window::base,
+		virtual public neb::gfx::window::Base,
 		virtual public neb::fin::context::util::parent
 	{
 		public:

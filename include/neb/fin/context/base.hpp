@@ -3,7 +3,7 @@
 
 #include <neb/core/environ/util/decl.hpp>
 
-#include <neb/gfx/context/Base.hh>
+#include <neb/gfx/context/Base.hpp>
 
 #include <neb/fin/environ/util/Parent.hpp>
 

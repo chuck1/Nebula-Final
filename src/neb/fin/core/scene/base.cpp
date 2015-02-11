@@ -6,7 +6,7 @@
 
 #include <neb/gfx/RenderDesc.hpp>
 #include <neb/gfx/camera/proj/base.hpp>
-#include <neb/gfx/camera/view/Base.hh>
+#include <neb/gfx/camera/view/Base.hpp>
 #include <neb/gfx/free.hpp>
 
 #include <neb/phx/util/log.hpp>
@@ -188,7 +188,7 @@ void			THIS::drawPhysxVisualization(
 		neb::gfx::RenderDesc const & desc)
 {
 
-	auto app(neb::gfx::app::__gfx_glsl::global().lock());
+	auto app(neb::gfx::app::glsl::global().lock());
 
 	if(!flag_.all(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION)) return;
 

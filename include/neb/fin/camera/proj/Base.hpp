@@ -7,7 +7,7 @@
 
 namespace neb { namespace fin { namespace camera { namespace proj {
 	class Base:
-		virtual public neb::gfx::camera::proj::base
+		virtual public neb::gfx::camera::proj::Base
 	{
 		public:
 			virtual void		calculate_geometry();

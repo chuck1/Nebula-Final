@@ -1,7 +1,7 @@
 #ifndef NEB_FIN_CONTEXT_UTIL_PARENT_HH
 #define NEB_FIN_CONTEXT_UTIL_PARENT_HH
 
-#include <neb/gfx/context/util/Parent.hh>
+#include <neb/gfx/context/util/Parent.hpp>
 
 namespace neb { namespace fin { namespace context { namespace util {
 	/***/

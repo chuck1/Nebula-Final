@@ -17,7 +17,7 @@ namespace neb { namespace fin { namespace core { namespace shape {
 			//virtual void				release() = 0;
 			//virtual void				step(gal::etc::timestep  const & ts) = 0;
 			
-			std::weak_ptr<neb::gfx::camera::proj::base>	camera_;
+			std::weak_ptr<neb::gfx::camera::proj::Base>	camera_;
 			
 			virtual physx::PxGeometry*			to_geo();
 	};
