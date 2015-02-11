@@ -5,9 +5,12 @@
 
 #include <neb/gfx/camera/proj/base.hpp>
 
+#include <neb/fin/tmp/Child.hpp>
+
 namespace neb { namespace fin { namespace camera { namespace proj {
 	class Base:
-		virtual public neb::gfx::camera::proj::Base
+		virtual public neb::gfx::camera::proj::Base,
+		virtual public neb::fin::tmp::Child<neb::gfx::environ::base>
 	{
 		public:
 			virtual void		calculate_geometry();

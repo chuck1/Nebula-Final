@@ -1,14 +1,14 @@
 #ifndef NEB_FIN_CORE_SHAPE_FRUSTRUM_HPP
 #define NEB_FIN_CORE_SHAPE_FRUSTRUM_HPP
 
-#include <neb/phx/core/shape/base.hpp>
-
 #include <neb/gfx/camera/util/decl.hpp>
+
+#include <neb/fin/core/shape/base.hpp>
 
 namespace neb { namespace fin { namespace core { namespace shape {
 	/** @ brief */
 	class frustrum:
-		virtual public neb::phx::core::shape::base
+		virtual public neb::fin::core::shape::base
 	{
 		public:
 			frustrum();

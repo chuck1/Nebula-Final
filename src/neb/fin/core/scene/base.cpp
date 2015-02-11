@@ -96,7 +96,6 @@ wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 {
 	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
 
-
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
 	typedef neb::fin::core::actor::rigiddynamic::base T;
@@ -187,8 +186,7 @@ void		THIS::save(boost::archive::polymorphic_oarchive & ar, unsigned int const &
 void			THIS::drawPhysxVisualization(
 		neb::gfx::RenderDesc const & desc)
 {
-
-	auto app(neb::gfx::app::glsl::global().lock());
+	auto app = get_fin_app();
 
 	if(!flag_.all(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION)) return;
 
@@ -203,10 +201,8 @@ void			THIS::drawPhysxVisualization(
 		physx::PxU32 nbtriangles = rb.getNbTriangles();
 		const physx::PxDebugTriangle* triangles = rb.getTriangles();
 
-
 		auto p = app->program_simple3_;
 		p->use();
-
 
 		//auto e = neb::could_be<neb::gfx::environ::base, neb::gfx::environ::three>(context->environ_);
 		//if(e)

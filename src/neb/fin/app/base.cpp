@@ -30,6 +30,7 @@
 #include <neb/gfx/core/light/point.hpp>
 #include <neb/gfx/gui/layout/util/parent.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
+#include <neb/gfx/app/base.hpp>
 
 #include <neb/phx/util/log.hpp>
 
@@ -80,9 +81,9 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	// continue init
 	app->neb::fnd::app::Base::__init();
 
-	app->neb::gfx::app::__gfx::init();
+	app->neb::gfx::app::Base::__init();
 	app->neb::gfx::app::glsl::__init();
-	app->neb::gfx::app::glfw::init();
+	app->neb::gfx::app::glfw::__init();
 
 	app->neb::phx::app::base::__init();
 
@@ -260,7 +261,7 @@ void				neb::fin::app::base::release()
 	//neb::fnd::app::__base::__release();
 	neb::fnd::app::Base::__release();
 
-	neb::gfx::app::__gfx::release();
+	neb::gfx::app::Base::__release();
 	//neb::gfx::app::__gfx_glsl::__release();
 
 	neb::phx::app::base::__release();
