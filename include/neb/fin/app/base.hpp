@@ -5,8 +5,8 @@
 
 #include <boost/archive/polymorphic_xml_iarchive.hpp>
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
+//#include <ft2build.h>
+//#include FT_FREETYPE_H
 
 #include <gal/itf/shared.hpp>
 #include <gal/stl/wrapper.hpp>
