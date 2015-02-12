@@ -273,56 +273,32 @@ void				neb::fin::app::base::preloop()
 }
 void				neb::fin::app::base::loop()
 {
-	auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
-	assert(self);
-
-	//::std::thread t(::std::bind(&neb::app::base::loop2, self));
-
-	static gal::etc::stopwatch sw_step;
-	static gal::etc::stopwatch sw_render;
-
-	double t;
+	//auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
+	//assert(self);
 
 	preloop();
 
 	while(!flag_.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
+		
+		// check for exit condition
 
 		if(!neb::gfx::window::util::parent::map_.front()) break;
+		
+		// update
+		
+		glfwPollEvents();
+		
+		neb::gfx::app::glfw::update_joysticks();
+		
+		// integrate
+		
+		ts_.step(glfwGetTime());
+		
+		step(ts_);
+		
+		// render
 
-		t = glfwGetTime();
-		sw_step.start(t);
-		{
-			ts_.step(t);
-			step(ts_);
-		}
-		t = glfwGetTime();
-		sw_step.stop(t);
-
-
-		t = glfwGetTime();
-		sw_render.start(t);
-		{
-			neb::gfx::app::glfw::render();
-
-			//::std::this_thread::yield();
-		}
-		t = glfwGetTime();
-		sw_render.stop(t);
-
-		if((ts_.frame % 100) == 0)
-		{
-			std::cout
-				<< std::setw(16) << "step"
-				<< std::setw(16) << sw_step.getAvg()
-				<< std::setw(16) << "render"
-				<< std::setw(16) << sw_render.getAvg()
-				<< std::endl;
-		}
-		//t.join();
-
-		//	if(server_) server_->close();
-		//	if(client_) client_->close();
-
+		render();
 	}
 }
 void							THIS::step(gal::etc::timestep const & ts)
@@ -335,17 +311,14 @@ void							THIS::step(gal::etc::timestep const & ts)
 
 	neb::gfx::window::util::parent::step(ts);
 
-	glfwPollEvents();
 }
 void				neb::fin::app::base::render()
 {
 	//neb::fnd::core::scene::util::parent::render();
-
 	//neb::gfx::gui::layout::util::parent::render();
-
 	//neb::fnd::game::game::util::parent::render();
 
-	neb::gfx::window::util::parent::render();
+	neb::gfx::app::glfw::render();
 }
 neb::fnd::math::pose					THIS::getPose()
 {
@@ -452,7 +425,7 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 	auto layout = neb::gfx::gui::layout::util::parent::create<T>().lock();
 
 	layout->connect(window);
-	
+
 	layout->createObjectTerminal();
 
 	context->setDrawable(layout);
