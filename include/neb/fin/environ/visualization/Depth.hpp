@@ -3,7 +3,7 @@
 
 #include <neb/gfx/environ/vis_depth.hpp>
 
-//#include <neb/fin/environ/VisDepth.hpp>
+#include <neb/fin/environ/base.hpp>
 
 namespace neb { namespace fin { namespace environ { namespace visualization {
 	/** @brief base
