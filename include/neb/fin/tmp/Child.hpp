@@ -12,7 +12,10 @@ namespace neb { namespace fin { namespace tmp {
 		public:
 			neb::fin::app::base*	get_fin_app()
 			{
-				auto app = neb::fnd::tmp::Child<T>::get_fnd_app();
+				auto a = neb::fnd::tmp::Child<T>::get_fnd_app();
+				auto f = dynamic_cast<neb::fin::app::base*>(a);
+				assert(f);
+				return f;
 			}
 	};
 }}}
