@@ -2,6 +2,7 @@
 #define NEBULA_FIN_ENVIRON_SCENE_DEF_HPP
 
 #include <neb/gfx/environ/SceneDefault.hpp>
+
 #include <neb/fin/environ/base.hpp>
 
 namespace neb { namespace fin { namespace environ {

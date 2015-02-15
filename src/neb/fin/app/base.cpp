@@ -51,7 +51,7 @@
 
 typedef neb::fin::app::base THIS;
 
-shared_ptr<neb::fin::app::base>		THIS::global()
+std::shared_ptr<neb::fin::app::base>		THIS::global()
 {
 	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
 
@@ -84,6 +84,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	app->neb::gfx::app::Base::__init();
 	app->neb::gfx::app::glsl::__init();
 	app->neb::gfx::app::glfw::__init();
+	app->neb::gfx::app::draw::__init();
 
 	app->neb::phx::app::base::__init();
 
