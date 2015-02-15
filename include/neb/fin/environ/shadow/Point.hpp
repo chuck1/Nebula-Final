@@ -12,6 +12,8 @@ namespace neb { namespace fin { namespace environ { namespace shadow {
 		virtual public neb::gfx::environ::shadow::point,
 		virtual public neb::fin::environ::base
 	{
+		public:
+			virtual void		init(parent_t * const & p);
 	};
 }}}}
 

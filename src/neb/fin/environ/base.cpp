@@ -5,6 +5,12 @@
 
 typedef neb::fin::environ::base THIS;
 
+void			THIS::init(parent_t * const & p)
+{
+	setParent(p);
+
+	neb::gfx::environ::base::init(p);
+}
 THIS::proj_shared	THIS::createCameraPerspective()
 {
 	proj_ = THIS::proj_shared(new neb::fin::camera::proj::Perspective);

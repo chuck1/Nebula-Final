@@ -12,6 +12,8 @@ namespace neb { namespace fin { namespace environ { namespace visualization {
 		virtual public neb::gfx::environ::vis_depth,
 		virtual public neb::fin::environ::base
 	{
+		public:
+			virtual void		init(parent_t * const & p);
 	};
 }}}}
 

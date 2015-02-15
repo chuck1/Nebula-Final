@@ -20,7 +20,7 @@ namespace neb { namespace fin { namespace environ {
 			//typedef neb::gfx::core::light::directional			light_type;
 			//typedef std::shared_ptr<light_type>				light_shared;
 			//typedef std::weak_ptr<light_type>				light_weak;
-		public:
+			virtual void		init(parent_t * const & p);
 			virtual proj_shared	createCameraPerspective();
 			virtual proj_shared	createCameraOrtho();
 	};
