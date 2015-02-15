@@ -30,7 +30,7 @@ std::weak_ptr<neb::fnd::environ::SceneDefault>			THIS::createEnvironSceneDefault
 		w->makeCurrent();
 	}
 	
-	environ->init();
+	environ->init(this);
 
 	c->setEnviron(environ);
 
@@ -49,7 +49,7 @@ std::weak_ptr<neb::fnd::environ::visualization::Normal>	THIS::createEnvironVisua
 		w->makeCurrent();
 	}
 
-	environ->init();
+	environ->init(this);
 
 	c->setEnviron(environ);
 
@@ -68,7 +68,7 @@ std::weak_ptr<neb::fnd::environ::shadow::Directional>		THIS::createEnvironShadow
 		w->makeCurrent();
 	}
 
-	environ->init();
+	environ->init(this);
 	
 	c->setEnviron(environ);
 	
@@ -87,7 +87,7 @@ std::weak_ptr<neb::fnd::environ::Two>			THIS::createEnvironTwo()
 		w->makeCurrent();
 	}
 
-	environ->init();
+	environ->init(this);
 
 	c->setEnviron(environ);
 	
@@ -107,7 +107,7 @@ std::weak_ptr<neb::fnd::environ::visualization::Depth>		THIS::createEnvironVisua
 		w->makeCurrent();
 	}
 
-	environ->init();
+	environ->init(this);
 	
 	c->setEnviron(environ);
 	
@@ -124,7 +124,7 @@ std::weak_ptr<neb::fnd::environ::shadow::Point>		THIS::createEnvironShadowPoint(
 	auto w = c->getParent()->is_fnd_window_base();
 	if(w) w->makeCurrent();
 
-	environ->init();
+	environ->init(this);
 	
 	c->setEnviron(environ);
 	
