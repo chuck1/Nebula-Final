@@ -15,12 +15,12 @@ namespace neb { namespace fin { namespace core { namespace actor {
 			virtual public neb::fin::core::actor::rigidactor::base
 		{
 			public:
-	
 				base();
 				~base();
-				virtual void						init(neb::fnd::core::actor::util::parent * const &);
-				virtual void						release();
-				virtual void						step(gal::etc::timestep const & ts);
+				virtual void				init(neb::fnd::core::actor::util::parent * const &);
+				virtual void				release();
+				virtual void				step(gal::etc::timestep const & ts);
+				virtual void				createControlManual(std::shared_ptr<neb::fnd::input::source> window);
 
 		
 		};

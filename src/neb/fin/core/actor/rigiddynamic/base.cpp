@@ -4,7 +4,9 @@
 
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 
-neb::fin::core::actor::rigiddynamic::base::base()
+typedef neb::fin::core::actor::rigiddynamic::base THIS;
+
+THIS::base()
 {
 }
 neb::fin::core::actor::rigiddynamic::base::~base() {
@@ -60,6 +62,11 @@ void					neb::fin::core::actor::rigiddynamic::base::step(
 
 	neb::fin::core::actor::base::step(ts);
 
+}
+void				THIS::createControlManual(
+		std::shared_ptr<neb::fnd::input::source> window)
+{
+	neb::phx::core::actor::rigidbody::base::createControlManual(window);
 }
 
 
