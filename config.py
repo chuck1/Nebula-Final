@@ -71,7 +71,7 @@ l.require("galaxy_console")
 l.require("nebula_core")
 l.require("nebula_gfx")
 l.require("nebula_physx")
-l.require("nebula_python")
+l.require("nebula_python","dynamic")
 l.require("physx")
 
 l.make()
