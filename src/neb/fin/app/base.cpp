@@ -15,7 +15,7 @@
 #include <gal/dll/helper.hpp>
 #include <gal/log/log.hpp>
 #include <gal/stl/deleter.hpp>
-#include <argparse.hpp>
+#include <gal/argparse/Parser.hpp>
 
 #include <neb/core/free.hpp>
 #include <neb/core/util/config.hpp>
@@ -68,7 +68,8 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	std::shared_ptr<T> app(new T(), gal::stl::deleter<T>());
 
 	// parse args	
-	auto args = Parse(ac, av, "");
+	gal::argparse::Parser parser;
+	auto args = parser.parse(ac, av, "");
 	
 	if(args.has_long("python")) {
 		auto filename = args.get_value_from_long("python");
