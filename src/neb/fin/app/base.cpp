@@ -361,7 +361,8 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 
 	return scene;
 }
-std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(std::string dll_name)
+std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
+		std::string dll_name)
 {
 	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
