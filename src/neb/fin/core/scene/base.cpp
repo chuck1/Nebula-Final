@@ -83,8 +83,9 @@ wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
-	neb::fnd::core::actor::util::parent::insert(actor);
-
+	neb::fnd::core::actor::util::parent::insert_no_init(actor);
+	
+	// filtering
 	actor->simulation_.word0 = phx::filter::filter::type::STATIC;
 	actor->simulation_.word1 = phx::filter::filter::RIGID_AGAINST;
 	actor->simulation_.word2 = phx::filter::filter::type::STATIC;
