@@ -162,24 +162,24 @@ void				THIS::read_config()
 	struct Pair
 	{
 		char const *		c;
-		severity_level * const	sl;
+		int * const		sl;
 	};
 
 	static const Pair pairs[14] = {
-		{"neb core",		&neb::fnd::sl},
-		{"neb core scene",	&neb::fnd::core::scene::sl},
-		{"neb core actor",	&neb::fnd::core::actor::sl},
-		{"neb core shape",	&neb::fnd::core::shape::sl},
-		{"neb core light",	&neb::fnd::core::light::sl},
-		{"neb gfx",		&neb::gfx::sl},
-		{"neb gfx actor",	&neb::gfx::core::actor::sl},
-		{"neb gfx shape",	&neb::gfx::core::shape::sl},
-		{"neb gfx light",	&neb::gfx::core::light::sl},
-		{"neb gfx gui object terminal", &neb::gfx::gui::object::terminal::_M_severity_level},
-		{"neb phx",		&neb::phx::sl},
-		{"neb phx scene",	&neb::phx::core::scene::sl},
-		{"neb phx actor",	&neb::phx::core::actor::sl},
-		{"neb phx shape",	&neb::phx::core::shape::sl}
+		{"neb core",		(int*)&neb::fnd::sl},
+		{"neb core scene",	(int*)&neb::fnd::core::scene::sl},
+		{"neb core actor",	(int*)&neb::fnd::core::actor::sl},
+		{"neb core shape",	(int*)&neb::fnd::core::shape::sl},
+		{"neb core light",	(int*)&neb::fnd::core::light::sl},
+		{"neb gfx",		(int*)&neb::gfx::sl},
+		{"neb gfx actor",	(int*)&neb::gfx::core::actor::sl},
+		{"neb gfx shape",	(int*)&neb::gfx::core::shape::sl},
+		{"neb gfx light",	(int*)&neb::gfx::core::light::sl},
+		{"neb gfx gui object terminal", &neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::_M_severity_level},
+		{"neb phx",		(int*)&neb::phx::sl},
+		{"neb phx scene",	(int*)&neb::phx::core::scene::sl},
+		{"neb phx actor",	(int*)&neb::phx::core::actor::sl},
+		{"neb phx shape",	(int*)&neb::phx::core::shape::sl}
 	};
 
 	/*	std::map<std::string, int> map_var({
