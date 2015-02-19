@@ -81,6 +81,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	
 	// continue init
 	app->neb::fnd::app::Base::__init();
+	app->neb::fin::app::base::__init();
 
 	app->neb::gfx::app::Base::__init();
 	app->neb::gfx::app::glsl::__init();
@@ -89,7 +90,6 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 
 	app->neb::phx::app::base::__init();
 
-	app->neb::fin::app::base::__init();
 
 
 	LOG(lg, neb::fin::sl, debug) << "&g_app_ = " << &g_app_;
@@ -141,9 +141,22 @@ void				THIS::read_config()
 {
 	assert(console_);
 
+	boost::python::object o;
+
 	// python
-	console_->eval("execfile(../share/config.py)");
-	
+	try {
+		console_->eval("execfile(\"../share/config.py\")");
+		o = console_->main_namespace_["log"];
+	} catch(bp::error_already_set const &) {
+		printf("unhandled python execption\n");
+		printf("%s\n", STRINGIZE(PY_LIB_NAME));
+		// print all other errors to stderr
+		PyErr_Print();
+		printf("lines: %lu\n", console_->lines_.size());
+		console_->print();
+		abort();
+	}
+
 	// log levels
 
 	struct Pair
@@ -152,7 +165,7 @@ void				THIS::read_config()
 		severity_level * const	sl;
 	};
 
-	static const Pair pairs[13] = {
+	static const Pair pairs[14] = {
 		{"neb core",		&neb::fnd::sl},
 		{"neb core scene",	&neb::fnd::core::scene::sl},
 		{"neb core actor",	&neb::fnd::core::actor::sl},
@@ -162,27 +175,28 @@ void				THIS::read_config()
 		{"neb gfx actor",	&neb::gfx::core::actor::sl},
 		{"neb gfx shape",	&neb::gfx::core::shape::sl},
 		{"neb gfx light",	&neb::gfx::core::light::sl},
+		{"neb gfx gui object terminal", &neb::gfx::gui::object::terminal::_M_severity_level},
 		{"neb phx",		&neb::phx::sl},
 		{"neb phx scene",	&neb::phx::core::scene::sl},
 		{"neb phx actor",	&neb::phx::core::actor::sl},
 		{"neb phx shape",	&neb::phx::core::shape::sl}
 	};
 
-/*	std::map<std::string, int> map_var({
-			{"neb core",		0},
-			{"neb core scene",	1},
-			{"neb core actor",	2},
-			{"neb core shape",	3},
-			{"neb core light",	4},
-			{"neb gfx",		5},
-			{"neb gfx actor",	6},
-			{"neb gfx shape",	7},
-			{"neb gfx light",	8},
-			{"neb phx",		9},
-			{"neb phx scene",	10},
-			{"neb phx actor",	11},
-			{"neb phx shape",	12}});
-			*/
+	/*	std::map<std::string, int> map_var({
+		{"neb core",		0},
+		{"neb core scene",	1},
+		{"neb core actor",	2},
+		{"neb core shape",	3},
+		{"neb core light",	4},
+		{"neb gfx",		5},
+		{"neb gfx actor",	6},
+		{"neb gfx shape",	7},
+		{"neb gfx light",	8},
+		{"neb phx",		9},
+		{"neb phx scene",	10},
+		{"neb phx actor",	11},
+		{"neb phx shape",	12}});
+		*/
 	std::map<std::string, int> map_val({
 			{"debug",	debug},
 			{"info",	info},
@@ -191,12 +205,17 @@ void				THIS::read_config()
 			{"critical",	critical}});
 
 
-	boost::python::dict py_dict(console_->main_namespace_["log"]);
+	boost::python::extract<boost::python::dict> e(o);
+	assert(e.check());
+	boost::python::dict py_dict = e;
 
 	boost::python::list keys = py_dict.keys();
 
 	std::map<std::string, std::string> m;
 
+	console_->print();
+
+	printf("log %lu\n", len(keys));
 	for (int i = 0; i < len(keys); ++i) {
 		boost::python::extract<std::string> extracted_key(keys[i]);  
 		if(!extracted_key.check()){  
@@ -204,6 +223,9 @@ void				THIS::read_config()
 			continue;                 
 		}
 		std::string key = extracted_key;  
+		
+		printf("%s\n", key.c_str());
+
 		boost::python::extract<std::string> extracted_val(py_dict[key]);  
 		if(!extracted_val.check()){  
 			std::cout<<"Value invalid, map might be incomplete"<<std::endl;  
@@ -228,6 +250,7 @@ void				THIS::read_config()
 		{
 			if(strcmp(var.c_str(), pairs[i].c) == 0)
 			{
+				printf("%s = %s\n", var.c_str(), val.c_str());
 				*pairs[i].sl = (severity_level)it_val->second;
 				break;
 			}
