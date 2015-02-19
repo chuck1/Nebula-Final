@@ -132,6 +132,17 @@ void			THIS::__init()
 
 		abort();
 	}
+
+	read_config();	
+
+	initRegistry();
+}
+void				THIS::read_config()
+{
+	assert(console_);
+
+	// python
+	console_->eval("execfile(../share/config.py)");
 	
 	// log levels
 
@@ -180,67 +191,53 @@ void			THIS::__init()
 			{"critical",	critical}});
 
 
-	std::ifstream ifs(NEB_SHARE_DIR"/config.txt");
-	if(ifs.is_open()) {
-		for(std::string line; std::getline(ifs, line);) {
-			auto loc = line.find("=");
-			if(loc != std::string::npos) {
-				auto var = line.substr(0,loc);
-				auto val = line.substr(loc+1);
-	
-				auto it_val = map_val.find(val);
-				if(it_val == map_val.end()) {
-					std::cout << "invalid value" << std::endl;
-					abort();
-				}
-				
-				unsigned int i = 0;
-				for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
-				{
-					if(strcmp(var.c_str(), pairs[i].c) == 0)
-					{
-						*pairs[i].sl = (severity_level)it_val->second;
-						break;
-					}
-				}
-				if(i == (sizeof(pairs) / sizeof(Pair)))
-				{
-					 std::cout << "log group not found: '" << var << "'" << std::endl;
-					 abort();
-				}
+	boost::python::dict py_dict(console_->main_namespace_["log"]);
 
-				/*
-				auto it_var = map_var.find(var);
+	boost::python::list keys = py_dict.keys();
 
-				if(it_var == map_var.end()) {
-					std::cout << "invalid variable" << std::endl;
-					abort();
-				}
+	std::map<std::string, std::string> m;
 
-				switch(it_var->second) {
-					case 0: neb::fnd::sl			= (severity_level)it_val->second; break;
-					case 1: neb::fnd::core::scene::sl	= (severity_level)it_val->second; break;
-					case 2: neb::fnd::core::actor::sl	= (severity_level)it_val->second; break;
-					case 3: neb::fnd::core::shape::sl	= (severity_level)it_val->second; break;
-					case 4: neb::fnd::core::light::sl	= (severity_level)it_val->second; break;
-					case 5: neb::gfx::sl			= (severity_level)it_val->second; break;
-					case 6: neb::gfx::core::actor::sl	= (severity_level)it_val->second; break;
-					case 7: neb::gfx::core::shape::sl	= (severity_level)it_val->second; break;
-					case 8: neb::gfx::core::light::sl	= (severity_level)it_val->second; break;
-					case 9: neb::phx::sl			= (severity_level)it_val->second; break;
-					case 10: neb::phx::core::scene::sl	= (severity_level)it_val->second; break;
-					case 11: neb::phx::core::actor::sl	= (severity_level)it_val->second; break;
-					case 12: neb::phx::core::shape::sl	= (severity_level)it_val->second; break;
-					default:
-						 std::cout << "default" << std::endl;
-						 abort();
-				}
-				*/
-			}
+	for (int i = 0; i < len(keys); ++i) {
+		boost::python::extract<std::string> extracted_key(keys[i]);  
+		if(!extracted_key.check()){  
+			std::cout<<"Key invalid, map might be incomplete"<<std::endl;  
+			continue;                 
 		}
+		std::string key = extracted_key;  
+		boost::python::extract<std::string> extracted_val(py_dict[key]);  
+		if(!extracted_val.check()){  
+			std::cout<<"Value invalid, map might be incomplete"<<std::endl;  
+			continue;                 
+		}
+		std::string value = extracted_val;  
+		m[key] = value;  
 	}
 
-	initRegistry();
+	for(auto p : m) {
+		auto var = p.first;
+		auto val = p.second;
+
+		auto it_val = map_val.find(val);
+		if(it_val == map_val.end()) {
+			std::cout << "invalid value" << std::endl;
+			abort();
+		}
+
+		unsigned int i = 0;
+		for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
+		{
+			if(strcmp(var.c_str(), pairs[i].c) == 0)
+			{
+				*pairs[i].sl = (severity_level)it_val->second;
+				break;
+			}
+		}
+		if(i == (sizeof(pairs) / sizeof(Pair)))
+		{
+			std::cout << "log group not found: '" << var << "'" << std::endl;
+			abort();
+		}
+	}
 }
 void				THIS::initRegistry()
 {
@@ -281,23 +278,23 @@ void				neb::fin::app::base::loop()
 	preloop();
 
 	while(!flag_.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
-		
+
 		// check for exit condition
 
 		if(!neb::gfx::window::util::parent::map_.front()) break;
-		
+
 		// update
-		
+
 		glfwPollEvents();
-		
+
 		neb::gfx::app::glfw::update_joysticks();
-		
+
 		// integrate
-		
+
 		ts_.step(glfwGetTime());
-		
+
 		step(ts_);
-		
+
 		// render
 
 		render();

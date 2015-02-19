@@ -50,6 +50,7 @@ namespace neb { namespace fin { namespace app {
 			//virtual void						init();
 			void							__init();
 			void							initRegistry();
+			void							read_config();
 		public:
 			neb::fnd::math::pose					getPose();
 			neb::fnd::math::pose					getPoseGlobal();
