@@ -22,6 +22,7 @@
 #include <neb/core/util/log.hpp>
 #include <neb/core/app/Base.hpp>
 #include <neb/core/core/scene/base.hpp>
+#include <neb/core/game/weapon/util/decl.hpp>
 
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/context/Base.hpp>
@@ -165,12 +166,13 @@ void				THIS::read_config()
 		int * const		sl;
 	};
 
-	static const Pair pairs[16] = {
+	static const Pair pairs[17] = {
 		{"neb core",					(int*)&neb::fnd::sl},
 		{"neb core scene",				(int*)&neb::fnd::core::scene::sl},
 		{"neb core actor",				(int*)&neb::fnd::core::actor::sl},
 		{"neb core shape",				(int*)&neb::fnd::core::shape::sl},
 		{"neb core light",				(int*)&neb::fnd::core::light::sl},
+		{"neb core game weapon simple_projectile",	&neb::fnd::itf::verbosity<neb::fnd::game::weapon::SimpleProjectile>::_M_severity_level},
 		{"neb gfx",					(int*)&neb::gfx::sl},
 		{"neb gfx actor",				(int*)&neb::gfx::core::actor::sl},
 		{"neb gfx shape",				(int*)&neb::gfx::core::shape::sl},
