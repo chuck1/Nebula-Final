@@ -268,7 +268,7 @@ void				THIS::read_config()
 }
 void				THIS::initRegistry()
 {
-	makeDLLFunc<neb::fnd::core::scene::base, neb::fin::core::scene::base>();
+	makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
 
 	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
@@ -394,10 +394,10 @@ std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
 	typedef neb::fin::core::scene::base		T;
 	typedef gal::dll::helper<T>				H;
 
-	std::shared_ptr<H> h(new H(dll_name, "scene"));
+	std::shared_ptr<H> h(new H(dll_name));
 	h->open();
-
-	std::shared_ptr<T> scene = h->make_shared();
+	h->template add<T>("scene");
+	std::shared_ptr<T> scene = h->template make_shared<T>();
 
 	neb::fnd::core::scene::util::parent::insert(scene);
 
