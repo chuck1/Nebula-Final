@@ -165,7 +165,7 @@ void				THIS::read_config()
 		int * const		sl;
 	};
 
-	static const Pair pairs[15] = {
+	static const Pair pairs[16] = {
 		{"neb core",					(int*)&neb::fnd::sl},
 		{"neb core scene",				(int*)&neb::fnd::core::scene::sl},
 		{"neb core actor",				(int*)&neb::fnd::core::actor::sl},
@@ -175,6 +175,7 @@ void				THIS::read_config()
 		{"neb gfx actor",				(int*)&neb::gfx::core::actor::sl},
 		{"neb gfx shape",				(int*)&neb::gfx::core::shape::sl},
 		{"neb gfx light",				(int*)&neb::gfx::core::light::sl},
+		{"neb gfx core light base",			&neb::fnd::itf::verbosity<neb::gfx::core::light::base>::_M_severity_level},
 		{"neb gfx gui object terminal",			&neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::_M_severity_level},
 		{"neb phx",					(int*)&neb::phx::sl},
 		{"neb phx scene",				(int*)&neb::phx::core::scene::sl},
