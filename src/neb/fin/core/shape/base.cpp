@@ -60,5 +60,10 @@ void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 	const_cast<THIS*>(this)->neb::fnd::core::shape::base::__serialize(ar,v);
 
 }
+void				THIS::v_set_pose_data(
+		neb::fnd::math::pose const & pose_global)
+{
+	neb::fnd::core::shape::base::__set_pose_data(pose_global);
+}
 
 

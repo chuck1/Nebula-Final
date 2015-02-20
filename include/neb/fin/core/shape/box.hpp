@@ -10,7 +10,7 @@
 namespace neb { namespace fin { namespace core { namespace shape {
 	
 	class box:
-		virtual public neb::gfx::core::shape::box,
+		/*virtual public neb::gfx::core::shape::box,*/
 		virtual public neb::phx::core::shape::box,
 		virtual public neb::fin::core::shape::base
 	{
