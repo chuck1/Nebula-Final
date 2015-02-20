@@ -30,7 +30,10 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 	
 	return shape;
 }
-std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::base::createShapeBox(neb::fnd::math::pose pose, glm::vec3 size) {
+std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::base::createShapeBox(
+		neb::fnd::math::pose pose,
+		glm::vec3 size)
+{
 	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	auto shape = createShapeBoxUninitialized(size).lock();
