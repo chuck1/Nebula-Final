@@ -18,8 +18,8 @@ void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	neb::fnd::core::shape::base::init(p);
 
-	neb::gfx::core::shape::base::init(p);
-	neb::gfx::core::shape::box::init(p);
+	//neb::gfx::core::shape::base::init(p);
+	//neb::gfx::core::shape::box::init(p);
 
 	neb::phx::core::shape::base::init(p);
 	neb::phx::core::shape::box::init(p);
@@ -31,8 +31,8 @@ void		THIS::release() {
 
 	neb::fnd::core::shape::base::release();
 
-	neb::gfx::core::shape::base::release();
-	neb::gfx::core::shape::box::release();
+	//neb::gfx::core::shape::base::release();
+	//neb::gfx::core::shape::box::release();
 
 	neb::phx::core::shape::base::release();
 	//neb::phx::core::shape::box::release();

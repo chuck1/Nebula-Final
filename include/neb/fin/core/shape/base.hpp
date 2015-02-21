@@ -20,6 +20,9 @@ namespace neb { namespace fin { namespace core { namespace shape {
 			virtual void				release();
 			virtual void				step(
 					gal::etc::timestep const & ts);
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightPoint();
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightSpot(glm::vec3);
+			virtual std::weak_ptr<neb::fnd::core::light::base>		createLightDirectional(glm::vec3);
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			virtual void				v_set_pose_data(

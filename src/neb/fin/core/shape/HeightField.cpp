@@ -30,5 +30,9 @@ void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const &)
 void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const &) const
 {
 }
+void		THIS::v_set_pose_data(neb::fnd::math::pose const & pose_global)
+{
+	abort();
+}
 
 
