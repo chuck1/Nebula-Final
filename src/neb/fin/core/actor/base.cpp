@@ -1,12 +1,13 @@
 #include <gal/stl/deleter.hpp>
 
+#include <neb/core/app/Base.hpp>
+#include <neb/core/plug/gfx/core/shape/Base.hpp>
+
 #include <neb/fin/core/actor/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
 
 typedef neb::fin::core::actor::base THIS;
-
-//00111122223333444455556666777788889999aaaabbbbccccddddeeeeffff000011112222333344445555666677778888
 
 THIS::base()
 {
@@ -39,10 +40,20 @@ void						THIS::step(gal::etc::timestep const & ts)
 std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(neb::fnd::math::pose const & pose)
 {
 	auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
+	auto app = get_fnd_app();
 
 	typedef neb::fin::core::shape::base T;
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
+
+	// create graphics plugin
+	typedef neb::fnd::plug::gfx::core::shape::Base G;
+	if(app->_M_graphics_plugin) {
+		printf("create graphics object\n");
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		assert(g);
+		shape->_M_graphics_object = g;
+	}
 
 	neb::fnd::core::shape::util::parent::insert(shape);
 
@@ -55,11 +66,21 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createS
 {
 
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
-
+	auto app = get_fnd_app();
 	typedef neb::fin::core::shape::box T;
 
 	std::shared_ptr<T> shape(new T(), gal::stl::deleter<T>());
 
+	// create graphics plugin
+	typedef neb::fnd::plug::gfx::core::shape::Base G;
+	if(app->_M_graphics_plugin) {
+		printf("create graphics object\n");
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		assert(g);
+		shape->_M_graphics_object = g;
+	}
+
+		
 	shape->pose_ = desc.pose_;
 	shape->scale_ = desc.scale_;
 
