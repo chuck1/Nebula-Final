@@ -28,7 +28,7 @@
 #include <neb/fnd/context/Base.hpp>
 #include <neb/fnd/window/Base.hpp>
 #include <neb/fnd/gui/layout/util/Parent.hpp>
-#include <neb/fnd/gui/object/Terminal.hh>
+#include <neb/fnd/gui/object/Terminal.hpp>
 
 //#include <neb/gfx/util/log.hpp>
 //
