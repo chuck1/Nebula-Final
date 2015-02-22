@@ -1,7 +1,7 @@
 #ifndef NEB_FIN_TMP_CHILD_HPP
 #define NEB_FIN_TMP_CHILD_HPP
 
-#include <neb/core/tmp/Child.hpp>
+#include <neb/fnd/tmp/Child.hpp>
 
 #include <neb/fin/app/util/decl.hpp>
 

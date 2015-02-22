@@ -1,8 +1,8 @@
 #include <gal/log/log.hpp>
 
-#include <neb/core/util/log.hpp>
-#include <neb/core/app/Base.hpp>
-#include <neb/core/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/actor/rigidactor/base.hpp>

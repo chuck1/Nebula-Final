@@ -17,25 +17,25 @@
 #include <gal/stl/deleter.hpp>
 #include <gal/argparse/Parser.hpp>
 
-#include <neb/core/free.hpp>
-#include <neb/core/util/config.hpp>
-#include <neb/core/util/log.hpp>
-#include <neb/core/app/Base.hpp>
-#include <neb/core/core/scene/base.hpp>
-#include <neb/core/game/weapon/util/decl.hpp>
+#include <neb/fnd/free.hpp>
+#include <neb/fnd/util/config.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/game/weapon/util/decl.hpp>
 
-#include <neb/core/plug/gfx/app/Base.hpp>
+#include <neb/fnd/plug/gfx/app/Base.hpp>
+#include <neb/fnd/context/Base.hpp>
+#include <neb/fnd/window/Base.hpp>
+#include <neb/fnd/gui/layout/util/Parent.hpp>
+#include <neb/fnd/gui/object/Terminal.hh>
 
-/*
-#include <neb/gfx/util/log.hpp>
-#include <neb/gfx/context/Base.hpp>
-#include <neb/gfx/window/Base.hpp>
-#include <neb/gfx/core/light/spot.hpp>
-#include <neb/gfx/core/light/point.hpp>
-#include <neb/gfx/gui/layout/util/parent.hpp>
-#include <neb/gfx/gui/object/terminal.hh>
-#include <neb/gfx/app/base.hpp>
-*/
+//#include <neb/gfx/util/log.hpp>
+//
+//#include <neb/gfx/core/light/spot.hpp>
+//#include <neb/gfx/core/light/point.hpp>
+//#include <neb/gfx/app/base.hpp>
+
 
 #include <neb/phx/util/log.hpp>
 
@@ -459,9 +459,10 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 }
 std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 {
-	auto window = neb::gfx::window::util::parent::create<neb::fin::window::base>();
+	auto window = neb::fnd::window::util::Parent::create<neb::fnd::window::Base>();
 
-	onFirstContext();
+	if(_M_graphics_object)
+		_M_graphics_object->onFirstContext();
 
 	return window;
 }

@@ -1,7 +1,7 @@
 #include <gal/stl/deleter.hpp>
 
-#include <neb/core/app/Base.hpp>
-#include <neb/core/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
 #include <neb/fin/core/actor/base.hpp>
 #include <neb/fin/core/shape/box.hpp>

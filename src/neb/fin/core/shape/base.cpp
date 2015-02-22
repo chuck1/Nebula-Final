@@ -1,13 +1,13 @@
 #include <neb/phx/util/log.hpp>
 
-#include <neb/core/app/Base.hpp>
-#include <neb/core/core/light/Point.hpp>
-#include <neb/core/core/light/Directional.hpp>
-#include <neb/core/core/light/Spot.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/core/light/Point.hpp>
+#include <neb/fnd/core/light/Directional.hpp>
+#include <neb/fnd/core/light/Spot.hpp>
 
-#include <neb/core/plug/gfx/core/light/Point.hpp>
-#include <neb/core/plug/gfx/core/light/Directional.hpp>
-#include <neb/core/plug/gfx/core/light/Spot.hpp>
+#include <neb/fnd/plug/gfx/core/light/Point.hpp>
+#include <neb/fnd/plug/gfx/core/light/Directional.hpp>
+#include <neb/fnd/plug/gfx/core/light/Spot.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 #include <neb/fin/core/shape/util/parent.hpp>

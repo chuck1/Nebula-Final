@@ -1,7 +1,7 @@
 #ifndef NEBULA_FIN_ENVIRON_VIS_DEPTH_HPP
 #define NEBULA_FIN_ENVIRON_VIS_DEPTH_HPP
 
-#include <neb/core/environ/visualization/Depth.hpp>
+#include <neb/fnd/environ/visualization/Depth.hpp>
 
 #include <neb/fin/environ/base.hpp>
 

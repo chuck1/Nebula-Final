@@ -2,7 +2,7 @@
 //#include <neb/gfx/core/light/point.hpp>
 //#include <neb/gfx/environ/SceneDefault.hpp>
 
-#include <neb/core/environ/shadow/Point.hpp>
+#include <neb/fnd/environ/shadow/Point.hpp>
 
 typedef neb::fnd::environ::shadow::Point THIS;
 

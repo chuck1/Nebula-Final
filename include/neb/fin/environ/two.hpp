@@ -1,7 +1,7 @@
 #ifndef NEBULA_FIN_ENVIRON_TWO_HPP
 #define NEBULA_FIN_ENVIRON_TWO_HPP
 
-#include <neb/core/environ/Two.hpp>
+#include <neb/fnd/environ/Two.hpp>
 
 #include <neb/fin/environ/base.hpp>
 

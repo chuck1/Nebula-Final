@@ -11,11 +11,11 @@
 #include <gal/itf/shared.hpp>
 #include <gal/stl/wrapper.hpp>
 
-#include <neb/core/app/Base.hpp>
-#include <neb/core/core/scene/util/parent.hpp>
-#include <neb/core/core/shape/util/decl.hpp>
-#include <neb/core/util/wrapper.hpp>
-#include <neb/core/util/decl.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/core/scene/util/parent.hpp>
+#include <neb/fnd/core/shape/util/decl.hpp>
+#include <neb/fnd/util/wrapper.hpp>
+#include <neb/fnd/util/decl.hpp>
 
 /*
 #include <neb/gfx/app/base.hpp>
@@ -23,7 +23,7 @@
 #include <neb/gfx/window/Base.hpp>
 #include <neb/gfx/window/util/Parent.hpp>
 */
-#include <neb/core/gui/layout/util/Parent.hpp>
+#include <neb/fnd/gui/layout/util/Parent.hpp>
 
 #include <neb/phx/app/base.hpp>
 

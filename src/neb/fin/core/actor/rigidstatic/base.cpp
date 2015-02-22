@@ -1,6 +1,6 @@
 #include <gal/log/log.hpp>
 
-#include <neb/core/util/log.hpp>
+#include <neb/fnd/util/log.hpp>
 
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 

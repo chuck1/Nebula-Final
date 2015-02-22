@@ -1,7 +1,7 @@
 #ifndef NEBULA_FIN_ENVIRON_SCENE_DEF_HPP
 #define NEBULA_FIN_ENVIRON_SCENE_DEF_HPP
 
-#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 
 #include <neb/fin/environ/base.hpp>
 

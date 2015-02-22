@@ -1,4 +1,4 @@
-#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 
 typedef neb::fnd::environ::SceneDefault THIS;
 

@@ -3,8 +3,8 @@
 
 #include <memory>
 
-//#include <neb/core/environ/util/decl.hpp>
+//#include <neb/fnd/environ/util/decl.hpp>
 
-#include <neb/core/environ/util/Parent.hpp>
+#include <neb/fnd/environ/util/Parent.hpp>
 
 #endif

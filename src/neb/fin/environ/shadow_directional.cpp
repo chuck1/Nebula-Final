@@ -1,6 +1,6 @@
 
-#include <neb/core/environ/shadow/Directional.hpp>
-//#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/fnd/environ/shadow/Directional.hpp>
+//#include <neb/fnd/environ/SceneDefault.hpp>
 
 typedef neb::fnd::environ::shadow::Directional THIS;
 

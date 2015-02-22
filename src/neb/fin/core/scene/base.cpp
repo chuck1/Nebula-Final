@@ -2,8 +2,8 @@
 
 #include <gal/stl/deleter.hpp>
 
-#include <neb/core/util/log.hpp>
-#include <neb/core/plug/gfx/core/scene/Base.hpp>
+#include <neb/fnd/util/log.hpp>
+#include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 
 /*
 #include <neb/gfx/RenderDesc.hpp>

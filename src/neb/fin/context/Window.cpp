@@ -1,6 +1,6 @@
-#include <neb/core/context/Window.hpp>
+#include <neb/fnd/context/Window.hpp>
 
-#include <neb/core/plug/gfx/context/Base.hpp>
+#include <neb/fnd/plug/gfx/context/Base.hpp>
 
 typedef neb::fnd::context::Window THIS;
 

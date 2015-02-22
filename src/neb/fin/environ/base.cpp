@@ -1,9 +1,9 @@
-#include <neb/core/app/Base.hpp>
-#include <neb/core/environ/Base.hpp>
-#include <neb/core/camera/proj/Perspective.hpp>
-#include <neb/core/camera/proj/Ortho.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/environ/Base.hpp>
+#include <neb/fnd/camera/proj/Perspective.hpp>
+#include <neb/fnd/camera/proj/Ortho.hpp>
 
-#include <neb/core/plug/gfx/camera/proj/Perspective.hpp>
+#include <neb/fnd/plug/gfx/camera/proj/Perspective.hpp>
 
 typedef neb::fnd::environ::Base THIS;
 

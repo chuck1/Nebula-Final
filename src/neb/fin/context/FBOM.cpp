@@ -1,6 +1,6 @@
-#include <neb/core/context/FBOM.hpp>
+#include <neb/fnd/context/FBOM.hpp>
 
-#include <neb/core/plug/gfx/context/Base.hpp>
+#include <neb/fnd/plug/gfx/context/Base.hpp>
 
 typedef neb::fnd::context::FBOM THIS;
 

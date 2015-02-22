@@ -2,7 +2,7 @@
 #include <neb/phx/util/convert.hpp>
 #include <neb/phx/test.hpp>
 
-#include <neb/core/camera/proj/Base.hpp>
+#include <neb/fnd/camera/proj/Base.hpp>
 
 #include <neb/fin/core/shape/frustrum.hpp>
 #include <neb/fin/app/base.hpp>

@@ -1,7 +1,7 @@
 #ifndef NEBULA_FIN_ENVIRON_NORMAL_MAP_HPP
 #define NEBULA_FIN_ENVIRON_NORMAL_MAP_HPP
 
-#include <neb/core/environ/visualization/Normal.hpp>
+#include <neb/fnd/environ/visualization/Normal.hpp>
 
 #include <neb/fin/environ/base.hpp>
 

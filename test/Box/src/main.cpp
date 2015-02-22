@@ -3,13 +3,13 @@
 
 #include <gal/console/base.hpp>
 
-#include <neb/core/app/__base.hpp>
-#include <neb/core/actor/base.hpp>
-#include <neb/core/util/wrapper.hpp>
-#include <neb/core/light/base.hpp>
-#include <neb/core/scene/base.hpp>
-#include <neb/core/shape/base.hpp>
-#include <neb/core/actor/base.hpp>
+#include <neb/fnd/app/__base.hpp>
+#include <neb/fnd/actor/base.hpp>
+#include <neb/fnd/util/wrapper.hpp>
+#include <neb/fnd/light/base.hpp>
+#include <neb/fnd/scene/base.hpp>
+#include <neb/fnd/shape/base.hpp>
+#include <neb/fnd/actor/base.hpp>
 
 #include <neb/gfx/Context/Window.hpp>
 #include <neb/gfx/environ/two.hpp>
@@ -17,8 +17,8 @@
 #include <neb/gfx/GUI/Object/terminal.hh>
 #include <neb/gfx/camera/view/ridealong.hh>
 
-#include <neb/core/game/map/base.hpp>
-#include <neb/core/game/trigger/ActorEx1.hpp>
+#include <neb/fnd/game/map/base.hpp>
+#include <neb/fnd/game/trigger/ActorEx1.hpp>
 
 #include <neb/ext/maze/game/map/maze2.hpp>
 

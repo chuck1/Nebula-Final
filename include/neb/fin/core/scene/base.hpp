@@ -1,9 +1,9 @@
 #ifndef NEB_FINAL_GFX_PHX_CORE_SCENE_BASE_HPP
 #define NEB_FINAL_GFX_PHX_CORE_SCENE_BASE_HPP
 
-#include <neb/core/core/actor/util/decl.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
 
-#include <neb/core/RenderDesc.hpp>
+#include <neb/fnd/RenderDesc.hpp>
 //#include <neb/gfx/core/scene/base.hpp>
 
 #include <neb/phx/core/scene/base.hpp>

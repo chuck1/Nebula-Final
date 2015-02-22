@@ -1,8 +1,8 @@
 //#include <neb/gfx/environ/base.hpp>
 
-#include <neb/core/camera/proj/Perspective.hpp>
+#include <neb/fnd/camera/proj/Perspective.hpp>
 
-#include <neb/core/plug/gfx/camera/proj/Base.hpp>
+#include <neb/fnd/plug/gfx/camera/proj/Base.hpp>
 
 
 typedef neb::fnd::camera::proj::Perspective THIS;

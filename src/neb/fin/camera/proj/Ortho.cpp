@@ -1,5 +1,5 @@
 
-#include <neb/core/camera/proj/Ortho.hpp>
+#include <neb/fnd/camera/proj/Ortho.hpp>
 
 typedef neb::fnd::camera::proj::Ortho THIS;
 

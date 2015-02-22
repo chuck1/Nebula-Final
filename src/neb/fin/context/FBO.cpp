@@ -1,8 +1,8 @@
 //#include <neb/gfx/texture/Base.hpp>
 
-#include <neb/core/context/FBO.hpp>
+#include <neb/fnd/context/FBO.hpp>
 
-#include <neb/core/plug/gfx/context/Base.hpp>
+#include <neb/fnd/plug/gfx/context/Base.hpp>
 
 typedef neb::fnd::context::FBO THIS;
 typedef neb::fnd::environ::shadow::Directional ESD;

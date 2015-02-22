@@ -3,7 +3,7 @@
 
 //#include <neb/gfx/camera/util/decl.hpp>
 
-#include <neb/core/camera/util/decl.hpp>
+#include <neb/fnd/camera/util/decl.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 

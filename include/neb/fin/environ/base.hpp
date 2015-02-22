@@ -2,9 +2,9 @@
 #ifndef NEBULA_FIN_ENVIRON_BASE_HPP
 #define NEBULA_FIN_ENVIRON_BASE_HPP
 
-#include <neb/core/glsl/program/util/decl.hpp>
-#include <neb/core/environ/Base.hpp>
-#include <neb/core/camera/util/decl.hpp>
+#include <neb/fnd/glsl/program/util/decl.hpp>
+#include <neb/fnd/environ/Base.hpp>
+#include <neb/fnd/camera/util/decl.hpp>
 
 namespace neb { namespace fin { namespace environ {
 	/** @brief base

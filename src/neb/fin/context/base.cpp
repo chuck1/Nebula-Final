@@ -2,7 +2,7 @@
 /*
 #include <gal/stl/deleter.hpp>
 
-#include <neb/core/environ/util/decl.hpp>
+#include <neb/fnd/environ/util/decl.hpp>
 
 #include <neb/gfx/context/util/Parent.hh>
 #include <neb/gfx/core/light/directional.hpp>
