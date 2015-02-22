@@ -15,15 +15,6 @@ namespace neb { namespace fin { namespace environ {
 		virtual public neb::fnd::environ::Base
 	{
 		public:
-			typedef std::shared_ptr<neb::fnd::glsl::program::Base>		program_shared;
-			typedef std::shared_ptr<neb::fnd::camera::view::Base>		view_shared;
-			typedef std::shared_ptr<neb::fnd::camera::proj::Base>		proj_shared;
-			//typedef neb::gfx::core::light::directional			light_type;
-			//typedef std::shared_ptr<light_type>				light_shared;
-			//typedef std::weak_ptr<light_type>				light_weak;
-			virtual void		init(parent_t * const & p);
-			virtual proj_shared	createCameraPerspective();
-			virtual proj_shared	createCameraOrtho();
 	};
 }}}
 

@@ -1,7 +1,7 @@
 
-#include <neb/fin/camera/proj/Ortho.hpp>
+#include <neb/core/camera/proj/Ortho.hpp>
 
-typedef neb::fin::camera::proj::Ortho THIS;
+typedef neb::fnd::camera::proj::Ortho THIS;
 
 THIS::Ortho()
 {

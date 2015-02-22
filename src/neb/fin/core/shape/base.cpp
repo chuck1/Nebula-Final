@@ -1,8 +1,13 @@
 #include <neb/phx/util/log.hpp>
 
-//#include <neb/gfx/core/light/point.hpp>
-//#include <neb/gfx/core/light/directional.hpp>
-//#include <neb/gfx/core/light/spot.hpp>
+#include <neb/core/app/Base.hpp>
+#include <neb/core/core/light/Point.hpp>
+#include <neb/core/core/light/Directional.hpp>
+#include <neb/core/core/light/Spot.hpp>
+
+#include <neb/core/plug/gfx/core/light/Point.hpp>
+#include <neb/core/plug/gfx/core/light/Directional.hpp>
+#include <neb/core/plug/gfx/core/light/Spot.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 #include <neb/fin/core/shape/util/parent.hpp>
@@ -72,28 +77,44 @@ void				THIS::v_set_pose_data(
 }
 std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightPoint()
 {
-	auto self(std::dynamic_pointer_cast<neb::fnd::core::shape::base>(shared_from_this()));
+	auto app = get_fnd_app();
 
-	typedef neb::gfx::core::light::point L;
-
-	auto light = std::shared_ptr<L>(new L());
-
+	typedef neb::fnd::core::light::Point L;
+	typedef neb::fnd::plug::gfx::core::light::Point G;
+	
+	L* l = new L();
+	auto light = std::shared_ptr<L>(l);
+	
+	if(app->_M_graphics_plugin) {
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		light->_M_graphics_object = g;
+		g->init(light.get());
+	}
+	
 	neb::fnd::core::light::util::parent::insert(light);
-
+	
 	light->init(this);
 
 	return light;
 }
 std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightSpot(glm::vec3 d)
 {
-
 	auto self(std::dynamic_pointer_cast<neb::fnd::core::shape::base>(shared_from_this()));
 
-	typedef neb::gfx::core::light::spot L;
+	auto app = get_fnd_app();
 
-	auto light = std::shared_ptr<L>(new L(), gal::stl::deleter<L>());
+	typedef neb::fnd::core::light::Spot L;
+	typedef neb::fnd::plug::gfx::core::light::Spot G;
 
-	light->spot_direction_ = d;
+	auto l = new L();
+	auto light = std::shared_ptr<L>(l, gal::stl::deleter<L>());
+
+	if(app->_M_graphics_plugin) {
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		light->_M_graphics_object = g;
+	}
+
+	light->set_spot_direction(d);
 
 	neb::fnd::core::light::util::parent::insert(light);
 
@@ -103,12 +124,20 @@ std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightSpot(glm::vec3 d)
 }
 std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightDirectional(glm::vec3 d)
 {
-
 	auto self(std::dynamic_pointer_cast<neb::fnd::core::shape::base>(shared_from_this()));
 
-	typedef neb::gfx::core::light::directional L;
+	auto app = get_fnd_app();
+
+	typedef neb::fnd::core::light::Directional L;
+	typedef neb::fnd::plug::gfx::core::light::Directional G;
 	
 	auto light = std::shared_ptr<L>(new L(), gal::stl::deleter<L>());
+
+	if(app->_M_graphics_plugin) {
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		light->_M_graphics_object = g;
+		g->init(light.get());
+	}
 
 	light->pose_.pos_ = d;
 

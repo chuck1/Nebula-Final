@@ -24,6 +24,9 @@
 #include <neb/core/core/scene/base.hpp>
 #include <neb/core/game/weapon/util/decl.hpp>
 
+#include <neb/core/plug/gfx/app/Base.hpp>
+
+/*
 #include <neb/gfx/util/log.hpp>
 #include <neb/gfx/context/Base.hpp>
 #include <neb/gfx/window/Base.hpp>
@@ -32,6 +35,7 @@
 #include <neb/gfx/gui/layout/util/parent.hpp>
 #include <neb/gfx/gui/object/terminal.hh>
 #include <neb/gfx/app/base.hpp>
+*/
 
 #include <neb/phx/util/log.hpp>
 
@@ -84,10 +88,10 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	app->neb::fnd::app::Base::__init();
 	app->neb::fin::app::base::__init();
 
-	app->neb::gfx::app::Base::__init();
-	app->neb::gfx::app::glsl::__init();
-	app->neb::gfx::app::glfw::__init();
-	app->neb::gfx::app::draw::__init();
+	//app->neb::gfx::app::Base::__init();
+	//app->neb::gfx::app::glsl::__init();
+	//app->neb::gfx::app::glfw::__init();
+	//app->neb::gfx::app::draw::__init();
 
 	app->neb::phx::app::base::__init();
 
@@ -166,19 +170,19 @@ void				THIS::read_config()
 		int * const		sl;
 	};
 
-	static const Pair pairs[17] = {
+	static const Pair pairs[11] = {
 		{"neb core",					(int*)&neb::fnd::sl},
 		{"neb core scene",				(int*)&neb::fnd::core::scene::sl},
 		{"neb core actor",				(int*)&neb::fnd::core::actor::sl},
 		{"neb core shape",				(int*)&neb::fnd::core::shape::sl},
 		{"neb core light",				(int*)&neb::fnd::core::light::sl},
 		{"neb core game weapon simple_projectile",	&neb::fnd::itf::verbosity<neb::fnd::game::weapon::SimpleProjectile>::_M_severity_level},
-		{"neb gfx",					(int*)&neb::gfx::sl},
+/*		{"neb gfx",					(int*)&neb::gfx::sl},
 		{"neb gfx actor",				(int*)&neb::gfx::core::actor::sl},
 		{"neb gfx shape",				(int*)&neb::gfx::core::shape::sl},
 		{"neb gfx light",				(int*)&neb::gfx::core::light::sl},
 		{"neb gfx core light base",			&neb::fnd::itf::verbosity<neb::gfx::core::light::base>::_M_severity_level},
-		{"neb gfx gui object terminal",			&neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::_M_severity_level},
+		{"neb gfx gui object terminal",			&neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::_M_severity_level},*/
 		{"neb phx",					(int*)&neb::phx::sl},
 		{"neb phx scene",				(int*)&neb::phx::core::scene::sl},
 		{"neb phx actor",				(int*)&neb::phx::core::actor::sl},
@@ -279,15 +283,16 @@ void				THIS::initRegistry()
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::box>();
 	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::HeightField::Base>();
 
-	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
-	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
+	/*	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
+		makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
+		*/
 }
 void				neb::fin::app::base::release()
 {
 	//neb::fnd::app::__base::__release();
 	neb::fnd::app::Base::__release();
 
-	neb::gfx::app::Base::__release();
+	//neb::gfx::app::Base::__release();
 	//neb::gfx::app::__gfx_glsl::__release();
 
 	neb::phx::app::base::__release();
@@ -295,7 +300,7 @@ void				neb::fin::app::base::release()
 }
 void				neb::fin::app::base::preloop()
 {
-	neb::gfx::gui::layout::util::parent::preloop();
+	neb::fnd::gui::layout::util::Parent::preloop();
 }
 void				neb::fin::app::base::loop()
 {
@@ -308,13 +313,13 @@ void				neb::fin::app::base::loop()
 
 		// check for exit condition
 
-		if(!neb::gfx::window::util::parent::map_.front()) break;
+		if(!neb::fnd::window::util::Parent::map_.front()) break;
 
 		// update
 
-		glfwPollEvents();
-
-		neb::gfx::app::glfw::update_joysticks();
+		if(_M_graphics_object)
+			_M_graphics_object->update();
+		
 
 		// integrate
 
@@ -331,20 +336,11 @@ void							THIS::step(gal::etc::timestep const & ts)
 {
 	neb::fnd::core::scene::util::parent::step(ts);
 
-	neb::gfx::gui::layout::util::parent::step(ts);
-
 	neb::fnd::game::game::util::parent::step(ts);
 
-	neb::gfx::window::util::parent::step(ts);
+	neb::fnd::window::util::Parent::step(ts);
 
-}
-void				neb::fin::app::base::render()
-{
-	//neb::fnd::core::scene::util::parent::render();
-	//neb::gfx::gui::layout::util::parent::render();
-	//neb::fnd::game::game::util::parent::render();
-
-	neb::gfx::app::glfw::render();
+	neb::fnd::gui::layout::util::Parent::step(ts);
 }
 neb::fnd::math::pose					THIS::getPose()
 {
@@ -449,9 +445,9 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 		std::shared_ptr<neb::fnd::window::Base> window,
 		std::shared_ptr<neb::fnd::context::Base> context)
 {
-	typedef neb::gfx::gui::layout::base T;
+	typedef neb::fnd::gui::layout::Base T;
 
-	auto layout = neb::gfx::gui::layout::util::parent::create<T>().lock();
+	auto layout = neb::fnd::gui::layout::util::Parent::create<T>().lock();
 
 	layout->connect(window);
 
@@ -460,6 +456,14 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 	context->setDrawable(layout);
 
 	return layout;
+}
+std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
+{
+	auto window = neb::gfx::window::util::parent::create<neb::fin::window::base>();
+
+	onFirstContext();
+
+	return window;
 }
 
 

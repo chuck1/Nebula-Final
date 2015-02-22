@@ -1,9 +1,11 @@
+#include <neb/core/app/Base.hpp>
+#include <neb/core/environ/Base.hpp>
+#include <neb/core/camera/proj/Perspective.hpp>
+#include <neb/core/camera/proj/Ortho.hpp>
 
-#include <neb/fin/environ/base.hpp>
-#include <neb/fin/camera/proj/Perspective.hpp>
-#include <neb/fin/camera/proj/Ortho.hpp>
+#include <neb/core/plug/gfx/camera/proj/Perspective.hpp>
 
-typedef neb::fin::environ::base THIS;
+typedef neb::fnd::environ::Base THIS;
 
 void			THIS::init(parent_t * const & p)
 {
@@ -13,7 +15,18 @@ void			THIS::init(parent_t * const & p)
 }
 THIS::proj_shared	THIS::createCameraPerspective()
 {
-	proj_ = THIS::proj_shared(new neb::fin::camera::proj::Perspective);
+	auto app = get_fnd_app();
+
+	typedef neb::fnd::camera::proj::Perspective C;
+	typedef neb::fnd::plug::gfx::camera::proj::Perspective G;
+	
+	auto c = new C();
+	proj_ = THIS::proj_shared(c);
+
+	if(app->_M_graphics_plugin) {
+		auto g = app->_M_graphics_plugin->template make_shared<G>();
+		proj_->_M_graphics_object = g;
+	}
 	
 	proj_->init(this);
 
@@ -21,8 +34,12 @@ THIS::proj_shared	THIS::createCameraPerspective()
 }
 THIS::proj_shared	THIS::createCameraOrtho()
 {
-	proj_ = THIS::proj_shared(new neb::fin::camera::proj::Ortho);
-	
+	typedef neb::fnd::camera::proj::Ortho C;
+
+	auto c = new C;
+	proj_.reset(c);
+
+
 	proj_->init(this);
 
 	return proj_;

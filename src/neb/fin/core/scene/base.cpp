@@ -3,6 +3,7 @@
 #include <gal/stl/deleter.hpp>
 
 #include <neb/core/util/log.hpp>
+#include <neb/core/plug/gfx/core/scene/Base.hpp>
 
 /*
 #include <neb/gfx/RenderDesc.hpp>
@@ -189,115 +190,22 @@ void		THIS::save(boost::archive::polymorphic_oarchive & ar, unsigned int const &
 void			THIS::drawPhysxVisualization(
 		neb::fnd::RenderDesc const & desc)
 {
-	auto app = get_fin_app();
+	//auto app = get_fin_app();
 
 	if(!flag_.all(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION)) return;
 
 	// visual debugging
 	if(px_scene_)
 	{
-		const physx::PxRenderBuffer& rb = px_scene_->getRenderBuffer();
+		// get the data
 
-		physx::PxU32 nblines = rb.getNbLines();
-		const physx::PxDebugLine* lines = rb.getLines();
-
-		physx::PxU32 nbtriangles = rb.getNbTriangles();
-		const physx::PxDebugTriangle* triangles = rb.getTriangles();
-
-		auto p = app->program_simple3_;
-		p->use();
+		neb::fnd::DebugBuffer db = get_debug_buffer();
+		
+		if(_M_graphics_object)
+			_M_graphics_object->draw_debug_buffer(db);
 
 		//auto e = neb::could_be<neb::gfx::environ::base, neb::gfx::environ::three>(context->environ_);
 		//if(e)
-		{
-			desc.p->load(p.get());
-			desc.v->load(p.get());
-
-			glClear(GL_DEPTH_BUFFER_BIT);
-
-
-			LOG(lg, neb::phx::core::scene::sl, debug) << "Debug visualization";
-			LOG(lg, neb::phx::core::scene::sl, debug) << "number of points    " << rb.getNbPoints();
-			LOG(lg, neb::phx::core::scene::sl, debug) << "number of lines     " << nblines;
-			LOG(lg, neb::phx::core::scene::sl, debug) << "number of triangles " << nbtriangles;
-
-
-			GLint i_color = p->attrib_table_[neb::gfx::glsl::attribs::COLOR];
-
-			glEnableVertexAttribArray(p->attrib_table_[neb::gfx::glsl::attribs::POSITION]);
-			if(i_color > -1)
-				glEnableVertexAttribArray(i_color);
-
-			GLuint buf;
-			glGenBuffers(1, &buf);
-			glBindBuffer(GL_ARRAY_BUFFER, buf);
-
-
-			// lines
-			glBufferData(
-					GL_ARRAY_BUFFER,
-					sizeof(physx::PxDebugLine) * nblines,
-					lines,
-					GL_STREAM_DRAW
-				    );
-
-			glVertexAttribPointer(
-					p->attrib_table_[neb::gfx::glsl::attribs::POSITION],
-					3,
-					GL_FLOAT,
-					GL_FALSE,
-					16,
-					0);
-
-
-			if(i_color > -1)
-				glVertexAttribIPointer(
-						p->attrib_table_[neb::gfx::glsl::attribs::COLOR],
-						1,
-						GL_UNSIGNED_INT,
-						16,
-						(GLvoid*)12);
-
-			glDrawArrays(GL_LINES, 0, nblines * 2);
-
-			checkerror("");
-
-			// triangles
-			glBufferData(
-					GL_ARRAY_BUFFER,
-					sizeof(physx::PxDebugTriangle) * nbtriangles,
-					triangles,
-					GL_STREAM_DRAW
-				    );
-
-			glVertexAttribPointer(
-					p->attrib_table_[neb::gfx::glsl::attribs::POSITION],
-					3,
-					GL_FLOAT,
-					GL_FALSE,
-					16,
-					0);
-
-
-			if(i_color > -1)
-				glVertexAttribIPointer(
-						p->attrib_table_[neb::gfx::glsl::attribs::COLOR],
-						1,
-						GL_UNSIGNED_INT,
-						16,
-						(GLvoid*)12);
-
-			glDrawArrays(GL_TRIANGLES, 0, nbtriangles * 3);
-
-			checkerror("");
-
-			// cleanup
-			glDisableVertexAttribArray(p->attrib_table_[neb::gfx::glsl::attribs::POSITION]);
-			if(i_color > -1)
-				glDisableVertexAttribArray(p->attrib_table_[neb::gfx::glsl::attribs::COLOR]);
-
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-		}
 	}
 }
 

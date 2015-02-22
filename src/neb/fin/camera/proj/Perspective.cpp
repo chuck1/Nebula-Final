@@ -1,9 +1,11 @@
 //#include <neb/gfx/environ/base.hpp>
 
-#include <neb/fin/camera/proj/Perspective.hpp>
+#include <neb/core/camera/proj/Perspective.hpp>
+
+#include <neb/core/plug/gfx/camera/proj/Base.hpp>
 
 
-typedef neb::fin::camera::proj::Perspective THIS;
+typedef neb::fnd::camera::proj::Perspective THIS;
 
 THIS::Perspective()
 {
@@ -11,8 +13,9 @@ THIS::Perspective()
 void	THIS::init(parent_t * const & p)
 {
 	setParent(p);
-
-	//calculate();
+	
+	if(_M_graphics_object)
+		_M_graphics_object->calculate();
 }
 void	THIS::release()
 {

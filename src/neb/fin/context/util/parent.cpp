@@ -1,18 +1,18 @@
 
-#include <neb/fin/context/util/parent.hpp>
+#include <neb/core/context/util/Parent.hpp>
 
-#include <neb/fin/context/Window.hpp>
-#include <neb/fin/context/fbo.hpp>
-#include <neb/fin/context/FBOMulti.hpp>
+#include <neb/core/context/Window.hpp>
+#include <neb/core/context/FBO.hpp>
+#include <neb/core/context/FBOM.hpp>
 
-typedef neb::fin::context::util::parent THIS;
+typedef neb::fnd::context::util::Parent THIS;
 
 std::weak_ptr<neb::fnd::context::Window>	THIS::createContextWindow()
 {
 	//auto self = isWindowBase();
 	//assert(self);
 	
-	return create<neb::fin::context::Window>();
+	return create<neb::fnd::context::Window>();
 	/*
 	std::shared_ptr<C_W> context(new C_W());
 	
@@ -25,7 +25,7 @@ std::weak_ptr<neb::fnd::context::Window>	THIS::createContextWindow()
 std::weak_ptr<neb::fnd::context::FBO>		THIS::createContextFBO()
 {
 
-	return create<neb::fin::context::fbo>();
+	return create<neb::fnd::context::FBO>();
 /*
 	auto self = isWindowBase();
 	assert(self);
@@ -40,10 +40,10 @@ std::weak_ptr<neb::fnd::context::FBO>		THIS::createContextFBO()
 }
 std::weak_ptr<neb::fnd::context::FBOM>		THIS::createContextFBOMulti()
 {
-	return create<neb::fin::context::FBOMulti>();
+	return create<neb::fnd::context::FBOM>();
 }
 std::weak_ptr<neb::fnd::context::Window>	THIS::createContextVisDepth()
 {
-	return create<neb::fin::context::Window>();
+	return create<neb::fnd::context::Window>();
 }
 

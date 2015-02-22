@@ -18,7 +18,7 @@ void			THIS::release()
 	std::cout << __PRETTY_FUNCTION__ << std::endl;
 	
 	neb::fnd::core::shape::base::__release();
-	neb::gfx::core::shape::base::__release();
+	//neb::gfx::core::shape::base::__release();
 	neb::phx::core::shape::base::__release();
 }
 void		THIS::step(gal::etc::timestep  const & ts)

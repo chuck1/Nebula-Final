@@ -27,7 +27,6 @@
 
 #include <neb/phx/app/base.hpp>
 
-#include <neb/fin/app/glfw.hpp>
 #include <neb/fin/core/scene/util/decl.hpp>
 
 namespace neb { namespace fin { namespace app {
@@ -39,7 +38,6 @@ namespace neb { namespace fin { namespace app {
 		virtual public neb::fnd::app::Base,
 		/*virtual public neb::gfx::app::Base,*/
 		virtual public neb::fnd::gui::layout::util::Parent,
-		virtual public neb::fin::app::glfw,
 		virtual public neb::phx::app::base
 	{
 		public:
@@ -48,6 +46,8 @@ namespace neb { namespace fin { namespace app {
 			static std::shared_ptr<neb::fin::app::base>		s_init(int ac, char ** av);
 			base();
 			virtual ~base();
+			typedef std::weak_ptr<neb::fnd::window::Base>		window_w;
+			virtual window_w					createWindow();
 		protected:
 			//virtual void						init();
 			void							__init();
@@ -61,7 +61,6 @@ namespace neb { namespace fin { namespace app {
 			}
 			void							release();
 			virtual void						step(gal::etc::timestep const & ts);
-			virtual void						render();
 			void							preloop();
 			void							loop();
 			void							set_should_release();
@@ -70,9 +69,6 @@ namespace neb { namespace fin { namespace app {
 			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
 					std::shared_ptr<neb::fnd::context::Base> context);
-			typedef std::weak_ptr<neb::fnd::window::Base>		window_w;
-
-			virtual window_w					createWindow();
 
 	};
 }}}
