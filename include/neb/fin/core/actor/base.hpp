@@ -1,7 +1,7 @@
 #ifndef NEB_FINAL_GFX_PHX_CORE_ACTOR_BASE_HPP
 #define NEB_FINAL_GFX_PHX_CORE_ACTOR_BASE_HPP
 
-#include <neb/gfx/core/actor/base.hpp>
+//#include <neb/gfx/core/actor/base.hpp>
 
 #include <neb/phx/core/actor/base.hpp>
 
@@ -11,8 +11,8 @@
 namespace neb { namespace fin { namespace core { namespace actor {
 
 	class base:
-		virtual public neb::phx::core::actor::base,
-		virtual public neb::gfx::core::actor::base
+		virtual public neb::phx::core::actor::base
+		//virtual public neb::gfx::core::actor::base
 	{
 		public:
 			typedef neb::fnd::core::actor::util::parent parent_t;

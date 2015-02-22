@@ -4,10 +4,12 @@
 
 #include <neb/core/util/log.hpp>
 
+/*
 #include <neb/gfx/RenderDesc.hpp>
 #include <neb/gfx/camera/proj/base.hpp>
 #include <neb/gfx/camera/view/Base.hpp>
 #include <neb/gfx/free.hpp>
+*/
 
 #include <neb/phx/util/log.hpp>
 

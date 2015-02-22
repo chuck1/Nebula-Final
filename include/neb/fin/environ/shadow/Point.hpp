@@ -3,17 +3,18 @@
 
 #include <neb/fin/environ/base.hpp>
 
-#include <neb/gfx/environ/shadow/point.hpp>
+#include <neb/core/environ/shadow/Point.hpp>
 
 namespace neb { namespace fin { namespace environ { namespace shadow {
 	/** @brief base
 	 */
 	class Point:
-		virtual public neb::gfx::environ::shadow::point,
+		virtual public neb::fnd::environ::shadow::Point,
 		virtual public neb::fin::environ::base
 	{
 		public:
 			virtual void		init(parent_t * const & p);
+			virtual void		release();
 	};
 }}}}
 

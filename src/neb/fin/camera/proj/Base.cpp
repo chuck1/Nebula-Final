@@ -1,7 +1,7 @@
 
 #include <neb/phx/test.hpp>
 
-#include <neb/gfx/environ/base.hpp>
+//#include <neb/gfx/environ/base.hpp>
 
 #include <neb/fin/camera/proj/Base.hpp>
 #include <neb/fin/app/base.hpp>

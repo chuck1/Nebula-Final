@@ -6,7 +6,7 @@ void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
 
-	neb::gfx::environ::SceneDefault::init(p);
+	//neb::fnd::environ::SceneDefault::init(p);
 	neb::fin::environ::base::init(p);
 }
 

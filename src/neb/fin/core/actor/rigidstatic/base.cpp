@@ -35,7 +35,7 @@ void						neb::fin::core::actor::rigidstatic::base::release()
 
 	neb::fnd::core::actor::base::release();
 	
-	neb::gfx::core::actor::base::release();
+	//neb::gfx::core::actor::base::release();
 	
 	//neb::phx::core::actor::base::release();
 	neb::phx::core::actor::actor::base::release();

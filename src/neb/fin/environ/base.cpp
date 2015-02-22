@@ -9,7 +9,7 @@ void			THIS::init(parent_t * const & p)
 {
 	setParent(p);
 
-	neb::gfx::environ::base::init(p);
+	//neb::fnd::environ::Base::init(p);
 }
 THIS::proj_shared	THIS::createCameraPerspective()
 {

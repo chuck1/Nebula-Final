@@ -4,8 +4,8 @@
 #include <neb/core/context/util/Parent.hpp>
 #include <neb/core/window/Base.hpp>
 
-#include <neb/gfx/core/light/directional.hpp>
-#include <neb/gfx/core/light/point.hpp>
+//#include <neb/gfx/core/light/directional.hpp>
+//#include <neb/gfx/core/light/point.hpp>
 
 #include <neb/fin/environ/two.hpp>
 #include <neb/fin/environ/SceneDefault.hpp>

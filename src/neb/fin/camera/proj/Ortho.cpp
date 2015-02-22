@@ -1,6 +1,4 @@
 
-#include <neb/gfx/environ/base.hpp>
-
 #include <neb/fin/camera/proj/Ortho.hpp>
 
 typedef neb::fin::camera::proj::Ortho THIS;

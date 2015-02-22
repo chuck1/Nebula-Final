@@ -28,7 +28,7 @@ void					neb::fin::core::actor::rigiddynamic::base::init(
 	//neb::phx::core::actor::rigidbody::base::init();
 	//neb::phx::core::actor::rigiddynamic::base::init();
 
-	neb::gfx::core::actor::base::init(p);
+	//neb::gfx::core::actor::base::init(p);
 
 	neb::fin::core::actor::base::init(p);
 	//neb::fin::core::actor::rigidactor::base::init();
@@ -44,7 +44,7 @@ void					neb::fin::core::actor::rigiddynamic::base::release() {
 	//neb::phx::core::actor::rigidbody::base::release();
 	//neb::phx::core::actor::rigiddynamic::base::release();
 
-	neb::gfx::core::actor::base::release();
+	//neb::gfx::core::actor::base::release();
 
 	neb::fin::core::actor::base::release();
 }
@@ -58,7 +58,7 @@ void					neb::fin::core::actor::rigiddynamic::base::step(
 	neb::phx::core::actor::rigidbody::base::step(ts);
 	//neb::phx::core::actor::rigiddynamic::base::step(ts);
 
-	neb::gfx::core::actor::base::step(ts);
+	//neb::gfx::core::actor::base::step(ts);
 
 	neb::fin::core::actor::base::step(ts);
 

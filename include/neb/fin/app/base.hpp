@@ -17,11 +17,13 @@
 #include <neb/core/util/wrapper.hpp>
 #include <neb/core/util/decl.hpp>
 
+/*
 #include <neb/gfx/app/base.hpp>
 #include <neb/gfx/util/decl.hpp>
 #include <neb/gfx/window/Base.hpp>
 #include <neb/gfx/window/util/Parent.hpp>
-#include <neb/gfx/gui/layout/util/parent.hpp>
+*/
+#include <neb/core/gui/layout/util/Parent.hpp>
 
 #include <neb/phx/app/base.hpp>
 
@@ -35,8 +37,8 @@ namespace neb { namespace fin { namespace app {
 	 */
 	class base:
 		virtual public neb::fnd::app::Base,
-		virtual public neb::gfx::app::Base,
-		virtual public neb::gfx::gui::layout::util::parent,
+		/*virtual public neb::gfx::app::Base,*/
+		virtual public neb::fnd::gui::layout::util::parent,
 		virtual public neb::fin::app::glfw,
 		virtual public neb::phx::app::base
 	{

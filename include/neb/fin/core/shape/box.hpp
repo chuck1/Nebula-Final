@@ -3,7 +3,7 @@
 
 #include <neb/phx/core/shape/box.hpp>
 
-#include <neb/gfx/core/shape/box.hpp>
+//#include <neb/gfx/core/shape/box.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 
