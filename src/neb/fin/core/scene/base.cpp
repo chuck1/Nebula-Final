@@ -33,7 +33,7 @@ void			THIS::init(parent_t * const & p)
 	
 	neb::fnd::core::scene::base::__init(p);
 	neb::phx::core::scene::base::__init(p);
-	neb::gfx::core::scene::base::__init(p);
+	//neb::gfx::core::scene::base::__init(p);
 }
 void			THIS::release()
 {
@@ -41,7 +41,7 @@ void			THIS::release()
 
 	neb::fnd::core::scene::base::__release();
 	neb::phx::core::scene::base::__release();
-	neb::gfx::core::scene::base::__release();
+	//neb::gfx::core::scene::base::__release();
 }
 void			THIS::step(gal::etc::timestep const & ts)
 {
@@ -187,7 +187,7 @@ void		THIS::save(boost::archive::polymorphic_oarchive & ar, unsigned int const &
 	neb::phx::core::scene::base::save(ar, version);
 }
 void			THIS::drawPhysxVisualization(
-		neb::gfx::RenderDesc const & desc)
+		neb::fnd::RenderDesc const & desc)
 {
 	auto app = get_fin_app();
 

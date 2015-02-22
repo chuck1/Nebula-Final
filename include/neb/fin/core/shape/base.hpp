@@ -3,7 +3,7 @@
 
 #include <neb/phx/core/shape/base.hpp>
 
-#include <neb/gfx/core/shape/base.hpp>
+//#include <neb/gfx/core/shape/base.hpp>
 
 #include <neb/fin/core/shape/util/decl.hpp>
 #include <neb/fin/tmp/Child.hpp>

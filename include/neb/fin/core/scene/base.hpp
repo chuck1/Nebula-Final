@@ -3,8 +3,8 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
-#include <neb/gfx/RenderDesc.hpp>
-#include <neb/gfx/core/scene/base.hpp>
+#include <neb/core/RenderDesc.hpp>
+//#include <neb/gfx/core/scene/base.hpp>
 
 #include <neb/phx/core/scene/base.hpp>
 
@@ -17,7 +17,7 @@ namespace neb { namespace fin { namespace core { namespace scene {
 	/***/
 	class base:
 		virtual public neb::phx::core::scene::base,
-		virtual public neb::gfx::core::scene::base,
+		//virtual public neb::gfx::core::scene::base,
 		virtual public neb::fin::tmp::Child<neb::fnd::core::scene::util::parent>
 	{
 		public:
@@ -36,7 +36,7 @@ namespace neb { namespace fin { namespace core { namespace scene {
 			BOOST_SERIALIZATION_SPLIT_MEMBER();
 			/***/
 			void				drawPhysxVisualization(
-					neb::gfx::RenderDesc const & desc);
+					neb::fnd::RenderDesc const & desc);
 			/***/
 			virtual wbase			createActorBase(neb::fnd::math::pose);
 			virtual wbase			createActorRigidStaticUninitialized();

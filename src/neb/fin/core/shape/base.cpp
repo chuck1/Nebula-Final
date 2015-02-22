@@ -1,8 +1,8 @@
 #include <neb/phx/util/log.hpp>
 
-#include <neb/gfx/core/light/point.hpp>
-#include <neb/gfx/core/light/directional.hpp>
-#include <neb/gfx/core/light/spot.hpp>
+//#include <neb/gfx/core/light/point.hpp>
+//#include <neb/gfx/core/light/directional.hpp>
+//#include <neb/gfx/core/light/spot.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 #include <neb/fin/core/shape/util/parent.hpp>

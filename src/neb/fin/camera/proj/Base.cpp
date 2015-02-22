@@ -8,9 +8,9 @@
 
 void		neb::fin::camera::proj::Base::calculate_geometry()
 {
-	auto app = get_fin_app();
+	//auto app = get_fin_app();
 
-	_M_px_geometry = app->frustrum_geometry(_M_matrix);
+	//_M_px_geometry = app->frustrum_geometry(_M_matrix);
 }
 
 

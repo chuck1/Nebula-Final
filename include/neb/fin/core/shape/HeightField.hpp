@@ -1,7 +1,7 @@
 #ifndef NEB_FIN_CORE_SHAPE_HEIGHT_FIELD_HPP
 #define NEB_FIN_CORE_SHAPE_HEIGHT_FIELD_HPP
 
-#include <neb/gfx/core/shape/HeightField/Base.hpp>
+//#include <neb/gfx/core/shape/HeightField/Base.hpp>
 
 #include <neb/phx/core/shape/HeightField/Base.hpp>
 
@@ -10,7 +10,7 @@
 namespace neb { namespace fin { namespace core { namespace shape { namespace HeightField {
 	class Base:
 		virtual public neb::fin::core::shape::base,
-		virtual public neb::gfx::core::shape::HeightField::Base,
+		//virtual public neb::gfx::core::shape::HeightField::Base,
 		virtual public neb::phx::core::shape::HeightField::Base
 	{
 		public:
