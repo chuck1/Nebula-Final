@@ -317,8 +317,8 @@ void				neb::fin::app::base::loop()
 
 		// update
 
-		if(_M_graphics_object)
-			_M_graphics_object->update();
+		if(G::has_object())
+			G::get_object()->update();
 		
 
 		// integrate
@@ -461,8 +461,8 @@ std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 {
 	auto window = neb::fnd::window::util::Parent::create<neb::fnd::window::Base>();
 
-	if(_M_graphics_object)
-		_M_graphics_object->onFirstContext();
+	if(G::has_object())
+		G::get_object()->onFirstContext();
 
 	return window;
 }
