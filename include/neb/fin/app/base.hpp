@@ -16,6 +16,7 @@
 #include <neb/fnd/core/shape/util/decl.hpp>
 #include <neb/fnd/util/wrapper.hpp>
 #include <neb/fnd/util/decl.hpp>
+#include <neb/fnd/environ/util/decl.hpp>
 
 /*
 #include <neb/gfx/app/base.hpp>
@@ -23,7 +24,6 @@
 #include <neb/gfx/window/Base.hpp>
 #include <neb/gfx/window/util/Parent.hpp>
 */
-#include <neb/fnd/gui/layout/util/Parent.hpp>
 
 #include <neb/phx/app/base.hpp>
 
@@ -37,7 +37,6 @@ namespace neb { namespace fin { namespace app {
 	class base:
 		virtual public neb::fnd::app::Base,
 		/*virtual public neb::gfx::app::Base,*/
-		virtual public neb::fnd::gui::layout::util::Parent,
 		virtual public neb::phx::app::base
 	{
 		public:
@@ -68,7 +67,7 @@ namespace neb { namespace fin { namespace app {
 			virtual std::weak_ptr<neb::fnd::core::scene::base>	createSceneDLL(std::string);
 			virtual std::weak_ptr<neb::fnd::gui::layout::Base>	createLayout(
 					std::shared_ptr<neb::fnd::window::Base> window,
-					std::shared_ptr<neb::fnd::context::Base> context);
+					std::shared_ptr<neb::fnd::environ::Base> environ);
 
 	};
 }}}

@@ -121,7 +121,6 @@ std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightDirectional(glm::ve
 	
 	auto light = std::shared_ptr<L>(new L(), gal::stl::deleter<L>());
 
-
 	light->pose_.pos_ = d;
 
 	neb::fnd::core::light::util::parent::insert(light);

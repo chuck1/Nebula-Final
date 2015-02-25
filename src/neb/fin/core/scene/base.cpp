@@ -35,6 +35,11 @@ void			THIS::init(parent_t * const & p)
 	neb::fnd::core::scene::base::__init(p);
 	neb::phx::core::scene::base::__init(p);
 	//neb::gfx::core::scene::base::__init(p);
+	
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(app->_M_graphics_plugin, 0);
+	
 }
 void			THIS::release()
 {
@@ -201,8 +206,8 @@ void			THIS::drawPhysxVisualization(
 
 		neb::fnd::DebugBuffer db = get_debug_buffer();
 		
-		if(_M_graphics_object)
-			_M_graphics_object->draw_debug_buffer(desc, db);
+		if(G::has_object())
+			G::get_object()->draw_debug_buffer(desc, db);
 
 		//auto e = neb::could_be<neb::gfx::environ::base, neb::gfx::environ::three>(context->environ_);
 		//if(e)

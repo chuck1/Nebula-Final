@@ -20,7 +20,7 @@
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/log.hpp>
-#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/core/scene/base.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
 
@@ -446,18 +446,18 @@ std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
 }
 std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 		std::shared_ptr<neb::fnd::window::Base> window,
-		std::shared_ptr<neb::fnd::context::Base> context)
+		std::shared_ptr<neb::fnd::environ::Base> environ)
 {
 	typedef neb::fnd::gui::layout::Base T;
-
+	
 	auto layout = neb::fnd::gui::layout::util::Parent::create<T>().lock();
-
+	
 	layout->connect(window);
-
+	
 	layout->createObjectTerminal();
-
-	context->setDrawable(layout);
-
+	
+	environ->set_drawable(layout);
+	
 	return layout;
 }
 std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
