@@ -265,8 +265,8 @@ void				THIS::read_config()
 		}
 		if(i == (sizeof(pairs) / sizeof(Pair)))
 		{
-			std::cout << "log group not found: '" << var << "'" << std::endl;
-			abort();
+			std::cout << "warning: log group not found: '" << var << "'" << std::endl;
+			//abort();
 		}
 	}
 }

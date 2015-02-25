@@ -202,7 +202,7 @@ void			THIS::drawPhysxVisualization(
 		neb::fnd::DebugBuffer db = get_debug_buffer();
 		
 		if(_M_graphics_object)
-			_M_graphics_object->draw_debug_buffer(db);
+			_M_graphics_object->draw_debug_buffer(desc, db);
 
 		//auto e = neb::could_be<neb::gfx::environ::base, neb::gfx::environ::three>(context->environ_);
 		//if(e)
