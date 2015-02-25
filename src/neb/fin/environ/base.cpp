@@ -15,19 +15,13 @@ void			THIS::init(parent_t * const & p)
 }
 THIS::proj_shared	THIS::createCameraPerspective()
 {
-	auto app = get_fnd_app();
 
 	typedef neb::fnd::camera::proj::Perspective C;
-	typedef neb::fnd::plug::gfx::camera::proj::Perspective G;
+	//typedef neb::fnd::plug::gfx::camera::proj::Perspective G;
 	
 	auto c = new C();
 	proj_ = THIS::proj_shared(c);
 
-	if(app->_M_graphics_plugin) {
-		auto g = app->_M_graphics_plugin->template make_shared<G>();
-		proj_->_M_graphics_object = g;
-	}
-	
 	proj_->init(this);
 
 	return proj_;

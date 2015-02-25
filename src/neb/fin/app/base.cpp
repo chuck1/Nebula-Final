@@ -307,6 +307,8 @@ void				neb::fin::app::base::loop()
 	//auto self(std::dynamic_pointer_cast<neb::fnd::app::Base>(shared_from_this()));
 	//assert(self);
 
+	auto g = G::get_object();
+
 	preloop();
 
 	while(!flag_.any(neb::fnd::app::util::flag::E::SHOULD_RELEASE)) {
@@ -323,7 +325,8 @@ void				neb::fin::app::base::loop()
 
 		// integrate
 
-		ts_.step(glfwGetTime());
+		//ts_.step(glfwGetTime());
+		ts_.step(g->get_time());
 
 		step(ts_);
 
