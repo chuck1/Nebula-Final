@@ -1,6 +1,9 @@
 #include <gal/log/log.hpp>
 
 #include <neb/fnd/util/log.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
+#include <neb/fnd/plug/gfx/core/actor/Base.hpp>
 
 #include <neb/fin/core/actor/rigiddynamic/base.hpp>
 
@@ -19,6 +22,12 @@ void					neb::fin::core::actor::rigiddynamic::base::init(
 	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
 
 	setParent(p);
+
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(
+			app->_M_graphics_plugin,
+			neb::fnd::plug::gfx::core::actor::type::RIGIDDYNAMIC);
 
 	neb::fnd::core::actor::base::init(p);
 

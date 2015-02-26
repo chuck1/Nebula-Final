@@ -1,8 +1,13 @@
 #include <gal/log/log.hpp>
 
 #include <neb/fnd/util/log.hpp>
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
+#include <neb/fnd/plug/gfx/core/actor/Base.hpp>
 
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
+
+typedef neb::fin::core::actor::rigidstatic::base THIS;
 
 neb::fin::core::actor::rigidstatic::base::base()
 {
@@ -16,6 +21,12 @@ void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
 
 	setParent(p);
+
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(
+			app->_M_graphics_plugin,
+			neb::fnd::plug::gfx::core::actor::type::RIGIDSTATIC);
 
 	neb::fnd::core::actor::base::init(p);
 

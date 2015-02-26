@@ -2,6 +2,9 @@
 
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/Base.hpp>
+#include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
+
 
 #include <neb/fin/core/actor/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
@@ -18,6 +21,14 @@ void						THIS::init(
 	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
 
 	setParent(p);
+
+	auto app = get_fnd_app();
+
+	if(!G::has_object())
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				neb::fnd::plug::gfx::core::actor::type::BASE
+				);
 
 	neb::fnd::core::actor::util::parent::initChildren(this);
 	neb::fnd::core::shape::util::parent::initChildren(this);
