@@ -21,7 +21,7 @@
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/log.hpp>
 #include <neb/fnd/environ/Base.hpp>
-#include <neb/fnd/core/scene/base.hpp>
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
 
 #include <neb/fnd/plug/gfx/app/Base.hpp>
