@@ -3,14 +3,11 @@
 
 #include <neb/fnd/environ/visualization/Normal.hpp>
 
-#include <neb/fin/environ/base.hpp>
-
 namespace neb { namespace fin { namespace environ { namespace visualization {
 	/** @brief Normal
 	 */
 	class Normal:
-		virtual public neb::fnd::environ::visualization::Normal,
-		virtual public neb::fin::environ::base
+		virtual public neb::fnd::environ::visualization::Normal
 	{
 		public:
 			typedef std::shared_ptr<neb::fnd::glsl::program::Base>		program_shared;

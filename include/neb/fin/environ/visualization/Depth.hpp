@@ -3,14 +3,12 @@
 
 #include <neb/fnd/environ/visualization/Depth.hpp>
 
-#include <neb/fin/environ/base.hpp>
 
 namespace neb { namespace fin { namespace environ { namespace visualization {
 	/** @brief base
 	 */
 	class Depth:
-		virtual public neb::fnd::environ::visualization::Depth,
-		virtual public neb::fin::environ::base
+		virtual public neb::fnd::environ::visualization::Depth
 	{
 		public:
 			virtual void		init(parent_t * const & p);
