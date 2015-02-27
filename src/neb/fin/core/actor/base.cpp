@@ -1,4 +1,5 @@
 #include <gal/stl/deleter.hpp>
+#include <gal/stl/verbosity.hpp>
 
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
@@ -18,7 +19,7 @@ THIS::base()
 void						THIS::init(
 		neb::fnd::core::actor::util::parent* const & p)
 {
-	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
+	printv_func(DEBUG);
 
 	setParent(p);
 
@@ -65,7 +66,6 @@ std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(neb::fnd::math:
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
 		neb::fnd::core::shape::cuboid::Desc const & desc)
 {
-
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 	typedef neb::fin::core::shape::box T;
 

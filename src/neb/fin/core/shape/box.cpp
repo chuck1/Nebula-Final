@@ -8,11 +8,11 @@ THIS::box()
 }
 THIS::~box()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 }
 void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 
 	setParent(p);
 
@@ -26,8 +26,9 @@ void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	neb::fin::core::shape::base::init(p);
 }
-void		THIS::release() {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+void		THIS::release()
+{
+	printv_func(DEBUG);
 
 	neb::fnd::core::shape::base::release();
 
@@ -40,18 +41,20 @@ void		THIS::release() {
 	neb::fin::core::shape::base::release();
 	
 }
-void		THIS::step(gal::etc::timestep const & ts) {
+void		THIS::step(gal::etc::timestep const & ts)
+{
+	printv_func(DEBUG);
 }
 void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv_func(DEBUG);
 
 	gal::itf::shared::serialize(ar, v);//load(ar, v);
 	neb::fnd::core::shape::base::load(ar, v);
 }
 void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 {
-	LOG(lg, neb::fnd::core::shape::sl, debug) << __FUNCSIG__;
+	printv_func(DEBUG);
 
 	const_cast<THIS*>(this)->gal::itf::shared::serialize(ar, v);//save(ar, v);
 	neb::fnd::core::shape::base::save(ar, v);

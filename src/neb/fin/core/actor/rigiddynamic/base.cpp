@@ -1,6 +1,5 @@
-#include <gal/log/log.hpp>
+#include <gal/stl/verbosity.hpp>
 
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
 #include <neb/fnd/plug/gfx/core/actor/Base.hpp>
@@ -12,14 +11,15 @@ typedef neb::fin::core::actor::rigiddynamic::base THIS;
 THIS::base()
 {
 }
-neb::fin::core::actor::rigiddynamic::base::~base() {
-	LOG(lg, neb::fnd::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+neb::fin::core::actor::rigiddynamic::base::~base() 
+{
+	printv_func(DEBUG);
 }
 void					neb::fin::core::actor::rigiddynamic::base::init(
 		neb::fnd::core::actor::util::parent * const & p
 		)
 {
-	LOG(lg, neb::fnd::core::actor::sl, debug) << __FUNCSIG__;
+	printv_func(DEBUG);
 
 	setParent(p);
 
@@ -42,8 +42,9 @@ void					neb::fin::core::actor::rigiddynamic::base::init(
 	neb::fin::core::actor::base::init(p);
 	//neb::fin::core::actor::rigidactor::base::init();
 }
-void					neb::fin::core::actor::rigiddynamic::base::release() {
-	LOG(lg, neb::fnd::core::actor::sl, debug) << __PRETTY_FUNCTION__;
+void					neb::fin::core::actor::rigiddynamic::base::release()
+{
+	printv_func(DEBUG);
 
 	neb::fnd::core::actor::base::release();
 
@@ -58,7 +59,10 @@ void					neb::fin::core::actor::rigiddynamic::base::release() {
 	neb::fin::core::actor::base::release();
 }
 void					neb::fin::core::actor::rigiddynamic::base::step(
-		gal::etc::timestep const & ts) {
+		gal::etc::timestep const & ts)
+{
+	printv_func(DEBUG);
+
 	neb::fnd::core::actor::base::step(ts);
 
 	neb::phx::core::actor::base::step(ts);
@@ -75,6 +79,7 @@ void					neb::fin::core::actor::rigiddynamic::base::step(
 void				THIS::createControlManual(
 		std::shared_ptr<neb::fnd::input::source> window)
 {
+	printv_func(DEBUG);
 	neb::phx::core::actor::rigidbody::base::createControlManual(window);
 }
 

@@ -2,17 +2,7 @@
 
 #include <gal/stl/deleter.hpp>
 
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
-
-/*
-#include <neb/gfx/RenderDesc.hpp>
-#include <neb/gfx/camera/proj/base.hpp>
-#include <neb/gfx/camera/view/Base.hpp>
-#include <neb/gfx/free.hpp>
-*/
-
-#include <neb/phx/util/log.hpp>
 
 #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
@@ -25,10 +15,11 @@ typedef weak_ptr<neb::fnd::core::actor::base>			wbase;
 
 THIS::base()
 {
+	printv_func(DEBUG);
 }
 void			THIS::init(parent_t * const & p)
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 
 	setParent(p);
 	
@@ -43,7 +34,7 @@ void			THIS::init(parent_t * const & p)
 }
 void			THIS::release()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 
 	neb::fnd::core::scene::base::__release();
 	neb::phx::core::scene::base::__release();
@@ -66,6 +57,7 @@ void			THIS::__step(gal::etc::timestep const & ts)
 }
 wbase		neb::fin::core::scene::base::createActorBase(neb::fnd::math::pose pose)
 {
+	printv_func(DEBUG);
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -83,7 +75,7 @@ wbase		neb::fin::core::scene::base::createActorBase(neb::fnd::math::pose pose)
 }
 wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -103,7 +95,7 @@ wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 }
 wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -119,11 +111,10 @@ wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 	actor->simulation_.word3 = phx::filter::filter::type::PROJECTILE;
 
 	return actor;
-
 }
 wbase			neb::fin::core::scene::base::createActorRigidDynamic()
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -145,7 +136,7 @@ wbase			neb::fin::core::scene::base::createActorRigidDynamic()
 wbase			neb::fin::core::scene::base::createActorRigidDynamic(
 		neb::fnd::core::actor::rigiddynamic::Desc const * const & desc)
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
 
@@ -170,7 +161,7 @@ typedef neb::phx::core::scene::base Base2;
 
 void		THIS::load(boost::archive::polymorphic_iarchive & ar, unsigned int const & version)
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(Base1);
 	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(Base2);
@@ -182,7 +173,7 @@ void		THIS::load(boost::archive::polymorphic_iarchive & ar, unsigned int const &
 }
 void		THIS::save(boost::archive::polymorphic_oarchive & ar, unsigned int const & version) const
 {
-	LOG(lg, neb::fnd::core::scene::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(Base1);
 	//BOOST_SERIALIZATION_BASE_OBJECT_NVP(Base2);
@@ -195,6 +186,7 @@ void		THIS::save(boost::archive::polymorphic_oarchive & ar, unsigned int const &
 void			THIS::drawPhysxVisualization(
 		neb::fnd::RenderDesc const & desc)
 {
+	printv_func(DEBUG);
 	//auto app = get_fin_app();
 
 	if(!flag_.all(neb::fnd::core::scene::util::flag::PHYSX_VISUALIZATION)) return;

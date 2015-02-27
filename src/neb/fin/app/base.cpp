@@ -18,7 +18,6 @@
 
 #include <neb/fnd/free.hpp>
 #include <neb/fnd/util/config.hpp>
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
 #include <neb/fnd/plug/gfx/app/Base.hpp>
@@ -203,11 +202,11 @@ void				THIS::read_config()
 	*/
 
 	std::map<std::string, int> map_val({
-			{"debug",	gal::tmp::DEBUG},
-			{"info",	gal::tmp::INFO},
-			{"warning",	gal::tmp::WARNING},
-			{"error",	gal::tmp::ERROR},
-			{"critical",	gal::tmp::CRITICAL}});
+			{"debug",	DEBUG},
+			{"info",	INFO},
+			{"warning",	WARNING},
+			{"error",	ERROR},
+			{"critical",	CRITICAL}});
 
 
 	boost::python::extract<boost::python::dict> e(o);

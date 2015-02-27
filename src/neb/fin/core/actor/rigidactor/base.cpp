@@ -1,6 +1,4 @@
-#include <gal/log/log.hpp>
 
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
@@ -18,7 +16,7 @@
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::base::createShapeBoxUninitialized(
 		glm::vec3 size)
 {
-	printf("%s\n", __PRETTY_FUNCTION__);
+	printv_func(DEBUG);
 	
 	//auto self(::std::dynamic_pointer_cast<neb::fin::core::actor::rigidactor::base>(shared_from_this()));
 
@@ -36,7 +34,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 		neb::fnd::math::pose pose,
 		glm::vec3 size)
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto shape = createShapeBoxUninitialized(size).lock();
 	

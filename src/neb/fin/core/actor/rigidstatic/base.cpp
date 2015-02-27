@@ -1,6 +1,5 @@
 #include <gal/log/log.hpp>
 
-#include <neb/fnd/util/log.hpp>
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
 #include <neb/fnd/plug/gfx/core/actor/Base.hpp>
@@ -14,11 +13,11 @@ neb::fin::core::actor::rigidstatic::base::base()
 }
 neb::fin::core::actor::rigidstatic::base::~base()
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 }
 void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	setParent(p);
 
@@ -42,7 +41,7 @@ void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 }
 void						neb::fin::core::actor::rigidstatic::base::release()
 {
-	LOG(lg, neb::fnd::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	neb::fnd::core::actor::base::release();
 	
@@ -56,6 +55,7 @@ void						neb::fin::core::actor::rigidstatic::base::release()
 	neb::fin::core::actor::base::release();
 	//neb::fin::core::actor::rigidactor::base::release();
 }
-void						neb::fin::core::actor::rigidstatic::base::step(gal::etc::timestep const & ts) {
+void						neb::fin::core::actor::rigidstatic::base::step(gal::etc::timestep const & ts)
+{
 }
 
