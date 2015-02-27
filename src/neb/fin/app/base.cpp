@@ -13,7 +13,6 @@
 #include <gal/console/base.hpp>
 #include <gal/etc/stopwatch.hpp>
 #include <gal/dll/helper.hpp>
-#include <gal/log/log.hpp>
 #include <gal/stl/deleter.hpp>
 #include <gal/argparse/Parser.hpp>
 
@@ -21,23 +20,22 @@
 #include <neb/fnd/util/config.hpp>
 #include <neb/fnd/util/log.hpp>
 #include <neb/fnd/environ/Base.hpp>
-#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/fnd/game/weapon/util/decl.hpp>
-
 #include <neb/fnd/plug/gfx/app/Base.hpp>
 #include <neb/fnd/context/Base.hpp>
 #include <neb/fnd/window/Base.hpp>
+
 #include <neb/fnd/gui/layout/util/Parent.hpp>
 #include <neb/fnd/gui/object/Terminal.hpp>
+
+#include <neb/fnd/core/scene/Base.hpp>
+#include <neb/fnd/core/light/Point.hpp>
 
 //#include <neb/gfx/util/log.hpp>
 //
 //#include <neb/gfx/core/light/spot.hpp>
 //#include <neb/gfx/core/light/point.hpp>
 //#include <neb/gfx/app/base.hpp>
-
-
-#include <neb/phx/util/log.hpp>
 
 #include <neb/py/util/config.hpp> // neb/py/util/config.hpp.in
 #include <neb/py/core/scene/base.hpp>
@@ -170,47 +168,46 @@ void				THIS::read_config()
 		int * const		sl;
 	};
 
-	static const Pair pairs[11] = {
-		{"neb core",					(int*)&neb::fnd::sl},
-		{"neb core scene",				(int*)&neb::fnd::core::scene::sl},
-		{"neb core actor",				(int*)&neb::fnd::core::actor::sl},
-		{"neb core shape",				(int*)&neb::fnd::core::shape::sl},
-		{"neb core light",				(int*)&neb::fnd::core::light::sl},
-		{"neb core game weapon simple_projectile",	&neb::fnd::itf::verbosity<neb::fnd::game::weapon::SimpleProjectile>::_M_severity_level},
+	// fnd
+	gal::tmp::VerbosityRegister::reg<neb::fnd::game::weapon::SimpleProjectile>("neb core game weapon simple projectile");
+
+	gal::tmp::VerbosityRegister::reg<neb::fnd::core::scene::base>(			"neb fnd core scene base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::base>(			"neb fnd core actor base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::core::shape::base>(			"neb fnd core shape base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::core::light::base>(			"neb fnd core light base");
+	
+	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::layout::Base>(			"neb fnd gui layout base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Base>(			"neb fnd gui object base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Terminal>(		"neb fnd gui object terminal");
+
+	// phx
+	gal::tmp::VerbosityRegister::reg<neb::phx::core::scene::base>(			"neb phx core scene base");
+	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::base>(			"neb phx core actor base");
+	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigiddynamic::base>(	"neb phx core actor rigiddynamic base");
+	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigidstatic::base>(	"neb phx core actor rigidstatic base");
+	gal::tmp::VerbosityRegister::reg<neb::phx::core::shape::base>(			"neb phx core shape base");
+	
+
+
 /*		{"neb gfx",					(int*)&neb::gfx::sl},
 		{"neb gfx actor",				(int*)&neb::gfx::core::actor::sl},
 		{"neb gfx shape",				(int*)&neb::gfx::core::shape::sl},
 		{"neb gfx light",				(int*)&neb::gfx::core::light::sl},
-		{"neb gfx core light base",			&neb::fnd::itf::verbosity<neb::gfx::core::light::base>::_M_severity_level},
-		{"neb gfx gui object terminal",			&neb::fnd::itf::verbosity<neb::gfx::gui::object::terminal>::_M_severity_level},*/
+		{"neb gfx core light base",			&gal::tmp::Verbosity<neb::gfx::core::light::base>::_M_severity_level},
 		{"neb phx",					(int*)&neb::phx::sl},
 		{"neb phx scene",				(int*)&neb::phx::core::scene::sl},
 		{"neb phx actor",				(int*)&neb::phx::core::actor::sl},
-		{"neb phx actor control rigidbody base",	&neb::fnd::itf::verbosity<neb::phx::core::actor::control::rigidbody::base>::_M_severity_level},
+		{"neb phx actor control rigidbody base",	&gal::tmp::Verbosity<neb::phx::core::actor::control::rigidbody::base>::_M_severity_level},
 		{"neb phx shape",				(int*)&neb::phx::core::shape::sl}
 	};
+	*/
 
-	/*	std::map<std::string, int> map_var({
-		{"neb core",		0},
-		{"neb core scene",	1},
-		{"neb core actor",	2},
-		{"neb core shape",	3},
-		{"neb core light",	4},
-		{"neb gfx",		5},
-		{"neb gfx actor",	6},
-		{"neb gfx shape",	7},
-		{"neb gfx light",	8},
-		{"neb phx",		9},
-		{"neb phx scene",	10},
-		{"neb phx actor",	11},
-		{"neb phx shape",	12}});
-		*/
 	std::map<std::string, int> map_val({
-			{"debug",	debug},
-			{"info",	info},
-			{"warning",	warning},
-			{"error",	error},
-			{"critical",	critical}});
+			{"debug",	gal::tmp::DEBUG},
+			{"info",	gal::tmp::INFO},
+			{"warning",	gal::tmp::WARNING},
+			{"error",	gal::tmp::ERROR},
+			{"critical",	gal::tmp::CRITICAL}});
 
 
 	boost::python::extract<boost::python::dict> e(o);
@@ -253,6 +250,9 @@ void				THIS::read_config()
 			abort();
 		}
 
+		int level = it_val->second;
+
+		/*
 		unsigned int i = 0;
 		for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
 		{
@@ -268,6 +268,9 @@ void				THIS::read_config()
 			std::cout << "warning: log group not found: '" << var << "'" << std::endl;
 			//abort();
 		}
+		*/
+
+		gal::tmp::VerbosityRegister::set(var, level);
 	}
 }
 void				THIS::initRegistry()
