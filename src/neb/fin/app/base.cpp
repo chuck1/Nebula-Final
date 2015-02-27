@@ -46,7 +46,6 @@
 #include <neb/fin/core/actor/rigidstatic/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
-#include <neb/fin/util/log.hpp>
 
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
@@ -55,7 +54,7 @@ typedef neb::fin::app::base THIS;
 
 std::shared_ptr<neb::fin::app::base>		THIS::global()
 {
-	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	auto app(dynamic_pointer_cast<neb::fin::app::base>(g_app_));
 	assert(app);
@@ -63,7 +62,7 @@ std::shared_ptr<neb::fin::app::base>		THIS::global()
 }
 std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 {
-	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
 
 	typedef neb::fin::app::base T;
 
@@ -94,8 +93,10 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 
 
 
-	LOG(lg, neb::fin::sl, debug) << "&g_app_ = " << &g_app_;
+	printv(DEBUG, "&g_app_ = %p\n", &g_app_);
+
 	g_app_ = app;
+
 	return app;
 }
 neb::fin::app::base::base()
@@ -103,7 +104,7 @@ neb::fin::app::base::base()
 }
 neb::fin::app::base::~base()
 {
-	std::cout << __PRETTY_FUNCTION__ << std::endl;
+	printv_func(DEBUG);
 }
 void			THIS::__init()
 {
@@ -141,6 +142,8 @@ void			THIS::__init()
 }
 void				THIS::read_config()
 {
+	printv_func(DEBUG);
+
 	assert(console_);
 
 	boost::python::object o;
@@ -168,7 +171,7 @@ void				THIS::read_config()
 	};
 
 	// fnd
-	gal::tmp::VerbosityRegister::reg<neb::fnd::game::weapon::SimpleProjectile>("neb core game weapon simple projectile");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::game::weapon::SimpleProjectile>(	"neb core game weapon simple projectile");
 
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::scene::base>(			"neb fnd core scene base");
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::base>(			"neb fnd core actor base");
@@ -223,8 +226,9 @@ void				THIS::read_config()
 	for (int i = 0; i < len(keys); ++i) {
 		boost::python::extract<std::string> extracted_key(keys[i]);  
 		if(!extracted_key.check()){  
-			std::cout<<"Key invalid, map might be incomplete"<<std::endl;  
-			continue;                 
+			printv(WARNING, "Key invalid, map might be incomplete\n");
+			abort();
+			continue;
 		}
 		std::string key = extracted_key;  
 		
@@ -232,7 +236,8 @@ void				THIS::read_config()
 
 		boost::python::extract<std::string> extracted_val(py_dict[key]);  
 		if(!extracted_val.check()){  
-			std::cout<<"Value invalid, map might be incomplete"<<std::endl;  
+			printv(WARNING, "Value invalid, map might be incomplete\n");  
+			abort();
 			continue;                 
 		}
 		std::string value = extracted_val;  
@@ -245,29 +250,11 @@ void				THIS::read_config()
 
 		auto it_val = map_val.find(val);
 		if(it_val == map_val.end()) {
-			std::cout << "invalid value" << std::endl;
+			printv(CRITICAL, "Value invalid, map might be incomplete\n");  
 			abort();
 		}
 
 		int level = it_val->second;
-
-		/*
-		unsigned int i = 0;
-		for(i = 0; i < (sizeof(pairs) / sizeof(Pair)); i++)
-		{
-			if(strcmp(var.c_str(), pairs[i].c) == 0)
-			{
-				printf("%s = %s\n", var.c_str(), val.c_str());
-				*pairs[i].sl = (severity_level)it_val->second;
-				break;
-			}
-		}
-		if(i == (sizeof(pairs) / sizeof(Pair)))
-		{
-			std::cout << "warning: log group not found: '" << var << "'" << std::endl;
-			//abort();
-		}
-		*/
 
 		gal::tmp::VerbosityRegister::set(var, level);
 	}
@@ -360,7 +347,8 @@ void							THIS::set_should_release()
 }
 std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 {
-	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
+
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
 	typedef neb::fin::core::scene::base T;
@@ -379,7 +367,7 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 		try {
 			console_->main_namespace_["scene"] = py_scene;
 		} catch(bp::error_already_set const &) {
-			cout << "unhandled execption\n";
+			printv(DEBUG, "unhandled execption\n");
 			PyErr_Print();
 		}
 	}
@@ -389,7 +377,8 @@ std::weak_ptr<neb::fnd::core::scene::base>		THIS::createScene()
 std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
 		std::string dll_name)
 {
-	LOG(lg, neb::fin::sl, debug) << __PRETTY_FUNCTION__;
+	printv_func(DEBUG);
+
 	auto self(dynamic_pointer_cast<neb::fin::app::base>(shared_from_this()));
 
 	typedef neb::fin::core::scene::base		T;
@@ -411,7 +400,7 @@ std::weak_ptr<neb::fnd::core::scene::base>		neb::fin::app::base::createSceneDLL(
 		try {
 			console_->main_namespace_["scene"] = py_scene;
 		} catch(bp::error_already_set const &) {
-			cout << "unhandled execption\n";
+			printv(DEBUG, "unhandled execption\n");
 			PyErr_Print();
 		}
 
@@ -450,6 +439,8 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 		std::shared_ptr<neb::fnd::window::Base> window,
 		std::shared_ptr<neb::fnd::environ::Base> environ)
 {
+	printv_func(DEBUG);
+
 	typedef neb::fnd::gui::layout::Base T;
 	
 	auto layout = neb::fnd::gui::layout::util::Parent::create<T>().lock();
@@ -464,6 +455,8 @@ std::weak_ptr<neb::fnd::gui::layout::Base>	THIS::createLayout(
 }
 std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 {
+	printv_func(DEBUG);
+
 	auto window = neb::fnd::window::util::Parent::create<neb::fnd::window::Base>();
 
 	if(G::has_object())

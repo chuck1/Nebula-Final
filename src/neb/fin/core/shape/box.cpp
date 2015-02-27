@@ -1,3 +1,7 @@
+#include <neb/fnd/app/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/Base.hpp>
+#include <neb/fnd/plug/gfx/core/shape/util/decl.hpp>
+
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/util/parent.hpp>
 
@@ -15,6 +19,12 @@ void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 	printv_func(DEBUG);
 
 	setParent(p);
+
+	auto app = get_fnd_app();
+
+	G::make_object<THIS, int>(
+			app->_M_graphics_plugin,
+			neb::fnd::plug::gfx::core::shape::type::CUBOID);
 
 	neb::fnd::core::shape::base::init(p);
 

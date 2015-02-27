@@ -196,26 +196,15 @@ shared_ptr<neb::fin::gfx_phx::core::scene::base>			create_scene(
 		shared_ptr<neb::gfx::context::window> context,
 		shared_ptr<neb::phx::core::actor::base>& enemy)
 {
-
-	std::cout << "4\n";
-
 	auto app = neb::fin::gfx_phx::app::base::global();
 	assert(app);
-
-	std::cout << "5\n";
 
 	auto scene = make_shared<neb::fin::gfx_phx::core::scene::base>(app);
 	assert(scene);
 
-	std::cout << "6\n";
-
 	app->neb::fnd::core::scene::util::parent::insert(scene);
 
-	std::cout << "7\n";
-
 	scene->init();
-
-	std::cout << "8\n";
 
 	// actors
 	scene->createActorRigidStaticCube(neb::fnd::pose(vec3(-5, 0, 0)), 1.0);
@@ -351,7 +340,7 @@ void						setup_game(
 
 	trig->connect(enemy);
 
-	cout << "game use count " << game.use_count() << endl;
+	printf("game use count %i\n", game.use_count());
 }
 int			main() {
 
@@ -417,16 +406,13 @@ int			main() {
 	app->command_set_->map_["sd"] = cmd_destroy_scene;
 	*/
 	
-	std::cout << "1\n";
 
 	// create drawables
 	//auto scene = create_scene(window, context1);
 
-	std::cout << "2\n";
 
 	auto layout = create_layout(window, context2);
 
-	std::cout << "3\n";
 
 	// loop
 
