@@ -33,7 +33,7 @@ namespace neb { namespace fin { namespace core { namespace actor {
 			 *
 			 */
 			virtual std::weak_ptr<neb::fnd::core::shape::base>		createShapeBase(
-					neb::fnd::math::pose const & pose);
+					gal::math::pose const & pose);
 			/** @brief
 			 *
 			 */

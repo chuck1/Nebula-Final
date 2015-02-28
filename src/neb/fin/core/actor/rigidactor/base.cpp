@@ -31,7 +31,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 	return shape;
 }
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::base::createShapeBox(
-		neb::fnd::math::pose pose,
+		gal::math::pose pose,
 		glm::vec3 size)
 {
 	printv_func(DEBUG);

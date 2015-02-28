@@ -19,7 +19,7 @@ namespace neb { namespace fin { namespace core { namespace shape { namespace Hei
 			virtual void		init(parent_t * const & p);
 			virtual void		release();
 			virtual void		step(gal::etc::timestep  const & ts);
-			virtual void		v_set_pose_data(neb::fnd::math::pose const & pose_global);
+			virtual void		v_set_pose_data(gal::math::pose const & pose_global);
 			virtual void		load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void		save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			BOOST_SERIALIZATION_SPLIT_MEMBER();

@@ -38,7 +38,7 @@ namespace neb { namespace fin { namespace core { namespace scene {
 			void				drawPhysxVisualization(
 					neb::fnd::RenderDesc const & desc);
 			/***/
-			virtual wbase			createActorBase(neb::fnd::math::pose);
+			virtual wbase			createActorBase(gal::math::pose);
 			virtual wbase			createActorRigidStaticUninitialized();
 			/***/
 			virtual wbase			createActorRigidDynamic();

@@ -31,7 +31,7 @@ namespace neb { namespace fin { namespace core { namespace actor { namespace rig
 			/** @brief
 			 *
 			 */
-			std::weak_ptr<neb::fnd::core::shape::base>			createShapeBox(neb::fnd::math::pose, glm::vec3 size);
+			std::weak_ptr<neb::fnd::core::shape::base>			createShapeBox(gal::math::pose, glm::vec3 size);
 	};
 
 }}}}}

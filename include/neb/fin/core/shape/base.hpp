@@ -26,7 +26,7 @@ namespace neb { namespace fin { namespace core { namespace shape {
 			virtual void	load(ba::polymorphic_iarchive & ar, unsigned int const &);
 			virtual void	save(ba::polymorphic_oarchive & ar, unsigned int const &) const;
 			virtual void				v_set_pose_data(
-					neb::fnd::math::pose const & pose_global);
+					gal::math::pose const & pose_global);
 	};
 }}}}
 

@@ -55,7 +55,7 @@ void			THIS::__release()
 void			THIS::__step(gal::etc::timestep const & ts)
 {
 }
-wbase		neb::fin::core::scene::base::createActorBase(neb::fnd::math::pose pose)
+wbase		neb::fin::core::scene::base::createActorBase(gal::math::pose pose)
 {
 	printv_func(DEBUG);
 

@@ -53,8 +53,8 @@ namespace neb { namespace fin { namespace app {
 			void							initRegistry();
 			void							read_config();
 		public:
-			neb::fnd::math::pose					getPose();
-			neb::fnd::math::pose					getPoseGlobal();
+			gal::math::pose					getPose();
+			gal::math::pose					getPoseGlobal();
 			template<typename T> void				loadXml(std::string filename, gal::stl::wrapper<T>& w)
 			{
 			}

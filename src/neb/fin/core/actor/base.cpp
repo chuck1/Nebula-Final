@@ -49,7 +49,7 @@ void						THIS::release()
 void						THIS::step(gal::etc::timestep const & ts)
 {
 }
-std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(neb::fnd::math::pose const & pose)
+std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose const & pose)
 {
 	auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 

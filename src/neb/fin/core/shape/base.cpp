@@ -73,7 +73,7 @@ void		THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 
 }
 void				THIS::v_set_pose_data(
-		neb::fnd::math::pose const & pose_global)
+		gal::math::pose const & pose_global)
 {
 	printv_func(DEBUG);
 	neb::fnd::core::shape::base::__set_pose_data(pose_global);

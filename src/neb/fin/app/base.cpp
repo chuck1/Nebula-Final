@@ -334,13 +334,13 @@ void							THIS::step(gal::etc::timestep const & ts)
 
 	neb::fnd::gui::layout::util::Parent::step(ts);
 }
-neb::fnd::math::pose					THIS::getPose()
+gal::math::pose					THIS::getPose()
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }
-neb::fnd::math::pose					THIS::getPoseGlobal()
+gal::math::pose					THIS::getPoseGlobal()
 {
-	return neb::fnd::math::pose();
+	return gal::math::pose();
 }
 void							THIS::set_should_release()
 {
