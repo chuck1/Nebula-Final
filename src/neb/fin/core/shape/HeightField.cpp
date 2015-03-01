@@ -9,9 +9,13 @@ void			THIS::init(THIS::parent_t * const & p)
 	
 	setParent(p);
 	
+	abort();
+
+	//P::make_object<>
+
 	//neb::fnd::core::shape::base::__init(p);
 	//neb::gfx::core::shape::base::__init(p);
-	neb::phx::core::shape::HeightField::Base::__init(p);
+	//neb::phx::core::shape::HeightField::Base::__init(p);
 }
 void			THIS::release()
 {
@@ -19,7 +23,7 @@ void			THIS::release()
 	
 	neb::fnd::core::shape::base::__release();
 	//neb::gfx::core::shape::base::__release();
-	neb::phx::core::shape::base::__release();
+	//neb::phx::core::shape::base::__release();
 }
 void		THIS::step(gal::etc::timestep  const & ts)
 {

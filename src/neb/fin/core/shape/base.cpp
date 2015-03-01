@@ -24,14 +24,14 @@ void		neb::fin::core::shape::base::init(neb::fnd::core::shape::util::parent * co
 
 	neb::fnd::core::shape::base::init(p);
 	//neb::gfx::core::shape::base::init(p);
-	neb::phx::core::shape::base::init(p);
+	//neb::phx::core::shape::base::init(p);
 }
 void		neb::fin::core::shape::base::release()
 {
 	printv_func(DEBUG);
 
 	//neb::gfx::core::shape::base::release();
-	neb::phx::core::shape::base::release();
+	//neb::phx::core::shape::base::release();
 }
 void		neb::fin::core::shape::base::step(gal::etc::timestep const & ts) {
 	printv_func(DEBUG);

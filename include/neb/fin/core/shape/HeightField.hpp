@@ -3,15 +3,15 @@
 
 //#include <neb/gfx/core/shape/HeightField/Base.hpp>
 
-#include <neb/phx/core/shape/HeightField/Base.hpp>
+#include <neb/fnd/core/shape/HeightField.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
 
 namespace neb { namespace fin { namespace core { namespace shape { namespace HeightField {
 	class Base:
 		virtual public neb::fin::core::shape::base,
-		//virtual public neb::gfx::core::shape::HeightField::Base,
-		virtual public neb::phx::core::shape::HeightField::Base
+		virtual public neb::fnd::core::shape::HeightField::Base
+		//virtual public neb::phx::core::shape::HeightField::Base
 	{
 		public:
 			typedef neb::fnd::core::shape::util::parent	parent_t;

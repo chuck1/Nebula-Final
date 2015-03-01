@@ -1,4 +1,7 @@
 #include <neb/fnd/app/Base.hpp>
+
+#include <neb/fnd/plug/phx/core/shape/Base.hpp>
+
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/util/decl.hpp>
 
@@ -26,13 +29,17 @@ void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 			app->_M_graphics_plugin,
 			neb::fnd::plug::gfx::core::shape::type::CUBOID);
 
+	P::make_object<THIS, int>(
+			app->_M_physics_plugin,
+			neb::fnd::plug::phx::core::shape::type::CUBOID);
+
 	neb::fnd::core::shape::base::init(p);
 
 	//neb::gfx::core::shape::base::init(p);
 	//neb::gfx::core::shape::box::init(p);
 
-	neb::phx::core::shape::base::init(p);
-	neb::phx::core::shape::box::init(p);
+	//neb::phx::core::shape::base::init(p);
+	//neb::phx::core::shape::box::init(p);
 
 	neb::fin::core::shape::base::init(p);
 }
@@ -45,7 +52,7 @@ void		THIS::release()
 	//neb::gfx::core::shape::base::release();
 	//neb::gfx::core::shape::box::release();
 
-	neb::phx::core::shape::base::release();
+	//neb::phx::core::shape::base::release();
 	//neb::phx::core::shape::box::release();
 
 	neb::fin::core::shape::base::release();

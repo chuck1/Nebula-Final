@@ -81,7 +81,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createS
 	return shape;
 
 }
-std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createShapeHeightField(
+std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 		neb::fnd::core::shape::HeightField::desc const & desc)
 {
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
@@ -92,7 +92,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createS
 
 	//shape->pose_ = desc.pose_;
 	//shape->scale_ = desc.scale_;
-
+	
 	shape->desc_ = desc;
 
 	neb::fnd::core::shape::util::parent::insert(shape);

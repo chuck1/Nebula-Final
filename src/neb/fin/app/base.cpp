@@ -187,12 +187,13 @@ void				THIS::read_config()
 	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Terminal>(		"neb fnd gui object terminal");
 
 	// phx
+/*
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::scene::base>(			"neb phx core scene base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::base>(			"neb phx core actor base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigiddynamic::base>(	"neb phx core actor rigiddynamic base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigidstatic::base>(	"neb phx core actor rigidstatic base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::shape::base>(			"neb phx core shape base");
-	
+*/	
 
 
 /*		{"neb gfx",					(int*)&neb::gfx::sl},
