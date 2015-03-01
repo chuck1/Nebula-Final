@@ -177,6 +177,10 @@ void				THIS::read_config()
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::base>(			"neb fnd core actor base");
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::shape::base>(			"neb fnd core shape base");
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::light::base>(			"neb fnd core light base");
+
+	gal::tmp::VerbosityRegister::reg<neb::fnd::window::Base>(			"neb fnd window base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::context::Base>(			"neb fnd context base");
+	gal::tmp::VerbosityRegister::reg<neb::fnd::environ::Base>(			"neb fnd environ base");
 	
 	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::layout::Base>(			"neb fnd gui layout base");
 	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Base>(			"neb fnd gui object base");
