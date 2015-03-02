@@ -3,7 +3,7 @@
 
 //#include <neb/gfx/core/actor/base.hpp>
 
-#include <neb/phx/core/actor/base.hpp>
+#include <neb/fnd/core/actor/Base.hpp>
 
 #include <neb/fin/core/actor/util/parent.hpp>
 #include <neb/fin/core/shape/util/parent.hpp>
@@ -11,7 +11,7 @@
 namespace neb { namespace fin { namespace core { namespace actor {
 
 	class base:
-		virtual public neb::phx::core::actor::base
+		virtual public neb::fnd::core::actor::base
 		//virtual public neb::gfx::core::actor::base
 	{
 		public:

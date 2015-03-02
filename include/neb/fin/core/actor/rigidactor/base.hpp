@@ -1,14 +1,14 @@
 #ifndef NEB_FINAL_GFX_PHX_CORE_ACTOR_RIGIDACTOR_BASE_HPP
 #define NEB_FINAL_GFX_PHX_CORE_ACTOR_RIGIDACTOR_BASE_HPP
 
-#include <neb/phx/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/rigidactor/Base.hpp>
 
 #include <neb/fin/core/actor/base.hpp>
 
 namespace neb { namespace fin { namespace core { namespace actor { namespace rigidactor {
 
 	class base:
-		virtual public neb::phx::core::actor::rigidactor::base,
+		virtual public neb::fnd::core::actor::rigidactor::base,
 		virtual public neb::fin::core::actor::base
 	{
 		public:

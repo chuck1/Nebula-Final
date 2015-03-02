@@ -40,8 +40,7 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 	
 	shape->init(this);
 
-	// P::get_object->
-	setupFiltering();
+	P::get_object->setupFiltering();
 
 	return shape;
 }    
