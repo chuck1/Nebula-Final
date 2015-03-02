@@ -39,7 +39,10 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 	auto shape = createShapeBoxUninitialized(size).lock();
 	
 	shape->init(this);
-	
+
+	// P::get_object->
+	setupFiltering();
+
 	return shape;
 }    
 

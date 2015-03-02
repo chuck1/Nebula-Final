@@ -7,6 +7,7 @@
 #include <neb/fnd/plug/gfx/core/actor/util/decl.hpp>
 
 
+#include <neb/fin/core/actor/rigidactor/base.hpp>
 #include <neb/fin/core/actor/base.hpp>
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/shape/HeightField.hpp>
@@ -15,6 +16,7 @@ typedef neb::fin::core::actor::base THIS;
 
 THIS::base()
 {
+	printv_func(DEBUG);
 }
 void						THIS::init(
 		neb::fnd::core::actor::util::parent* const & p)
@@ -44,6 +46,8 @@ void						THIS::init(
 }
 void						THIS::release()
 {
+	printv_func(DEBUG);
+
 	neb::fnd::core::actor::base::release();
 }
 void						THIS::step(gal::etc::timestep const & ts)
@@ -51,6 +55,8 @@ void						THIS::step(gal::etc::timestep const & ts)
 }
 std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose const & pose)
 {
+	printv_func(DEBUG);
+	
 	auto self(dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
 	typedef neb::fin::core::shape::base T;
@@ -66,6 +72,8 @@ std::weak_ptr<neb::fnd::core::shape::base>	THIS::createShapeBase(gal::math::pose
 std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createShapeCuboid(
 		neb::fnd::core::shape::cuboid::Desc const & desc)
 {
+	printv_func(DEBUG);
+	
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 	typedef neb::fin::core::shape::box T;
 
@@ -78,12 +86,20 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::base::createS
 
 	shape->init(this);
 
+	// P::get_object()->
+	auto ra = dynamic_cast<neb::fin::core::actor::rigidactor::base*>(this);
+	assert(ra);
+	//if(ra) ra->setupFiltering();
+	if(ra) ra->init_physics();
+
 	return shape;
 
 }
 std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 		neb::fnd::core::shape::HeightField::desc const & desc)
 {
+	printv_func(DEBUG);
+	
 	auto self(std::dynamic_pointer_cast<neb::fin::core::actor::base>(shared_from_this()));
 
 	typedef neb::fin::core::shape::HeightField::Base T;
@@ -105,6 +121,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		THIS::createShapeHeightField(
 }
 void			THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
+	printv_func(DEBUG);
+	
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 
@@ -114,6 +132,8 @@ void			THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 }
 void			THIS::save(ba::polymorphic_oarchive & ar, unsigned int const & v) const
 {
+	printv_func(DEBUG);
+	
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(gal::itf::shared);
 	BOOST_SERIALIZATION_BASE_OBJECT_NVP(neb::fnd::core::actor::base);
 

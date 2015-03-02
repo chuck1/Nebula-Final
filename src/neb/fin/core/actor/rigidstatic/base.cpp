@@ -23,9 +23,10 @@ void						neb::fin::core::actor::rigidstatic::base::init(parent_t * const & p)
 
 	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(
-			app->_M_graphics_plugin,
-			neb::fnd::plug::gfx::core::actor::type::RIGIDSTATIC);
+	if(!G::has_object())
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				neb::fnd::plug::gfx::core::actor::type::RIGIDSTATIC);
 
 	neb::fnd::core::actor::base::init(p);
 

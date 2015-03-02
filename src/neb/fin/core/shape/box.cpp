@@ -17,7 +17,7 @@ THIS::~box()
 {
 	printv_func(DEBUG);
 }
-void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
+void		THIS::init(parent_t * const & p)
 {
 	printv_func(DEBUG);
 
@@ -25,13 +25,19 @@ void		THIS::init(neb::fnd::core::shape::util::parent * const & p)
 
 	auto app = get_fnd_app();
 
-	G::make_object<THIS, int>(
-			app->_M_graphics_plugin,
-			neb::fnd::plug::gfx::core::shape::type::CUBOID);
+	if(!G::has_object()) {
+		G::make_object<THIS, int>(
+				app->_M_graphics_plugin,
+				neb::fnd::plug::gfx::core::shape::type::CUBOID);
+	}
 
-	P::make_object<THIS, int>(
-			app->_M_physics_plugin,
-			neb::fnd::plug::phx::core::shape::type::CUBOID);
+	if(P::has_object()) {
+		printv(DEBUG, "phx plugin not null\n");
+	} else {
+		P::make_object<THIS, int>(
+				app->_M_physics_plugin,
+				neb::fnd::plug::phx::core::shape::type::CUBOID);
+	}
 
 	neb::fnd::core::shape::base::init(p);
 
@@ -57,6 +63,8 @@ void		THIS::release()
 
 	neb::fin::core::shape::base::release();
 	
+	G::reset();
+	P::reset();
 }
 void		THIS::step(gal::etc::timestep const & ts)
 {
