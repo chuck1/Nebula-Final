@@ -8,34 +8,9 @@
 #include <neb/fnd/plug/gfx/core/light/Spot.hpp>
 
 #include <neb/fin/core/shape/base.hpp>
-#include <neb/fin/core/shape/util/parent.hpp>
 
 typedef neb::fin::core::shape::base THIS;
 
-neb::fin::core::shape::base::base()
-{
-	printv_func(DEBUG);
-}
-void		neb::fin::core::shape::base::init(neb::fnd::core::shape::util::parent * const & p)
-{
-	printv_func(DEBUG);
-
-	setParent(p);
-
-	neb::fnd::core::shape::base::init(p);
-	//neb::gfx::core::shape::base::init(p);
-	//neb::phx::core::shape::base::init(p);
-}
-void		neb::fin::core::shape::base::release()
-{
-	printv_func(DEBUG);
-
-	//neb::gfx::core::shape::base::release();
-	//neb::phx::core::shape::base::release();
-}
-void		neb::fin::core::shape::base::step(gal::etc::timestep const & ts) {
-	printv_func(DEBUG);
-}
 void		THIS::load(ba::polymorphic_iarchive & ar, unsigned int const & v)
 {
 	printv_func(DEBUG);
@@ -77,24 +52,6 @@ void				THIS::v_set_pose_data(
 {
 	printv_func(DEBUG);
 	neb::fnd::core::shape::base::__set_pose_data(pose_global);
-}
-std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightPoint()
-{
-	printv_func(DEBUG);
-	//auto app = get_fnd_app();
-
-	typedef neb::fnd::core::light::Point L;
-	//typedef neb::fnd::plug::gfx::core::light::Point G;
-	
-	L* l = new L();
-	auto light = std::shared_ptr<L>(l);
-	
-	
-	neb::fnd::core::light::util::parent::insert(light);
-	
-	light->init(this);
-
-	return light;
 }
 std::weak_ptr<neb::fnd::core::light::base>		THIS::createLightSpot(glm::vec3 d)
 {

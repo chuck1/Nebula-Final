@@ -15,9 +15,10 @@ physx::PxGeometry*		neb::fin::core::shape::frustrum::to_geo() {
 	auto c = camera_.lock();
 	assert(c);
 
-	auto app = get_fin_app();
+	//auto app = get_fin_app();
 	
-	return app->frustrum_geometry(c->proj());
+	//return app->frustrum_geometry(c->proj());
+	abort();
 }
 
 
