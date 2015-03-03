@@ -42,10 +42,12 @@
 
 #include <neb/fin/app/base.hpp>
 #include <neb/fin/core/scene/base.hpp>
-#include <neb/fin/core/actor/rigiddynamic/base.hpp>
-#include <neb/fin/core/actor/rigidstatic/base.hpp>
-#include <neb/fin/core/shape/box.hpp>
-#include <neb/fin/core/shape/HeightField.hpp>
+
+#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
+#include <neb/fnd/core/actor/rigidstatic/base.hpp>
+
+#include <neb/fnd/core/shape/Cuboid.hpp>
+#include <neb/fnd/core/shape/HeightField.hpp>
 
 #define STRINGIZE2(x) #x
 #define STRINGIZE(x) STRINGIZE2(x)
@@ -171,6 +173,8 @@ void				THIS::read_config()
 	};
 
 	// fnd
+	gal::tmp::VerbosityRegister::reg<neb::fnd::input::sink>(			"neb fnd input sink");
+
 	gal::tmp::VerbosityRegister::reg<neb::fnd::game::weapon::SimpleProjectile>(	"neb core game weapon simple projectile");
 
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::scene::base>(			"neb fnd core scene base");
@@ -186,6 +190,7 @@ void				THIS::read_config()
 	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Base>(			"neb fnd gui object base");
 	gal::tmp::VerbosityRegister::reg<neb::fnd::gui::object::Terminal>(		"neb fnd gui object terminal");
 
+	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::control::rigidbody::base>(	"neb fnd core actor control rigidbody base");
 	// phx
 /*
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::scene::base>(			"neb phx core scene base");
@@ -268,14 +273,14 @@ void				THIS::initRegistry()
 {
 	makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
 
-	makeDefaultFunc<neb::fnd::core::actor::base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigiddynamic::base>();
-	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::base>();
-	makeDefaultFunc<neb::fnd::core::actor::__base, neb::fin::core::actor::rigidstatic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::base,	neb::fnd::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base,	neb::fnd::core::actor::rigiddynamic::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base,	neb::fnd::core::actor::base>();
+	makeDefaultFunc<neb::fnd::core::actor::__base,	neb::fnd::core::actor::rigidstatic::base>();
 
-	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::base>();
-	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::box>();
-	makeDefaultFunc<neb::fnd::core::shape::base, neb::fin::core::shape::HeightField::Base>();
+	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::base>();
+	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::Cuboid>();
+	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::HeightField::Base>();
 
 	/*	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
 		makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();

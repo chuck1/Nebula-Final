@@ -1,5 +1,0 @@
-#ifndef NEB_FIN_CORE_SHAPE_BASE_HPP
-#define NEB_FIN_CORE_SHAPE_BASE_HPP
-
-#endif
-

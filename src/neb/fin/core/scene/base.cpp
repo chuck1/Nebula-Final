@@ -5,13 +5,16 @@
 #include <neb/fnd/plug/gfx/core/scene/Base.hpp>
 
 #include <neb/fin/app/base.hpp>
-#include <neb/fin/core/actor/rigidstatic/base.hpp>
-#include <neb/fin/core/actor/rigiddynamic/base.hpp>
+
+#include <neb/fnd/core/actor/Base.hpp>
+#include <neb/fnd/core/actor/rigidstatic/base.hpp>
+#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
+
 #include <neb/fin/core/scene/base.hpp>
 
 typedef neb::fin::core::scene::base THIS;
 
-typedef weak_ptr<neb::fnd::core::actor::base>			wbase;
+typedef std::weak_ptr<neb::fnd::core::actor::base>			wbase;
 
 THIS::base()
 {
@@ -56,13 +59,13 @@ void			THIS::__release()
 void			THIS::__step(gal::etc::timestep const & ts)
 {
 }
-wbase		neb::fin::core::scene::base::createActorBase(gal::math::pose pose)
+wbase		THIS::createActorBase(gal::math::pose pose)
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 
-	typedef neb::fin::core::actor::base T;
+	typedef neb::fnd::core::actor::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -74,13 +77,13 @@ wbase		neb::fin::core::scene::base::createActorBase(gal::math::pose pose)
 
 	return actor;
 }
-wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
+wbase		THIS::createActorRigidStaticUninitialized()
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 
-	typedef neb::fin::core::actor::rigidstatic::base T;
+	typedef neb::fnd::core::actor::rigidstatic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -94,13 +97,13 @@ wbase		neb::fin::core::scene::base::createActorRigidStaticUninitialized()
 
 	return actor;
 }
-wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
+wbase		THIS::createActorRigidDynamicUninitialized()
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 
-	typedef neb::fin::core::actor::rigiddynamic::base T;
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -113,13 +116,13 @@ wbase		neb::fin::core::scene::base::createActorRigidDynamicUninitialized()
 
 	return actor;
 }
-wbase			neb::fin::core::scene::base::createActorRigidDynamic()
+wbase			THIS::createActorRigidDynamic()
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 
-	typedef neb::fin::core::actor::rigiddynamic::base T;
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
@@ -134,14 +137,14 @@ wbase			neb::fin::core::scene::base::createActorRigidDynamic()
 
 	return actor;
 }
-wbase			neb::fin::core::scene::base::createActorRigidDynamic(
+wbase			THIS::createActorRigidDynamic(
 		neb::fnd::core::actor::rigiddynamic::Desc const * const & desc)
 {
 	printv_func(DEBUG);
 
-	auto self(dynamic_pointer_cast<neb::fin::core::scene::base>(shared_from_this()));
+	auto self(dynamic_pointer_cast<THIS>(shared_from_this()));
 
-	typedef neb::fin::core::actor::rigiddynamic::base T;
+	typedef neb::fnd::core::actor::rigiddynamic::base T;
 
 	std::shared_ptr<T> actor(new T(), gal::stl::deleter<T>());
 
