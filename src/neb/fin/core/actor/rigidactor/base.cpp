@@ -2,6 +2,8 @@
 #include <neb/fnd/app/Base.hpp>
 #include <neb/fnd/plug/gfx/core/shape/Base.hpp>
 
+#include <neb/fnd/plug/phx/core/actor/Base.hpp>
+
 #include <neb/fin/core/shape/box.hpp>
 #include <neb/fin/core/actor/rigidactor/base.hpp>
 
@@ -40,7 +42,8 @@ std::weak_ptr<neb::fnd::core::shape::base>		neb::fin::core::actor::rigidactor::b
 	
 	shape->init(this);
 
-	P::get_object->setupFiltering();
+	//P::get_object()->setupFiltering();
+	P::get_object()->init_physics();
 
 	return shape;
 }    

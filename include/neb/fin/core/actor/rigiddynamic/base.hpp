@@ -14,10 +14,11 @@ namespace neb { namespace fin { namespace core { namespace actor { namespace rig
 			public:
 				base();
 				~base();
-				virtual void				init(neb::fnd::core::actor::util::parent * const &);
-				virtual void				release();
-				virtual void				step(gal::etc::timestep const & ts);
-				virtual void				createControlManual(std::shared_ptr<neb::fnd::input::source> window);
+				virtual void		init(neb::fnd::core::actor::util::parent * const &);
+				virtual void		release();
+				virtual void		step(gal::etc::timestep const & ts);
+				virtual void		createControlManual(std::shared_ptr<neb::fnd::input::source> window);
+				void			createControlPD();
 		};
 }}}}}
 
