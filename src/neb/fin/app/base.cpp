@@ -91,7 +91,7 @@ std::shared_ptr<neb::fin::app::base>	THIS::s_init(int ac, char ** av)
 	//app->neb::gfx::app::glfw::__init();
 	//app->neb::gfx::app::draw::__init();
 
-	app->neb::phx::app::base::__init();
+	//app->neb::phx::app::base::__init();
 
 
 
@@ -271,7 +271,7 @@ void				THIS::read_config()
 }
 void				THIS::initRegistry()
 {
-	makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
+	//makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
 
 	makeDefaultFunc<neb::fnd::core::actor::base,	neb::fnd::core::actor::rigiddynamic::base>();
 	makeDefaultFunc<neb::fnd::core::actor::__base,	neb::fnd::core::actor::rigiddynamic::base>();
@@ -286,7 +286,7 @@ void				THIS::initRegistry()
 		makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
 		*/
 }
-void				neb::fin::app::base::release()
+void				THIS::release()
 {
 	//neb::fnd::app::__base::__release();
 	neb::fnd::app::Base::__release();
