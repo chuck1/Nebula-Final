@@ -1,3 +1,5 @@
+
+/*
 #include <fstream>
 #include <algorithm>
 #include <stdio.h>
@@ -192,7 +194,7 @@ void				THIS::read_config()
 
 	gal::tmp::VerbosityRegister::reg<neb::fnd::core::actor::control::rigidbody::base>(	"neb fnd core actor control rigidbody base");
 	// phx
-/*
+*
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::scene::base>(			"neb phx core scene base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::base>(			"neb phx core actor base");
 	gal::tmp::VerbosityRegister::reg<neb::phx::core::actor::rigiddynamic::base>(	"neb phx core actor rigiddynamic base");
@@ -213,7 +215,7 @@ void				THIS::read_config()
 		{"neb phx shape",				(int*)&neb::phx::core::shape::sl}
 	};
 	*/
-
+/*
 	std::map<std::string, int> map_val({
 			{"debug",	DEBUG},
 			{"info",	INFO},
@@ -269,6 +271,7 @@ void				THIS::read_config()
 		gal::tmp::VerbosityRegister::set(var, level);
 	}
 }
+
 void				THIS::initRegistry()
 {
 	//makeDLLFunc<neb::fnd::core::scene::base, neb::fnd::core::scene::base, neb::fin::core::scene::base>("scene");
@@ -282,10 +285,12 @@ void				THIS::initRegistry()
 	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::Cuboid>();
 	makeDefaultFunc<neb::fnd::core::shape::base,	neb::fnd::core::shape::HeightField::Base>();
 
-	/*	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
+	/	makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::spot>();
 		makeDefaultFunc<neb::fnd::core::light::__base, neb::gfx::core::light::point>();
-		*/
+		/
 }
+*/
+/*
 void				THIS::release()
 {
 	//neb::fnd::app::__base::__release();
@@ -474,5 +479,5 @@ std::weak_ptr<neb::fnd::window::Base>	THIS::createWindow()
 
 	return window;
 }
-
+*/
 
